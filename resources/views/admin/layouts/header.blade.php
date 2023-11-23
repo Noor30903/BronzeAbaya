@@ -65,7 +65,7 @@
             <img src="{{ url('public/assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2">
           </div>
           <div class="info">
-            <a class="d-block">{{ Auth::users()->name}}</a>
+            <a class="d-block">{{ Auth::user()->name}}</a>
           </div>
       </div>
 
