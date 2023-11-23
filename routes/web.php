@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers VuthController;
+use App\Http\Controllers\AuthController;
 /*mashael*/
 
 /*
@@ -15,19 +15,26 @@ use App\Http\Controllers VuthController;
 |
 */
 
-Route::get('admin', [AuthController::class 'login_admin']);
-Route::post('admin', [AuthController::class, 'auth_login_admin']);
-Route::get('admin/logout', [AuthControllersiclass::class, 'logout_admin']);
-/*mashael*/
+Route::get('admin', [AuthController::class, 'login_admin']);
 
+Route::post('admin', [AuthController::class, 'auth_login_admin']);
+
+Route::get('admin/logout', [AuthController::class, 'logout_admin']);
+
+
+
+Route::group (['middleware' => 'admin'], function () {
+    Route::get('admin/dashboard', function () {
+    return view('admin.dashboard');
+    });
+   
+});
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/dashboard', function () {
-    return view('admin.dashboard');
-});
+
     
     

@@ -336,8 +336,14 @@
               </li>
             </ul>
           </li>
-          
-              
+
+          <li class="nav-item">
+                <a href="{{url('admin/logout')}}" class="nav-link active">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>Logout</p>
+                </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

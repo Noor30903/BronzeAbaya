@@ -14,10 +14,13 @@ class AuthController extends Controller
 			{
 				return redirect('admin/dashboard');
 			}
+			
+			return view('admin.auth.login');
+			
 		}
 		public function auth_login_admin(Request $request)
 		{
-			$remember = !empty(Srequest->remember)? true : false;
+			$remember = !empty($request->remember)? true : false;
 			if(Auth::attempt(['email'=> $request->email,'password'=>$request->password, 'is_admin' =>1],$remember))
 			{
 				return redirect ('admin/dashboard');
