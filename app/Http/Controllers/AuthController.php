@@ -17,7 +17,7 @@ class AuthController extends Controller
 		}
 		public function auth_login_admin(Request $request)
 		{
-			remember = !empty(Srequest-›remember)? true : false;
+			$remember = !empty(Srequest-›remember)? true : false;
 			if(Auth::attempt(['email'=> $request->email,'password'=>$request->password, 'is_admin' =>1],$remember))
 			{
 				return redirect ('admin/dashboard');
@@ -31,7 +31,7 @@ class AuthController extends Controller
 		public function logout_admin()
 		{
 			Auth::logout();
-			return redirect ('admin');
+			return redirect('admin');
 		}
 		
 }
