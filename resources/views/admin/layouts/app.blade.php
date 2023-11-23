@@ -32,7 +32,7 @@
 <div class="wrapper">
   @include('admin.layouts.header')
   @yield('content')
-  @include('admin.layouts.header')
+  @include('admin.layouts.footer')
 
 </div>
 <!-- ./wrapper -->
