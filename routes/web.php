@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\DashbordController;
+use App\Http\Controllers\Admin\DashboardController;
 /*mashael*/
 
 /*
@@ -26,7 +26,7 @@ Route::get('admin/logout', [AuthController::class, 'logout_admin']);
 
 Route::group (['middleware' => 'admin'], function () {
 
-    Route::get('admin/dashboard', [DashbordController::class, 'dashboard']);
+    Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
 
   /*  Route::get('admin/dashboard', function () {
     return view('admin.dashboard');
