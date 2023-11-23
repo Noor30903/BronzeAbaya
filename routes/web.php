@@ -20,7 +20,7 @@ Route::get('admin', [AuthController::class, 'login_admin']);
 Route::post('admin', [AuthController::class, 'auth_login_admin']);
 
 Route::get('admin/logout', [AuthController::class, 'logout_admin']);
-/*mashael*/
+
 
 
 Route::group (['middleware' => 'admin'], function () {
