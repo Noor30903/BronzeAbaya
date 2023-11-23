@@ -34,8 +34,10 @@ Route::group (['middleware' => 'admin'], function () {
 
     
     Route::get('admin/admin/list', function () {
-        $data['header_title'] = 'Admen';
-        return view('admin.admin.list', data );
+        $data['header_title'] = 'Admin';
+        return view('admin.admin.list', $data);
+
+    });
    
 });
 
