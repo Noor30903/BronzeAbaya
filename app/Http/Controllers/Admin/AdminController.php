@@ -24,6 +24,10 @@ class AdminController extends Controller
 
     public function insert(Request $request)
     {
+        requist()->validate([
+            'email' => 'required|email|uniqe:users'
+        ]);
+
        $user = new User;
        $user->name = $request->name;
        $user->email = $request->email;
@@ -43,6 +47,10 @@ class AdminController extends Controller
 
     public function update($id, Request $request)
     {
+
+        requist()->validate([
+            'email' => 'required|email|uniqe:users,email,'.$id
+        ]);
         $user = User::getSignal($id) ;
        $user->name = $request->name;
        $user->email = $request->email;
