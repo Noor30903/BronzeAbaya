@@ -36,7 +36,7 @@ class AdminController extends Controller
 
     public function edit($id)
     {
-        $data['getRecord']= User::getSignal($id) ;
+        $data['getRecord']= User::getSignal($id);
         $data['header_title']= 'Edit Admin';
        return view('admin.admin.edit',$data);
     }

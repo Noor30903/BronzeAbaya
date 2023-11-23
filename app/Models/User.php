@@ -43,7 +43,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    static public function getSingle($id) 
+    static public function getSignal($id) 
     {
         return User::find($id);
     }
