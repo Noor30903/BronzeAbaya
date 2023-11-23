@@ -20,14 +20,7 @@ Route::post('admin', [AuthController::class, 'auth_login_admin']);
 Route::get('admin/logout', [AuthControllersiclass::class, 'logout_admin']);
 /*mashael*/
 
-Route::get('admin/admin/list', function () {
-    return view('admin.admin.list');
-});
-/*mashael*/
 
-Route::get('admin/login', function () {
-    return view('admin.auth.login');
-});
 
 Route::get('/', function () {
     return view('welcome');
