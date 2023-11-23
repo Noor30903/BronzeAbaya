@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin/login', function () {
+Route::get('admin', function () {
     return view('admin.auth.login');
 });
 
