@@ -9,6 +9,11 @@ class ProductModel extends Model
 {
     use HasFactory;
     protected $table = 'product';
+    
+    static public function getSingle($id)
+    {
+        return self::find($id);
+    }
 
     static public function checkSlug($slug)
     {
