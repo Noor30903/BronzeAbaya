@@ -12,7 +12,7 @@
             <h1>Product List</h1>
           </div>
           <div class="col-sm-6" style="text-align:right;">
-            <a href="{{url('admin/Product/add')}}" class="btn btn-primary">Add new Product</a>
+            <a href="{{url('admin/product/add')}}" class="btn btn-primary">Add new Product</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -28,7 +28,7 @@
           @include('admin.layouts._message')
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Category List</h3>
+                <h3 class="card-title">Product List</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
