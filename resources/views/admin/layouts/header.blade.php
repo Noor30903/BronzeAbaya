@@ -93,8 +93,17 @@
           </li>
 
           <li class="nav-item ">
+            <a href="{{url('admin/category/list')}}" class="nav-link @if(Request::segment(2) =='category') active @endif ">
+              <i class="nav-icon fas fa-list-alt"></i>
+              <p>
+                Category
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
             <a href="{{url('admin/product/list')}}" class="nav-link @if(Request::segment(2) =='product') active @endif ">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-list-alt"></i>
               <p>
                 product
               </p>
@@ -103,7 +112,7 @@
 
           <li class="nav-item">
                 <a href="{{url('admin/logout')}}" class="nav-link active">
-                  <i class="fas fa-user nav-icon"></i>
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>Logout</p>
                 </a>
           </li>
