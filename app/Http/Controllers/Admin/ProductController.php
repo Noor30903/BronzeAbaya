@@ -50,5 +50,15 @@ class ProductController extends Controller
 
     }
 
-
+    public function edit($product_id)
+    {
+        $product = ProductModel::getSingle($product_id);
+        if(!empty($product))
+        {
+            $data['product'] = $product;
+            $data['header_title']= 'Edit Product';
+            return view('admin.product.edit',$data);
+        }
+        
+    }
 }
