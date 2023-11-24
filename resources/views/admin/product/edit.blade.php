@@ -29,7 +29,7 @@
                 {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Title <span style="color:red">*</span></label>
+                    <label>Title <span style="color:red;">*</span></label>
                     <input type="text" class="form-control" required value="{{old('title', $product->title)}}" name="title" placeholder="Title">
                   </div>
 
