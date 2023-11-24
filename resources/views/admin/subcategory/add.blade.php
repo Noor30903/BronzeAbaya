@@ -31,16 +31,14 @@
 
                   <div class="form-group">
                     <label> Category Name <span style="color:red">*</span></label>
-                    <select class="from-control" name="category_id">
+                    <select class="form-control" name="category_id">
                         <option value="">select </option>
                         @foreach($getCategory as $value)
                             <option value="{{ $value->id  }}">{{ $value->name }}</option>
                         @endforeach
                     </select>
                   </div>
-                    getCategory
-
-
+                  
                   <div class="form-group">
                     <label> Sub Category Name <span style="color:red">*</span></label>
                     <input type="text" class="form-control" required value="{{old('name')}}" name="name" placeholder="Sub Category Name">
