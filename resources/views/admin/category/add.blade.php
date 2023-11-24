@@ -35,8 +35,8 @@
 
                   <div class="form-group">
                     <label>Sulg <span style="color:red">*</span></label>
-                    <input type="text" class="form-control" required value="{{old('Sulg')}}" name="Sulg" placeholder="Sulg Ex. URL">
-                    <div style="color:red;">{{ $errors->first('Sulg')}}</div>
+                    <input type="text" class="form-control" required value="{{old('sulg')}}" name="sulg" placeholder="Sulg Ex. URL">
+                    <div style="color:red;">{{ $errors->first('sulg')}}</div>
                   </div>
 
 
@@ -63,10 +63,6 @@
                     <label>meta keywords</label>
                     <input type="text" class="form-control" required value="{{old('meta_keywords')}}" name="meta_keywords" placeholder="meta keywords">
                   </div>
-
-
-
-
                 </div>
                 <!-- /.card-body -->
 

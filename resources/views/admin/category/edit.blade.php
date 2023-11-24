@@ -35,16 +35,16 @@
 
                   <div class="form-group">
                     <label>Sulg <span style="color:red">*</span></label>
-                    <input type="text" class="form-control" required value="{{old('Sulg', $getRecord->Sulg)}}" name="Sulg" placeholder="Sulg Ex. URL">
-                    <div style="color:red;">{{ $errors->first('Sulg')}}</div>
+                    <input type="text" class="form-control" required value="{{old('sulg', $getRecord->sulg)}}" name="sulg" placeholder="Sulg Ex. URL">
+                    <div style="color:red;">{{ $errors->first('sulg')}}</div>
                   </div>
 
 
                   <div class="form-group">
                     <label >Status <span style="color:red">*</span></label>
                     <select class="form-control" required name="status">
-                        <option {{(old('status', $getRecord->status) ==0)? 'selected':''}} value="0">Active</option>
-                        <option {{(old('status', $getRecord->status) ==1)? 'selected':''}} value="1">Inactive</option>
+                        <option {{(old('status', $getRecord->status)==0)?'selected':''}} value="0" > Active</option>
+                        <option {{(old('status', $getRecord->status)==1)?'selected':''}} value="1" > Inactive</option>
                     </select>
                   </div> 
 
@@ -63,10 +63,6 @@
                     <label>meta keywords</label>
                     <input type="text" class="form-control" required value="{{old('meta_keywords', $getRecord->meta_keywords)}}" name="meta_keywords" placeholder="meta keywords">
                   </div>
-
-
-
-
                 </div>
                 <!-- /.card-body -->
 

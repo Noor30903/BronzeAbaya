@@ -18,7 +18,7 @@ class CategoryController extends Controller
 
     public function add()
     {
-       $data['header_title']= 'Add New Category';
+       $data['header_title'] = 'Add New Category';
        return view('admin.category.add',$data);
     }
 
@@ -45,11 +45,11 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $data['getRecord'] = CategoryModel::getSingle($id);
-       $data['header_title']= 'Edit New Category';
-       return view('admin.category.edit',$data);
+        $data['header_title']= 'Edit New Category';
+        return view('admin.category.edit',$data);
     }
 
-    public function update($id, Request  $request)
+    public function update($id, Request $request)
     {
         request()->validate([
             'slug' => 'required|unique:category,slug,'.$id

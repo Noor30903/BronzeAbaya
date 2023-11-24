@@ -40,7 +40,7 @@
                       <th>Slug</th>
                       <th>Meta Title</th>
                       <th>Meta Describtion</th>
-                      <th>Meta Kyewords</th>
+                      <th>Meta Keywords</th>
                       <th>Created By</th>
                       <th>Status</th>
                       <th>Created Date</th>
@@ -54,8 +54,8 @@
                       <td>{{$value->name}}</td>
                       <td>{{$value->slug}}</td>
                       <td>{{$value->meta_title}}</td>
-                      <td>{{$value->meta_describtion}}</td>
-                      <td>{{$value->meta_kyewords}}</td>
+                      <td>{{$value->meta_description}}</td>
+                      <td>{{$value->meta_keywords}}</td>
                       <td>{{$value->created_by_name}}</td>
                       <td>{{ ($value->status ==0)? 'Active':'Inactive' }}</td>
                       <td>{{date('d-m-y', strtotime($value->created_at))}}</td>
