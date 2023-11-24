@@ -34,9 +34,9 @@
                   </div>
 
                   <div class="form-group">
-                    <label>Sulg <span style="color:red">*</span></label>
-                    <input type="text" class="form-control" required value="{{old('sulg', $getRecord->sulg)}}" name="sulg" placeholder="Sulg Ex. URL">
-                    <div style="color:red;">{{ $errors->first('sulg')}}</div>
+                    <label>Slug <span style="color:red">*</span></label>
+                    <input type="text" class="form-control" required value="{{old('slug', $getRecord->slug)}}" name="slug" placeholder="Slug Ex. URL">
+                    <div style="color:red;">{{ $errors->first('slug')}}</div>
                   </div>
 
 
