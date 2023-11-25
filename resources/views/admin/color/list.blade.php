@@ -28,7 +28,7 @@
           @include('admin.layouts._message')
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"> Sub Category List</h3>
+                <h3 class="card-title"> Color List</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
@@ -64,9 +64,7 @@
 
                   </tbody>
                 </table>
-                <div style="padding:10px; float:right;">
-                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links()!!}
-                </div>
+                
               </div>
               <!-- /.card-body -->
             </div>

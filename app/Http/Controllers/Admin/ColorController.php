@@ -31,7 +31,7 @@ class ColorController extends Controller
         $color = new ColorModel;
         $color->name = trim($request->name);
         $color->code = trim($request->code);
-        $color->statuse = trim($request->statuse);
+        $color->status = trim($request->status);
         $color->created_by = Auth::user()->id;
         $color->save();
 
@@ -51,7 +51,6 @@ class ColorController extends Controller
         
 
         $color = ColorModel::getSingle($id);
-        $color->category_id = trim($request->ategory_id);
         $color->name = trim($request->name);
         $color->code = trim($request->code);
         $color->status = trim($request->status);
