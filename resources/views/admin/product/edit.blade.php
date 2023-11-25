@@ -47,7 +47,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Category <span style="color:red;">*</span></label>
-                        <select class="form-control" id="ChangeCatefory" name="category_id">
+                        <select class="form-control" id="ChangeCategory" name="category_id">
                           <option value="">select </option>
                           @foreach($getCategory as $category)
                             <option value="{{ $category->id  }}">{{ $category->name }}</option>
@@ -59,7 +59,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>SubCategory <span style="color:red;">*</span></label>
-                        <select class="form-control" id="getSubCatefory" name="sub_category_id">
+                        <select class="form-control" id="getSubCategory" name="sub_category_id">
                           <option value="">select </option>
                           @foreach($getCategory as $value)
                             <option value="{{ $value->id  }}">{{ $value->name }}</option>
@@ -118,44 +118,17 @@
 
                             </thead>
 
-                            <tbody>
+                            <tbody id="AppendSize">
                               <tr>
-                                <td> <input type="text" name="" class="form-control"></td>
+                                <td> <input type="text" name="" placeholder="Name" class="form-control"></td>
 
-                                <td> <input type="text" name="" class="form-control"></td>
+                                <td> <input type="text" name="" placeholder="Price" class="form-control"></td>
 
                                 <td>
-                                  <button type="button" class="btn btn-primary">Add
-                                  </button>
-                                  <button type="button" class="btn btn-danger">Delete
-                                  </button>
-                                </td>
-                              </tr>
-
-                              <tr>
-                                <td> <input type="text" name="" class="form-control"></td>
-
-                                <td> <input type="text" name="" class="form-control"></td>
-
-                                <td>
+                                  <button type="button" class="btn btn-primary AddSize">Add</button>
                                   
-                                  <button type="button" class="btn btn-danger">Delete
-                                  </button>
                                 </td>
                               </tr>
-
-                              <tr>
-                                <td> <input type="text" name="" class="form-control"></td>
-
-                                <td> <input type="text" name="" class="form-control"></td>
-
-                                <td>
-                                  
-                                  <button type="button" class="btn btn-danger">Delete
-                                  </button>
-                                </td>
-                              </tr>
-
                             </tbody>
                             
                           </table>
@@ -238,16 +211,39 @@
 
 @section('script')
 <script type="text/javascript">
+    var i=1000;
+    $('body').delegate('.AddSize', 'click', function() {
+      
+      var html = '<tr id="DeleteSize'+i+'">\n\
+                      <td>\n\
+                        <input type="text" name="" placeholder="Name" class="form-control">\n\
+                      </td>\n\
+                      <td>\n\
+                        <input type="text" name="" placeholder="Price" class="form-control">\n\
+                      </td>\n\
+                      <td>\n\
+                        <button type="button" id="'+i+'" class="btn btn-danger DeleteSize">Delete</button>\n\
+                      </td>\n\
+                    </tr>';
+        i++;
+        $('#AppendSize').append(html);
+    });
+
+    $('body').delegate('.DeleteSize', 'click', function() {
+      var id = $(this).attr('id');
+      $('#DeleteSize'+id).remove();
+    });
+
     $('body').delegate('#ChangeCategory', 'change', function(e) {
       var id = $(this).val();
       $.ajax({
-        type: "POST"
+        type : "POST",
         url : "{{ url('admin/get_sub_category') }}",
         data :{
           "id" : id,
           "_token":"{{ csrf_token() }}"
         },
-        dataType: "json",
+        dataType : "json",
         success: function(data) {
           $('#getSubCategory').html(data.html);
         },
