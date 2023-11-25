@@ -47,10 +47,10 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Category <span style="color:red;">*</span></label>
-                        <select class="form-control" name="category_id">
+                        <select class="form-control" id="ChangeCatefory" name="category_id">
                           <option value="">select </option>
-                          @foreach($getCategory as $value)
-                            <option value="{{ $value->id  }}">{{ $value->name }}</option>
+                          @foreach($getCategory as $category)
+                            <option value="{{ $category->id  }}">{{ $category->name }}</option>
                           @endforeach
                         </select>
                       </div>
@@ -59,7 +59,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>SubCategory <span style="color:red;">*</span></label>
-                        <select class="form-control" name="sub_category_id">
+                        <select class="form-control" id="getSubCatefory" name="sub_category_id">
                           <option value="">select </option>
                           @foreach($getCategory as $value)
                             <option value="{{ $value->id  }}">{{ $value->name }}</option>
@@ -67,6 +67,22 @@
                         </select>
                       </div>
                     </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Color <span style="color:red">*</span></label> 
+                            @foreach($getColor as $color)
+                                <div>
+                                    <label><input type="checkbox" name="color_id []" value="{{$color->id}}"> {{$color->name}}</label>
+                                </div>
+                            @endforeach
+
+                            
+                          </div>
+                      </div>
+                    </div>
+
                   </div>
 
                   <hr>
@@ -221,4 +237,23 @@
 @endsection
 
 @section('script')
+<script type="text/javascript">
+    $('body').delegate('#ChangeCategory', 'change', function(e) {
+      var id = $(this).val();
+      $.ajax({
+        type: "POST"
+        url : "{{ url('admin/get_sub_category') }}",
+        data :{
+          "id" : id,
+          "_token":"{{ csrf_token() }}"
+        },
+        dataType: "json",
+        success: function(data) {
+          $('#getSubCategory').html(data.html);
+        },
+        error: function (data) {
+        }
+      });
+    });
+</script>
 @endsection
