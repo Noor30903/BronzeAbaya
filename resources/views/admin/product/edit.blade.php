@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 @section('style')
+<link rel="stylesheet" href="{{ url('public/assets/plugins/summernote/summernote-bs4.min.css')}}">
 @endsection
 
 @section('content')
@@ -152,7 +153,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label> Description <span style="color:red;">*</span></label>
-                        <textarea name="description" class="form-control" placeholder="Description"></textarea>
+                        <textarea name="description" class="form-control editor" placeholder="Description"></textarea>
                       </div>
                     </div>
                   </div>
@@ -161,7 +162,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Additional Information<span style="color:red;">*</span></label>
-                        <textarea name="additional_information" class="form-control" placeholder="Additional Information"></textarea>
+                        <textarea name="additional_information" class="form-control editor" placeholder="Additional Information"></textarea>
                       </div>
                     </div>
                   </div>
@@ -170,7 +171,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Shipping and Returns <span style="color:red;">*</span></label>
-                        <textarea name="shipping_returns" class="form-control" placeholder="Shipping and Returns"></textarea>
+                        <textarea name="shipping_returns" class="form-control editor" placeholder="Shipping and Returns"></textarea>
                       </div>
                     </div>
                   </div>
@@ -210,7 +211,18 @@
 @endsection
 
 @section('script')
+
+<script src="{{ url('public/assets/plugins/summernote/summernote-bs4.min.css')}}"></script>
+
+
+
 <script type="text/javascript">
+
+$('.editor').summernote({
+height: 200
+});
+
+
     var i=1000;
     $('body').delegate('.AddSize', 'click', function() {
       
