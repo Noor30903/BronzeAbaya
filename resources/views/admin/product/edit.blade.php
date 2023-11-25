@@ -21,6 +21,8 @@
         <div class="row">
           
         <div class="col-md-12">
+
+             @include('admin.layouts._message')
             <!-- general form elements -->
             <div class="card card-primary">
               
@@ -47,10 +49,10 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Category <span style="color:red;">*</span></label>
-                        <select class="form-control" id="ChangeCategory" name="category_id">
+                        <select class="form-control" required id="ChangeCategory" name="category_id">
                           <option value="">select </option>
                           @foreach($getCategory as $category)
-                            <option value="{{ $category->id  }}">{{ $category->name }}</option>
+                            <option {{ ($product->category_id == $category->id) ? 'selected' : ''}} value="{{ $category->id  }}">{{ $category->name }}</option>
                           @endforeach
                         </select>
                       </div>
@@ -59,10 +61,10 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>SubCategory <span style="color:red;">*</span></label>
-                        <select class="form-control" id="getSubCategory" name="sub_category_id">
-                          <option value="">select </option>
-                          @foreach($getCategory as $value)
-                            <option value="{{ $value->id  }}">{{ $value->name }}</option>
+                        <select class="form-control" required id="getSubCategory" name="sub_category_id">
+                          <option value="">Select </option>
+                          @foreach($getSubCategory as $subcategory)
+                            <option {{ ($product->sub_category_id == $subcategory->id) ? 'selected' : ''}} value="{{ $subcategory->id  }}">{{ $category->name }}</option>
                           @endforeach
                         </select>
                       </div>
@@ -91,14 +93,14 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Price($) <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" required value="{{old('price', $product->price)}}" name="price" placeholder="Price">
+                        <input type="text" class="form-control" required value="{{ $product->price }}" name="price" placeholder="Price">
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Old Price($) <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" required value="{{old('old_price', $product->old_price)}}" name="old_price" placeholder="Old Price">
+                        <input type="text" class="form-control" required value="{{ $product->old_price }}" name="old_price" placeholder="Old Price">
                       </div>
                     </div>
                   </div>
@@ -143,7 +145,8 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Short description <span style="color:red;">*</span></label>
-                        <textarea name="short_description" class="form-control" placeholder="Short Description"></textarea>
+                        <textarea name="short_description" class="form-control" placeholder="Short Description">{{ $product->short_description }}</textarea>
+                        
                       </div>
                     </div>
                   </div>
@@ -152,7 +155,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label> Description <span style="color:red;">*</span></label>
-                        <textarea name="description" class="form-control editor" placeholder="Description"></textarea>
+                        <textarea name="description" class="form-control editor" placeholder="Description">{{ $product->description }}</textarea>
                       </div>
                     </div>
                   </div>
@@ -161,7 +164,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Additional Information<span style="color:red;">*</span></label>
-                        <textarea name="additional_information" class="form-control editor" placeholder="Additional Information"></textarea>
+                        <textarea name="additional_information" class="form-control editor" placeholder="Additional Information">{{ $product->additional_information }}</textarea>
                       </div>
                     </div>
                   </div>
@@ -170,7 +173,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Shipping and Returns <span style="color:red;">*</span></label>
-                        <textarea name="shipping_returns" class="form-control editor" placeholder="Shipping and Returns"></textarea>
+                        <textarea name="shipping_returns" class="form-control editor" placeholder="Shipping and Returns">{{ $product->shipping_returns }}</textarea>
                       </div>
                     </div>
                   </div>
@@ -182,8 +185,8 @@
                       <div class="form-group">
                         <label >Status <span style="color:red">*</span></label>
                         <select class="form-control" required name="status">
-                            <option {{(old('status') ==0)? 'selected':''}} value="0">Active</option>
-                            <option {{(old('status') ==1)? 'selected':''}} value="1">Inactive</option>
+                            <option {{($product->status ==0) ? 'selected':''}} value="0">Active</option>
+                            <option {{($product->status ==1) ? 'selected':''}} value="1">Inactive</option>
                         </select>
                     </div> 
 
@@ -195,7 +198,7 @@
                   
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
                 </div>
               </form>
             </div>
@@ -215,8 +218,8 @@
 <script src="{{ url('public/tinymce/tinymce-jquery.min.js')}}"></script>
 
 <script type="text/javascript">
-
-$('.editor').tinymce({
+  
+  $('.editor').tinymce({
         height: 500,
         menubar: false,
         plugins: [
@@ -224,9 +227,8 @@ $('.editor').tinymce({
            'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
            'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
         ],
-        toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist checklist outdent indent | removeformat | code table help'
+        toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist checklist outdent indent | removeformat | code table help'
       });
-
 
     var i=1000;
     $('body').delegate('.AddSize', 'click', function() {

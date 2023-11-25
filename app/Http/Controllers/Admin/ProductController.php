@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductModel;
 use App\Models\CategoryModel;
 use App\Models\ColorModel;
+use App\Models\SubCategoryModel;
 
 use Str;
 use Auth;
@@ -61,11 +62,38 @@ class ProductController extends Controller
         {
             $data['getCategory'] = CategoryModel::getRecordActive();
             $data['getColor'] = ColorModel::getRecordActive();
-
             $data['product'] = $product;
+            $data['getSubCategory'] = SubCategoryModel::getRecordCategory($product->category_id);
             $data['header_title']= 'Edit Product';
             return view('admin.product.edit',$data);
         }
+        public function update($product_id, Request $request) 
+         {
+            $product = ProductModel::getSingle($product_id);
+            if(!empty($product))
+            {
+                $product->title = trim($request->title);
+                $product->sku = trim($request->sku);
+                $product->category_id = trim($request->category_id);
+                $product->sub_category_id = trim($request->sub_category_id);
+                $product->brand_id = trim($request->brand_id);
+                $product->price = trim($request->price);
+                $product->old_price = trim($request->old_price);
+                $product->short_description = trim($request->short_description);
+                $product->description = trim($request->description);
+                $product->additional_information = trim($request->additional_information);
+                $product->shipping_returns = trim($request->shipping_returns);
+                $product->status = trim($request->status);
+                $product->save();
+
+                return redirect()->with('success', "Product successfully updated");
+
+
+            }
+            else
+            { 
+                abort(404);
+        } 
         
     }
 }
