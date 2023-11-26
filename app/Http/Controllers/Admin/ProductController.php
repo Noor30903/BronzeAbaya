@@ -10,6 +10,10 @@ use App\Models\ColorModel;
 use App\Models\SubCategoryModel;
 use App\Models\ProductColorModel;
 use App\Models\ProductSizeModel;
+use App\Models\ProductImageModel;
+
+
+
 
 
 use Str;
@@ -80,6 +84,7 @@ class ProductController extends Controller
         $product = ProductModel::getSingle($product_id);
         if(!empty($product))
         {
+
             $product->title = trim($request->title);
             $product->sku = trim($request->sku);
             $product->category_id = trim($request->category_id);
@@ -123,6 +128,30 @@ class ProductController extends Controller
 
                     }
                     
+                }
+            }
+
+
+            if(!empty($request->file('image')))
+            {
+                foreach($request->file('image') as $value)
+                {
+                    if($value->isValid())
+                    {
+                        $ext = $value->getClientOriginalExtension();
+                        $randomStr = $product->id.Str::random(20);
+                        $filename = strtolower ($ranomStr).'.'.$ext;
+                        $value->move('upload/product/', $filename);
+
+                        $imageupload = new ProductImageModel;
+                        $imageupload->image_name = $filename;
+                        $imageupload->image_extention = $ext;
+                        $imageupload->product_id = $product->id;
+                        $imageupload->save();
+
+                    }
+                       
+
                 }
             }
             
