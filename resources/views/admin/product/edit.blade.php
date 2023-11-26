@@ -146,8 +146,8 @@
                                   <td>
                                   <button type="button" id="{{$i_s}}" class="btn btn-danger DeleteSize">Delete</button>
                                   
-                                 </td>
-                              </tr>
+                                  </td>
+                                </tr>
 
                               @endforeach
                              
