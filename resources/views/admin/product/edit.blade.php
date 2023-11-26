@@ -148,8 +148,6 @@
                                   
                                   </td>
                                 </tr>
-
-                              @endforeach
                              
                               @php
                                   $i_s++;
