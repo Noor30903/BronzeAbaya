@@ -75,8 +75,18 @@
                         <div class="form-group">
                           <label>Color <span style="color:red">*</span></label> 
                             @foreach($getColor as $color)
+                            @php
+                              $cheacked = '';
+                            @endphp
+                              @foreach($product->getColor as $pcolor)
+                              @if($pcolor->color_id == $color->id)
+                              @php
+                              $cheacked = 'cheacked';
+                            @endphp
+                              @endif
+                              @endforeach
                                 <div>
-                                    <label><input type="checkbox" name="color_id []" value="{{$color->id}}"> {{$color->name}}</label>
+                                    <label><input {{ $cheacked }}type="checkbox" name="color_id []" value="{{$color->id}}"> {{$color->name}}</label>
                                 </div>
                             @endforeach
 

@@ -8,6 +8,7 @@ use App\Models\ProductModel;
 use App\Models\CategoryModel;
 use App\Models\ColorModel;
 use App\Models\SubCategoryModel;
+use App\Models\ProductColorModel;
 
 use Str;
 use Auth;
@@ -69,6 +70,7 @@ class ProductController extends Controller
         }
         public function update($product_id, Request $request) 
          {
+           /* dd($request->all());*/
             $product = ProductModel::getSingle($product_id);
             if(!empty($product))
             {
@@ -85,6 +87,19 @@ class ProductController extends Controller
                 $product->shipping_returns = trim($request->shipping_returns);
                 $product->status = trim($request->status);
                 $product->save();
+
+                ProductColorModel::DeleteRecord($product->id);
+
+                if(!empty($request->color_id))
+                {
+                    foreach($request->color_id as $color_id)
+                    {
+                        $color = new ProductColorModel;
+                        $color->color_id = $color_id;
+                        $color->product_id = $product_id;
+                        $color->save();
+                    }
+                }
 
                 return redirect()->with('success', "Product successfully updated");
 

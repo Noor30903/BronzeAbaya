@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class ProductColorModel extends Model
 {
     use HasFactory;
+
+    protected $table = 'product_color';
+
+
+    static public function DeleteRecord($product_id) 
+     {
+        self::where('product_id', '=',$product_id)->delete();
+    }
 }
