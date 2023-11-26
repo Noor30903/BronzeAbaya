@@ -9,7 +9,7 @@ class ProductSizeModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'Product_size';
+    protected $table = 'product_size';
 
     static public function DeleteRecord($product_id)
     {

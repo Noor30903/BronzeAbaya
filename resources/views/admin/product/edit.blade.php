@@ -153,6 +153,16 @@
                                   $i_s++;
                               @endphp
                              @endforeach
+                             <tr>
+                                  <td> <input type="text"  name="size[100][name]" placeholder="Name" class="form-control"></td>
+
+                                  <td> <input type="text"  name="size[100][price]" placeholder="Price" class="form-control"></td>
+
+                                  <td>
+                                  <button type="button" class="btn btn-primary AddSize">Add</button>
+                                  
+                                  </td>
+                                </tr>
                             </tbody>
                             
                           </table>

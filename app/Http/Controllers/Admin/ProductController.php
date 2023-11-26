@@ -117,7 +117,7 @@ class ProductController extends Controller
 
                         $saveSize = new ProductSizeModel;
                         $saveSize->name = $size['name'];
-                        $saveSize->price = !empty ($size['price']) ? $size['name'] : 0;
+                        $saveSize->price = !empty($size['price']) ? $size['name'] : 0;
                         $saveSize->product_id = $product_id;
                         $saveSize->save();
 
