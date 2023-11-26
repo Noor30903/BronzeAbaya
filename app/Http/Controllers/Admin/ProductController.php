@@ -80,7 +80,6 @@ class ProductController extends Controller
             $product->sku = trim($request->sku);
             $product->category_id = trim($request->category_id);
             $product->sub_category_id = trim($request->sub_category_id);
-            $product->brand_id = trim($request->brand_id);
             $product->price = trim($request->price);
             $product->old_price = trim($request->old_price);
             $product->short_description = trim($request->short_description);
