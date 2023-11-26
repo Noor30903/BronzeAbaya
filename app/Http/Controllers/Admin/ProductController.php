@@ -68,6 +68,8 @@ class ProductController extends Controller
             $data['header_title']= 'Edit Product';
             return view('admin.product.edit',$data);
         }
+    }
+
         public function update($product_id, Request $request) 
          {
            /* dd($request->all());*/
@@ -101,7 +103,7 @@ class ProductController extends Controller
                     }
                 }
 
-                return redirect()->with('success', "Product successfully updated");
+                return redirect()->back()->with('success', "Product successfully updated");
 
 
             }

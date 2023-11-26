@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 @section('style')
+
 @endsection
 
 @section('content')
@@ -50,7 +51,7 @@
                       <div class="form-group">
                         <label>Category <span style="color:red;">*</span></label>
                         <select class="form-control" required id="ChangeCategory" name="category_id">
-                          <option value="">select </option>
+                          <option value="">Select </option>
                           @foreach($getCategory as $category)
                             <option {{ ($product->category_id == $category->id) ? 'selected' : ''}} value="{{ $category->id  }}">{{ $category->name }}</option>
                           @endforeach
@@ -203,7 +204,7 @@
                     </div>
                   </div>
 
-                 
+
 
                   
 
