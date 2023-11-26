@@ -137,16 +137,20 @@
                                   $i_s = 1;
                               @endphp
                               @foreach($product->getSize as $size)
-                              <tr id="DeleteSize{{$i_s}}">
-                                <td> <input type="text" value="{{ $size->name }}" name="size[{{$i_s}}][name]" placeholder="Name" class="form-control"></td>
 
-                                <td> <input type="text" value="{{ $size->price }}" name="size[{{$i_s}}][price]" placeholder="Price" class="form-control"></td>
+                                <tr id="DeleteSize{{$i_s}}">
+                                  <td> <input type="text" value="{{ $size->name }}" name="size[{{$i_s}}][name]" placeholder="Name" class="form-control"></td>
 
-                                <td>
-                                <button type="button" id="{{$i_s}}" class="btn btn-danger DeleteSize">Delete</button>
+                                  <td> <input type="text" value="{{ $size->price }}" name="size[{{$i_s}}][price]" placeholder="Price" class="form-control"></td>
+
+                                  <td>
+                                  <button type="button" id="{{$i_s}}" class="btn btn-danger DeleteSize">Delete</button>
                                   
-                                </td>
+                                 </td>
                               </tr>
+
+                              @endforeach
+                             
                               @php
                                   $i_s++;
                               @endphp
