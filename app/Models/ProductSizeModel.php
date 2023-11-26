@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class ProductSizeModel extends Model
 {
     use HasFactory;
+
+    protected $table = 'Product_size';
+
+    static public function DeleteRecord($product_id)
+    {
+        self::where('product_id','=',$product_id)->delete(); 
+    }
+
+
 }
