@@ -9,6 +9,8 @@ use App\Models\CategoryModel;
 use App\Models\ColorModel;
 use App\Models\SubCategoryModel;
 use App\Models\ProductColorModel;
+use App\Models\ProductSizeModel;
+
 
 use Str;
 use Auth;
@@ -72,6 +74,8 @@ class ProductController extends Controller
 
     public function update($product_id, Request $request) 
     {
+        
+
            /* dd($request->all());*/
         $product = ProductModel::getSingle($product_id);
         if(!empty($product))
@@ -101,7 +105,27 @@ class ProductController extends Controller
                     $color->save();
                 }
             }
+            ProductSizeModel::DeleteRecord($product->id);
 
+
+            if(!empty($request->size))
+            {
+                foreach($request->size as $size)
+                {
+                    if(!empty($size['name']))
+                    {
+
+                        $saveSize = new ProductSizeModel;
+                        $saveSize->name = $size['name'];
+                        $saveSize->price = !empty ($size['price']) ? $size['name'] : 0;
+                        $saveSize->product_id = $product_id;
+                        $saveSize->save();
+
+                    }
+                    
+                }
+            }
+            
             return redirect()->back()->with('success', "Product successfully updated");
         }
         else
