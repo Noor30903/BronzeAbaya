@@ -3,7 +3,7 @@
 @endsection
 
 @section('content')
-<div class="content-wrapper">
+<div class="content-wrapper" dir="rtl" style="text-align: right;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">

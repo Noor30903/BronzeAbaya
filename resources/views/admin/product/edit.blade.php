@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<div class="content-wrapper">
+<div class="content-wrapper" dir="rtl" style="text-align: right;">
     <!-- رأس المحتوى (عنوان الصفحة) -->
     <section class="content-header">
         <div class="container-fluid">
