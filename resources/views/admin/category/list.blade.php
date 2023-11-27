@@ -32,7 +32,7 @@
         <div class="col-sm-6">
           <h1>قائمة الفئات</h1>
         </div>
-        <div class="col-sm-6" style="text-align:left;">
+        <div class="col-sm-6">
           <a href="{{url('admin/category/add')}}" class="btn btn-primary">إضافة فئة جديدة</a>
         </div>
       </div>
@@ -40,7 +40,7 @@
   </section>
 
   <!-- Main content -->
-  <section class="content" dir="rtl" style="text-align: right;">
+  <section class="content">
     <div class="container-fluid">
       <div class="row">
         
