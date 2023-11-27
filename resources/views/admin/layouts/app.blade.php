@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +17,7 @@
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
   <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+  @yield('style')
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -50,12 +51,7 @@
 
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{ url('public/assets/plugins/chart.js/Chart.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.js"></script>
-<script src="{{ url('resources/js/datatables-simple-demo.js')}}"></script>
 
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 @yield('script')
 </body>
 </html>

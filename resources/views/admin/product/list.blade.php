@@ -1,5 +1,25 @@
 @extends('admin.layouts.app')
+
 @section('style')
+
+<style>
+  /* Additional RTL styling if needed */
+  .dataTables_wrapper {
+    direction: rtl;
+  }
+  
+  table.dataTable {
+    width: 100% !important;
+  }
+  
+  table.dataTable thead th, table.dataTable tbody td {
+    text-align: right; /* Adjust text alignment for Arabic */
+  }
+  
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+    float: right; /* Adjust float to right for pagination */
+  }
+</style>
 @endsection
 
 @section('content')
@@ -76,8 +96,19 @@
     </section>
 </div>
 @endsection
-<script>
-  new DataTable('#datatablesSimple');
-</script>
+
 @section('script')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Initialize DataTables with RTL support
+    $('.table').DataTable({
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json" // Arabic language file
+      },
+      "dir": "rtl" // RTL direction
+    });
+  });
+</script>
 @endsection
