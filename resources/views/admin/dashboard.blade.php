@@ -4,15 +4,16 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
+    <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard v3</h1>
+            <h1 class="m-0">لوحة التحكم v3</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v3</li>
+              <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
+              <li class="breadcrumb-item active">لوحة التحكم v3</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,21 +29,21 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Online Store Visitors</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                <h3 class="card-title">زوار المتجر الإلكتروني</h3>
+                  <a href="javascript:void(0);">عرض التقرير</a>
                 </div>
               </div>
               <div class="card-body">
                 <div class="d-flex">
                   <p class="d-flex flex-column">
                     <span class="text-bold text-lg">820</span>
-                    <span>Visitors Over Time</span>
+                    <span>الزوار مع مرور الوقت</span>
                   </p>
                   <p class="ml-auto d-flex flex-column text-right">
                     <span class="text-success">
                       <i class="fas fa-arrow-up"></i> 12.5%
                     </span>
-                    <span class="text-muted">Since last week</span>
+                    <span class="text-muted">منذ الأسبوع الماضي</span>
                   </p>
                 </div>
                 <!-- /.d-flex -->
@@ -53,11 +54,11 @@
 
                 <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This Week
+                    <i class="fas fa-square text-primary"></i> هذا الأسبوع
                   </span>
 
                   <span>
-                    <i class="fas fa-square text-gray"></i> Last Week
+                    <i class="fas fa-square text-gray"></i> الأسبوع الماضي
                   </span>
                 </div>
               </div>
@@ -66,7 +67,7 @@
 
             <div class="card">
               <div class="card-header border-0">
-                <h3 class="card-title">Products</h3>
+                <h3 class="card-title">نظرة عامة على المتجر الإلكتروني</h3>
                 <div class="card-tools">
                   <a href="#" class="btn btn-tool btn-sm">
                     <i class="fas fa-download"></i>
@@ -80,12 +81,12 @@
                 <table class="table table-striped table-valign-middle">
                   <thead>
                   <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Sales</th>
-                    <th>More</th>
+                    <th>المنتج</th>
+                    <th>السعر</th>
+                    <th>المبيعات</th>
+                    <th>المزيد</th>
                   </tr>
-                  </thead>
+                  </thead> 
                   <tbody>
                   <tr>
                     <td>
@@ -148,7 +149,7 @@
                     <td>
                       <img src="{{url('public/assets/dist/img/default-150x150.png')}}" alt="Product 1" class="img-circle img-size-32 mr-2">
                       Perfect Item
-                      <span class="badge bg-danger">NEW</span>
+                      <span class="badge bg-danger">الجديد</span>
                     </td>
                     <td>$199 USD</td>
                     <td>
@@ -175,21 +176,21 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Sales</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                  <h3 class="card-title">مبيعات</h3>
+                  <a href="javascript:void(0);">عرض التقرير</a>
                 </div>
               </div>
               <div class="card-body">
                 <div class="d-flex">
                   <p class="d-flex flex-column">
                     <span class="text-bold text-lg">$18,230.00</span>
-                    <span>Sales Over Time</span>
+                    <span>المبيعات مع مرور الوقت</span>
                   </p>
                   <p class="ml-auto d-flex flex-column text-right">
                     <span class="text-success">
                       <i class="fas fa-arrow-up"></i> 33.1%
                     </span>
-                    <span class="text-muted">Since last month</span>
+                    <span class="text-muted">منذ الشهر الماضي</span>
                   </p>
                 </div>
                 <!-- /.d-flex -->
@@ -200,11 +201,11 @@
 
                 <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This year
+                    <i class="fas fa-square text-primary"></i> هذا العام
                   </span>
 
                   <span>
-                    <i class="fas fa-square text-gray"></i> Last year
+                    <i class="fas fa-square text-gray"></i> العام الماضي
                   </span>
                 </div>
               </div>
@@ -213,7 +214,7 @@
 
             <div class="card">
               <div class="card-header border-0">
-                <h3 class="card-title">Online Store Overview</h3>
+                <h3 class="card-title">نظرة عامة على المتجر الإلكتروني</h3>
                 <div class="card-tools">
                   <a href="#" class="btn btn-sm btn-tool">
                     <i class="fas fa-download"></i>
@@ -232,7 +233,7 @@
                     <span class="font-weight-bold">
                       <i class="ion ion-android-arrow-up text-success"></i> 12%
                     </span>
-                    <span class="text-muted">CONVERSION RATE</span>
+                    <span class="text-muted">معدل التحويل</span>
                   </p>
                 </div>
                 <!-- /.d-flex -->
@@ -244,7 +245,7 @@
                     <span class="font-weight-bold">
                       <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
                     </span>
-                    <span class="text-muted">SALES RATE</span>
+                    <span class="text-muted">معدل المبيعات</span>
                   </p>
                 </div>
                 <!-- /.d-flex -->
@@ -256,7 +257,7 @@
                     <span class="font-weight-bold">
                       <i class="ion ion-android-arrow-down text-danger"></i> 1%
                     </span>
-                    <span class="text-muted">REGISTRATION RATE</span>
+                    <span class="text-muted">معدل التسجيل</span>
                   </p>
                 </div>
                 <!-- /.d-flex -->
