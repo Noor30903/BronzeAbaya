@@ -186,7 +186,8 @@
                         <img style="width: 100%;height: 100px; src="{{ $image->getLogo() }}">
                         <a oneclick="return confirm('هل أنت متأكد أنك تريد الحذف؟');" href="{{ url('admin/product/image_delete/'.$image->id) }}" style="margin-top: 10px;" class="btn btn-danger btn-sm">حذف</a>
 
-                    </div> 
+                    </div>
+                    @endif 
                     @endforeach 
                     </div>
                   @endif
