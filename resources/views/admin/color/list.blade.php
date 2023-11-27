@@ -23,7 +23,7 @@
 @endsection
 
 @section('content')
-<div class="content-wrapper">
+<div class="content-wrapper" dir="rtl" style="text-align: right;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -31,8 +31,8 @@
                 <div class="col-sm-6">
                     <h1>قائمة الألوان</h1>
                 </div>
-                <div class="col-sm-6" style="text-align:right;">
-                    <a href="{{url('admin/color/add')}}" class="btn btn-primary">إضافة لون جديد</a>
+                <div class="col-sm-6" style="text-align:left;" >
+                    <a href="{{url('admin/color/add')}}" class="btn btn-primary" >إضافة لون جديد</a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
