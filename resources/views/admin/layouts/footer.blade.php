@@ -1,11 +1,11 @@
-<!-- Control Sidebar -->
+<!-- شريط التحكم الجانبي -->
 <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+    <!-- محتوى شريط التحكم الجانبي يذهب هنا -->
+</aside>
+<!-- /.control-sidebar -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; {{ date('Y') }} BronzAbaya.com</strong> All rights reserved.
+<!-- الفوتر الرئيسي -->
+<footer class="main-footer">
+    <strong>حقوق النشر &copy; {{ date('Y') }} BronzAbaya.com</strong> جميع الحقوق محفوظة.
     
-  </footer>
+</footer>

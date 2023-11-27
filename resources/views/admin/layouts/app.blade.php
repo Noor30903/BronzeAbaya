@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ !empty($header_title) ? $header_title :''}} - Bronze Abaya</title>
+  <title>{{ !empty($header_title) ? $header_title :''}} - برونز عباية</title>
   
-  <!-- Google Font: Source Sans Pro -->
+  <!-- خط جوجل: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
+  <!-- أيقونات فونت أوسوم -->
   <link rel="stylesheet" href="{{ url('public/assets/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- IonIcons -->
+  <!-- أيقونات IonIcons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
+  <!-- نمط الثيم -->
   <link rel="stylesheet" href="{{ url('public/assets/dist/css/adminlte.min.css') }}">
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -19,14 +19,14 @@
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
   @yield('style')
 
-        <!-- Scripts -->
+        <!-- السكريبتات -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <!--
-`body` tag options:
+خيارات تاغ الـ `body`:
 
-  Apply one or more of the following classes to to the body tag
-  to get the desired effect
+  طبق واحدة أو أكثر من الكلاسات التالية على تاغ الـ body
+  للحصول على التأثير المطلوب
 
   * sidebar-collapse
   * sidebar-mini
@@ -40,7 +40,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
+<!-- السكريبتات المطلوبة -->
 
 <!-- jQuery -->
 <script src="{{ url('public/assets/plugins/jquery/jquery.min.js')}}"></script>
@@ -49,7 +49,7 @@
 <!-- AdminLTE -->
 <script src="{{ url('public/assets/dist/js/adminlte.js')}}"></script>
 
-<!-- OPTIONAL SCRIPTS -->
+<!-- سكريبتات اختيارية -->
 <script src="{{ url('public/assets/plugins/chart.js/Chart.min.js')}}"></script>
 
 @yield('script')
