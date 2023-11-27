@@ -14,7 +14,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url('public/assets/dist/css/adminlte.min.css') }}">
   <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -49,6 +51,9 @@
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{ url('public/assets/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.js"></script>
+<script src="{{ url('resources/js/datatables-simple-demo.js')}}"></script>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 @yield('script')

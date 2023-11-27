@@ -32,7 +32,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
-                <table class="table table-striped">
+                <table class="table table-striped" id="datatablesSimple">
                   <thead>
                     <tr>
                       <th>#</th>

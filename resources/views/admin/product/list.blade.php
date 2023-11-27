@@ -32,7 +32,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
-                <table class="table table-striped">
+                <table class="table table-striped table-bordered" id="datatablesSimple">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -76,6 +76,8 @@
     </section>
 </div>
 @endsection
-
+<script>
+  new DataTable('#datatablesSimple');
+</script>
 @section('script')
 @endsection
