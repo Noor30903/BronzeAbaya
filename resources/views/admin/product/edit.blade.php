@@ -24,124 +24,47 @@
           
         <div class="col-md-12">
 
-                 @include('admin.layouts._message')
-                <!-- general form elements -->
-                <div class="card card-primary">
-                  
-                  <!-- form start -->
-                  <form action="" method="post" encrypt>
-                    {{ csrf_field() }}
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>العنوان <span style="color:red;">*</span></label>
-                                    <input type="text" class="form-control" required value="{{old('title', $product->title)}}" name="title" placeholder="العنوان">
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>SKU <span style="color:red;">*</span></label>
-                                    <input type="text" class="form-control" required value="{{old('sku', $product->sku)}}" name="sku" placeholder="SKU">
-                                </div>
-                            </div>
-
-                            
-
-                        </div>
-
-                        <!-- Other rows and fields here -->
-
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">تحديث</button>
-                        </div>
-                    </div>
-                  </div>
-
-                  <hr>
-
+             @include('admin.layouts._message')
+            <!-- general form elements -->
+            <div class="card card-primary">
+              
+              <!-- form start -->
+              <form action="" method="post" encrypt>
+                {{ csrf_field() }}
+                <div class="card-body">
                   <div class="row">
-                    <div class="col-md-12">
+
+                    <div class="col-md-6">
                       <div class="form-group">
-                        <label>Image <span style="color:red;"></span></label>
-                       <input type="file" name="image[]" class="form-control" style="padding: 5px;" multiple accept="image/*">
- 
+                        <label>العنوان <span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" required value="{{old('title', $product->title)}}" name="title" placeholder="العنوان">
                       </div>
                     </div>
-                  </div>
 
-
-                  <hr>
-
-                  <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <div class="form-group">
-                        <label>Short description <span style="color:red;">*</span></label>
-                        <textarea name="short_description" class="form-control" placeholder="Short Description">{{ $product->short_description }}</textarea>
-                        
+                        <label>SKU <span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" required value="{{old('sku', $product->sku)}}" name="sku" placeholder="SKU">
                       </div>
                     </div>
+
+                    <!-- Additional fields here -->
+
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label> Description <span style="color:red;">*</span></label>
-                        <textarea name="description" class="form-control editor" placeholder="Description">{{ $product->description }}</textarea>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Additional Information<span style="color:red;">*</span></label>
-                        <textarea name="additional_information" class="form-control editor" placeholder="Additional Information">{{ $product->additional_information }}</textarea>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Shipping and Returns <span style="color:red;">*</span></label>
-                        <textarea name="shipping_returns" class="form-control editor" placeholder="Shipping and Returns">{{ $product->shipping_returns }}</textarea>
-                      </div>
-                    </div>
-                  </div>
-
-                  <hr>
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label >Status <span style="color:red">*</span></label>
-                        <select class="form-control" required name="status">
-                            <option {{($product->status ==0) ? 'selected':''}} value="0">Active</option>
-                            <option {{($product->status ==1) ? 'selected':''}} value="1">Inactive</option>
-                        </select>
-                    </div> 
-
-                    </div>
-                  </div>
-
-
-
-                  
+                  <!-- Other rows and fields here -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Update</button>
+                  <button type="submit" class="btn btn-primary">تحديث</button>
                 </div>
               </form>
             </div>
             <!-- /.card -->
 
-            </div>
-            </div>
-            
-        </div><!-- /.container-fluid -->
+          </div>
+        </div>
+        
+      </div><!-- /.container-fluid -->
     </section>
 </div>
 
