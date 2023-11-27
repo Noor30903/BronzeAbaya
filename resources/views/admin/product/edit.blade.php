@@ -57,9 +57,85 @@
                             <button type="submit" class="btn btn-primary">تحديث</button>
                         </div>
                     </div>
-                  </form>
+                  </div>
+
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Image <span style="color:red;"></span></label>
+                       <input type="file" name="image[]" class="form-control" style="padding: 5px;" multiple accept="image/*">
+ 
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Short description <span style="color:red;">*</span></label>
+                        <textarea name="short_description" class="form-control" placeholder="Short Description">{{ $product->short_description }}</textarea>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label> Description <span style="color:red;">*</span></label>
+                        <textarea name="description" class="form-control editor" placeholder="Description">{{ $product->description }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Additional Information<span style="color:red;">*</span></label>
+                        <textarea name="additional_information" class="form-control editor" placeholder="Additional Information">{{ $product->additional_information }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Shipping and Returns <span style="color:red;">*</span></label>
+                        <textarea name="shipping_returns" class="form-control editor" placeholder="Shipping and Returns">{{ $product->shipping_returns }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label >Status <span style="color:red">*</span></label>
+                        <select class="form-control" required name="status">
+                            <option {{($product->status ==0) ? 'selected':''}} value="0">Active</option>
+                            <option {{($product->status ==1) ? 'selected':''}} value="1">Inactive</option>
+                        </select>
+                    </div> 
+
+                    </div>
+                  </div>
+
+
+
+                  
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Update</button>
                 </div>
-                <!-- /.card -->
+              </form>
+            </div>
+            <!-- /.card -->
 
             </div>
             </div>
