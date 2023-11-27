@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    <!-- رأس المحتوى (عنوان الصفحة) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -16,7 +16,7 @@
         </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
+    <!-- المحتوى الرئيسي -->
     <section class="content">
       
       <div class="container-fluid">
@@ -25,10 +25,10 @@
         <div class="col-md-12">
 
              @include('admin.layouts._message')
-            <!-- general form elements -->
+            <!-- عناصر النموذج العامة -->
             <div class="card card-primary">
               
-              <!-- form start -->
+              <!-- بداية النموذج -->
               <form action="" method="post" encrypt>
                 {{ csrf_field() }}
                 <div class="card-body">
@@ -48,27 +48,216 @@
                       </div>
                     </div>
 
-                    <!-- Additional fields here -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>الفئة <span style="color:red;">*</span></label>
+                        <select class="form-control" required id="ChangeCategory" name="category_id">
+                          <option value="">اختر</option>
+                          @foreach($getCategory as $category)
+                            <option {{ ($product->category_id == $category->id) ? 'selected' : ''}} value="{{ $category->id  }}">{{ $category->name }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>الفئة الفرعية <span style="color:red;">*</span></label>
+                        <select class="form-control" required id="getSubCategory" name="sub_category_id">
+                          <option value="">اختر</option>
+                          @foreach($getSubCategory as $subcategory)
+                            <option {{ ($product->sub_category_id == $subcategory->id) ? 'selected' : ''}} value="{{ $subcategory->id  }}">{{ $category->name }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>اللون <span style="color:red">*</span></label> 
+                            @foreach($getColor as $color)
+                            @php
+                              $cheacked = '';
+                            @endphp
+                              @foreach($product->getColor as $pcolor)
+                              @if($pcolor->color_id == $color->id)
+                              @php
+                              $cheacked = 'cheacked';
+                            @endphp
+                              @endif
+                              @endforeach
+                                <div>
+                                    <label><input {{ $cheacked }}type="checkbox" name="color_id []" value="{{$color->id}}"> {{$color->name}}</label>
+                                </div>
+                            @endforeach
+                      </div>
+                    </div>
 
                   </div>
 
-                  <!-- Other rows and fields here -->
+                  <hr>
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">تحديث</button>
-                </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>السعر ($) <span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" required value="{{ !empty($product->price) ? $product->price : '' }}" name="price" placeholder="السعر">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>السعر القديم ($) <span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" required value="{{ !empty($product->old_price) ? $product->old_price : '' }}" name="old_price" placeholder="السعر القديم">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>الحجم<span style="color:red;">*</span></label>
+                        <div>
+                          <table class="table table-striped">
+                            <thead>
+                            <tr>
+                              <th>الاسم</th>
+                              <th>السعر</th>
+                              <th>الإجراء</th>
+                            </tr>
+
+                            </thead>
+
+                            <tbody id="AppendSize">
+                              @php
+                                  $i_s = 1;
+                              @endphp
+                              @foreach($product->getSize as $size)
+
+                                <tr id="DeleteSize{{$i_s}}">
+                                  <td> <input type="text" value="{{ $size->name }}" name="size[{{$i_s}}][name]" placeholder="الاسم" class="form-control"></td>
+
+                                  <td> <input type="text" value="{{ $size->price }}" name="size[{{$i_s}}][price]" placeholder="السعر" class="form-control"></td>
+
+                                  <td>
+                                  <button type="button" id="{{$i_s}}" class="btn btn-danger DeleteSize">حذف</button>
+                                  
+                                  </td>
+                                </tr>
+                             
+                              @php
+                                  $i_s++;
+                              @endphp
+                             @endforeach
+                             <tr>
+                                  <td> <input type="text"  name="size[100][name]" placeholder="الاسم" class="form-control"></td>
+
+                                  <td> <input type="text"  name="size[100][price]" placeholder="السعر" class="form-control"></td>
+
+                                  <td>
+                                  <button type="button" class="btn btn-primary AddSize">إضافة</button>
+                                  
+                                  </td>
+                                </tr>
+                            </tbody>
+                            
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>الصورة <span style="color:red;"></span></label>
+                       <input type="file" name="image[]" class="form-control" style="padding: 5px;" multiple accept="image/*">
+ 
+                      </div>
+                    </div>
+                  </div>
+                  @if(!empty($product->getImage->count()))
+                  <div class="row">
+                    @foreach($product->getImage as $image)
+                    @if(!empty($image->getLogo()))
+                    <div class="col-md-1" style="text-align: center;">
+                        <img style="width: 100%;height: 100px; src="{{ $image->getLogo() }}">
+                        <a oneclick="return confirm('هل أنت متأكد أنك تريد الحذف؟');" href="{{ url('admin/product/image_delete/'.$image->id) }}" style="margin-top: 10px;" class="btn btn-danger btn-sm">حذف</a>
+
+                    </div> 
+                    @endforeach 
+                    </div>
+                  @endif
+
+
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>وصف قصير <span style="color:red;">*</span></label>
+                        <textarea name="short_description" class="form-control" placeholder="وصف قصير">{{ $product->short_description }}</textarea>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>الوصف <span style="color:red;">*</span></label>
+                        <textarea name="description" class="form-control editor" placeholder="الوصف">{{ $product->description }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>معلومات إضافية<span style="color:red;">*</span></label>
+                        <textarea name="additional_information" class="form-control editor" placeholder="معلومات إضافية">{{ $product->additional_information }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>الشحن والإرجاع <span style="color:red;">*</span></label>
+                            <textarea name="shipping_returns" class="form-control editor" placeholder="الشحن والإرجاع">{{ $product->shipping_returns }}</textarea>
+                        </div>
+                    </div>
+                  </div>
+
+                <hr>
+
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label>الحالة <span style="color:red">*</span></label>
+                              <select class="form-control" required name="status">
+                                  <option {{($product->status ==0) ? 'selected':''}} value="0">نشط</option>
+                                  <option {{($product->status ==1) ? 'selected':''}} value="1">غير نشط</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">تحديث</button>
+                  </div>
               </form>
             </div>
-            <!-- /.card -->
-
-          </div>
+              <!-- /.card -->
+              </div>
         </div>
         
       </div><!-- /.container-fluid -->
     </section>
 </div>
-
-@endsection
+    @endsection
 
 @section('script')
 
