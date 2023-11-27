@@ -183,10 +183,10 @@
                     </div>
                   </div>
                   @if(!empty($product->getImage->count()))
-                  <div class="row">
+                  <div class="row" id="sortable">
                     @foreach($product->getImage as $image)
                     @if(!empty($image->getLogo()))
-                    <div class="col-md-1" style="text-align: center;">
+                    <div class="col-md-1 sortable_image" id="{{ $image->id }}" style="text-align: center;">
                         <img style="width: 100%;height: 100px; src="{{ $image->getLogo() }}">
                         <a oneclick="return confirm('Are you sure you want to delete?');" href="{{ url('admin/product/image_delete/'.$image->id) }}" style="margin-top: 10px;" class="btn btn-danger btn-sm">Delete</a>
 
@@ -273,8 +273,37 @@
 
 
 <script src="{{ url('public/tinymce/tinymce-jquery.min.js')}}"></script>
+<script src="{{ url('public/sortable/jquery-ui.js')}}"></script>
 
 <script type="text/javascript">
+
+  $(document).ready(function()) {
+      $( "#sortable" ).sortable({
+        update : function(event, ui) {
+            var photo_id = new Array();
+            $('.sortable_image').each(function() {
+              var id = $(this).attr('id');
+              photo_id.push(id);
+            });
+
+        $.ajax({
+               type : "POST",
+               url : "{{ url('admin/product_image_sortable') }}",
+              data :{
+          "photo_id" : photo_id,
+          "_token":"{{ csrf_token() }}"
+        },
+        dataType : "json",
+        success: function(data) {
+         
+        },
+        error: function (data) {
+        }
+      });
+        }
+
+      });
+  }
   
   $('.editor').tinymce({
         height: 500,
