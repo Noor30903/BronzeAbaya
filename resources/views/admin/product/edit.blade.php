@@ -28,7 +28,7 @@
             <div class="card card-primary">
               
               <!-- form start -->
-              <form action="" method="post">
+              <form action="" method="post" encrypt>
                 {{ csrf_field() }}
                 <div class="card-body">
                   <div class="row">
@@ -153,6 +153,16 @@
                                   $i_s++;
                               @endphp
                              @endforeach
+                             <tr>
+                                  <td> <input type="text"  name="size[100][name]" placeholder="Name" class="form-control"></td>
+
+                                  <td> <input type="text"  name="size[100][price]" placeholder="Price" class="form-control"></td>
+
+                                  <td>
+                                  <button type="button" class="btn btn-primary AddSize">Add</button>
+                                  
+                                  </td>
+                                </tr>
                             </tbody>
                             
                           </table>
@@ -160,6 +170,19 @@
                       </div>
                     </div>
                   </div>
+
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Image <span style="color:red;"></span></label>
+                       <input type="file" name="image[]" class="form-control" style="padding: 5px;" multiple accept="image/*">
+ 
+                      </div>
+                    </div>
+                  </div>
+
 
                   <hr>
 
