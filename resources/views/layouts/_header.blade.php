@@ -58,8 +58,8 @@
                                             <div class="col-md-12">
                                                 <div class="menu-col">
                                                     <div class="row">
-                                                    @for ($i=1; $i<=8;$i++)
-                                                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                                    @for($i=1; $i<=8;$i++)
+                                                        <div class="col-md-4" style="margin-bottom: 20px;">
                                                             <a href="" class="menu-title">Shop with sidebar</a>
                                                             <ul>
                                                                 <li><a href="category-list.html">Shop List</a></li>
@@ -68,10 +68,8 @@
                                                                 <li><a href="category-4cols.html">Shop Grid 4 Columns</a></li>
                                                                 <li><a href="category-market.html"><span>Shop Market<span class="tip tip-new">New</span></span></a></li>
                                                             </ul>
-                                                    @endfor
-
-                                                            
                                                         </div>
+                                                    @endfor
                                                     </div>
                                                 </div>
                                             </div>
