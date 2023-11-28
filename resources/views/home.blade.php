@@ -1,5 +1,5 @@
-
-
+@extends('layouts.app')
+@section('content')
         <main class="main">
             <div class="intro-section bg-lighter pt-5 pb-6">
                 <div class="container">
@@ -1362,6 +1362,6 @@
                 </div><!-- End .container -->
             </div><!-- End .cta -->
         </main><!-- End .main -->
-
+@endsection
 
     
