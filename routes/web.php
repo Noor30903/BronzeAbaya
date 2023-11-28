@@ -82,9 +82,7 @@ Route::group (['middleware' => 'admin'], function () {
 
 Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
     

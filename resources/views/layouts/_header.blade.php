@@ -48,7 +48,7 @@
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
                                 <li class="megamenu-container active">
-                                    <a href="{{url(''}}">Home</a>
+                                    <a href="{{url('')}}">Home</a>
                                 </li>
                                 <li>
                                     <a href="category.html" class="sf-with-ul">Shop</a>

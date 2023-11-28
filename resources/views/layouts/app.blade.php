@@ -27,7 +27,7 @@
 
     @yield('content');
 
-    @include('layouts.footer');
+    @include('layouts._footer');
 
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
@@ -127,7 +127,7 @@
                 <div class="row no-gutters bg-white newsletter-popup-content">
                     <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
                         <div class="banner-content text-center">
-                            <img src="assets/images/popup/newsletter/logo.png" class="logo" alt="logo" width="60" height="15">
+                            <img src="{{url('assets/images/popup/newsletter/logo.png')}}" class="logo" alt="logo" width="60" height="15">
                             <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
                             <p>Subscribe to the Molla eCommerce newsletter to receive timely updates from your favorite products.</p>
                             <form action="#">
@@ -145,7 +145,7 @@
                         </div>
                     </div>
                     <div class="col-xl-2-5col col-lg-5 ">
-                        <img src="assets/images/popup/newsletter/img-1.jpg" class="newsletter-img" alt="newsletter">
+                        <img src="{{url('assets/images/popup/newsletter/img-1.jpg')}}" class="newsletter-img" alt="newsletter">
                     </div>
                 </div>
             </div>
@@ -160,7 +160,7 @@
     <script src="{{ url('assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ url('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <!-- Main JS File -->
-    <script src="{{ url('assets/js/main.js"></script>
+    <script src="{{ url('assets/js/main.js')}}"></script>
 </body>
 
 
