@@ -18,6 +18,10 @@ class ProductController extends Controller
 
         if(!empty($getCategory) && !empty($getSubCategory))
         {
+            $data['meta_title'] = $getSubCategory-> meta_title;
+            $data['meta_keywords'] = $getSubCategory-> meta_keywords;
+            $data['meta_description'] = $getSubCategory-> meta_description;
+
             $data['getSubCatagory']= $getSubCatagory;
             $data['getCatagory']= $getCatagory;
             return view('product.list',$data);
@@ -25,6 +29,11 @@ class ProductController extends Controller
         else if(!empty($getCategory))
         {
             $data['getCatagory']= $getCatagory;
+
+            $data['meta_title'] = $getCatagory-> meta_title;
+            $data['meta_keywords'] = $getCatagory-> meta_keywords;
+            $data['meta_description'] = $getCatagory-> meta_description;
+
             return view('product.list',$data);
         }
 

@@ -4,6 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ !empty($header_title) ? $header_title :''}} - برونز عباية</title>
+
+  <title>{{ !empty($meta_title) ? $meta_title_title :''}}</title>
+  
+  @if(!empty($meta_description))
+  <meta name="description" content="{{ $meta_description }}">
+  @endif
+
+  @if(!empty($meta_keywords))
+  <meta name="keywords" content="{{ $meta_keywords }}">
+  @endif
+
+  
   
   <!-- خط جوجل: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
