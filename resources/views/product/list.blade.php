@@ -55,32 +55,47 @@
 
                             <div class="products mb-3">
                                 <div class="row justify-content-center">
-                                    <div class="col-6 col-md-4 col-lg-4">
+                                    @foreach($getProduct as $value)
+                                    @php
+                                    
+                                         $getProductImage = $value->getImageSingle($value->ig);
+                                    @endphp
+
+                                    <div class="col-12 col-md-4 col-lg-4">
                                         <div class="product product-7 text-center">
                                             <figure class="product-media">
-                                                <span class="product-label label-new">New</span>
-                                                <a href="product.html">
-                                                    <img src="{{ url ( ' ' ) }}/assets/images/products/product-4.jpg" alt="Product image" class="product-image">
+                                               <!-- <span class="product-label label-new">New</span>-->
+                                                <a href="{{url ($value->slug)}}">
+                                                     @if (!empty($getProductImage) && !empty($getProductImage->getLogo()))
+                                                    <img style= "heisht:280px;width:100%;object-fit;cover;"src="{{$getProductImage->getLogo()}}" alt="{{$value->title}}" class="product-image">
+                                                    @endif
                                                 </a>
 
                                                 <div class="product-action-vertical">
                                                     <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                    <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+
+
+                                                   <!-- <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a> -->
+
+
                                                 </div><!-- End .product-action-vertical -->
 
-                                                <div class="product-action">
+                                               <!-- <div class="product-action">
                                                     <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                </div><!-- End .product-action -->
+                                                </div>  -->
+
+
                                             </figure><!-- End .product-media -->
 
                                             <div class="product-body">
                                                 <div class="product-cat">
-                                                    <a href="#">Women</a>
+                                                    <a href="{{url($value->catagory_slug.'/'.sub_catagory_slug)}}">{{$value->sub_catagory_name}}</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">Brown paperbag waist pencil skirt</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="{{url ($value->slug)}}">{{$value->title}}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                    $60.00
+
+                                                   ${{number_format($value->price, 2)}}
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
@@ -89,7 +104,9 @@
                                                     <span class="ratings-text">( 2 Reviews )</span>
                                                 </div><!-- End .rating-container -->
 
-                                                <div class="product-nav product-nav-thumbs">
+                                               <!--mashael-->
+
+                                               <!-- <div class="product-nav product-nav-thumbs">
                                                     <a href="#" class="active">
                                                         <img src="{{ url ( ' ' ) }}/assets/images/products/product-4-thumb.jpg" alt="product desc">
                                                     </a>
@@ -100,10 +117,17 @@
                                                     <a href="#">
                                                         <img src="{{ url ( ' ' ) }}/assets/images/products/product-4-3-thumb.jpg" alt="product desc">
                                                     </a>
-                                                </div><!-- End .product-nav -->
+                                                </div> End .product-nav -->
+
+
+
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 col-lg-4 -->
+                                    @endforeach
+
+                                    <!--mashael1 من هناا  -->
+                                    
 
                                     <div class="col-6 col-md-4 col-lg-4">
                                         <div class="product product-7 text-center">
@@ -438,10 +462,16 @@
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 col-lg-4 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .products -->
+                                </div><!-- End .row --> 
+                                
+                                
+                                <!--mashael1 الين هنا -->
 
-                			<nav aria-label="Page navigation">
+
+                            </div><!-- End .products -->  
+                            
+                             <!--mashael2   من هنا ن-->
+                			<!--<nav aria-label="Page navigation">
 							    <ul class="pagination justify-content-center">
 							        <li class="page-item disabled">
 							            <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
@@ -458,7 +488,12 @@
 							            </a>
 							        </li>
 							    </ul>
-							</nav>
+							</nav>-->
+
+                            <!--mashae2 الين هنا -->
+                            
+                            {!! $getProduct->appends(Illuminate\Support\Facades\Request::except('page'))->links()!!}
+                            
                 		</div><!-- End .col-lg-9 -->
                 		<aside class="col-lg-3 order-lg-first">
                 			<div class="sidebar sidebar-shop">
