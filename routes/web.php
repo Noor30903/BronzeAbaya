@@ -88,6 +88,9 @@ Route::get('cart/list', [CartController::class, 'list']);
 
 Route::get('{category?}/{subcategory?}', [ProductFront::class, 'getCategory']);
 
+Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+
+
 
 
 

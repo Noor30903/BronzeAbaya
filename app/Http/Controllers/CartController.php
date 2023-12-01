@@ -16,5 +16,23 @@ class CartController extends Controller
         return view('cart.list',$data);
     }
 
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'quantity' => 'required|integer|min:1'
+    ]);
+
+    $cartItem = CartModel::find($id);
+    if($cartItem) {
+        $cartItem->product_quantity = $request->quantity;
+        $cartItem->save();
+
+        return redirect()->back()->with('success', 'Cart updated successfully.');
+    } else {
+        return redirect()->back()->with('error', 'Cart item not found.');
+    }
+}
+
+
 
 }

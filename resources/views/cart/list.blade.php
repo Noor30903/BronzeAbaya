@@ -50,11 +50,16 @@
 											</td>
 											<td class="price-col">{{ $value->product_price }} SAR</td>
                                             
-											<td class="quantity-col">
-                                                <div class="cart-product-quantity">
-                                                    <input type="number" name="quantity" class="form-control" value="{{old('quantity',$value->product_quantity)}}" min="1" max="10" step="1" data-decimals="0" required>
-                                                </div><!-- End .cart-product-quantity -->
-                                            </td>
+											<form action="{{ route('cart.update', $value->id) }}" method="post">
+        										@csrf
+        										@method('PUT')
+        										<td class="quantity-col">
+        										    <div class="cart-product-quantity">
+        										        <input type="number" name="quantity" class="form-control" value="{{ old('quantity', $value->product_quantity) }}" min="1" max="10" step="1" data-decimals="0" required>
+        										        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+        										    </div><!-- End .cart-product-quantity -->
+        										</td>
+    										</form>
 											<td class="total-col">{{$value->product_price * $value->product_quantity  }}</td>
 
 											<td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
