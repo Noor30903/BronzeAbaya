@@ -25,6 +25,7 @@ class CartController extends Controller
     $cartItem = CartModel::find($id);
     if($cartItem) {
         $cartItem->product_quantity = $request->quantity;
+        $cartItem->totalcost = $request->total;
         $cartItem->save();
 
         return redirect()->back()->with('success', 'Cart updated successfully.');

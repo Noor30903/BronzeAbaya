@@ -1,4 +1,35 @@
 @extends('layouts.app')
+@section('style')
+<style>
+.cart-product-quantity {
+    display: flex;
+    align-items: center; /* This ensures vertical alignment */
+    gap: 8px; /* This creates some space between your input and button */
+}
+
+.quantity-input {
+    flex: 1; /* This makes the input field flexible in size */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Rounded corners for the input field */
+}
+
+.update-button {
+    padding: 8px 16px;
+    border: 1px solid #ccc; /* Matching the input field border */
+    background-color: #f0ad4e; /* Bootstrap's btn-warning color */
+    color: white;
+    text-transform: uppercase; /* Optional: makes text uppercase */
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+}
+
+/* Adjust the button on hover for better user experience */
+.update-button:hover {
+    background-color: #ec971f; /* A shade darker than btn-warning */
+}
+</style>
+@endsection
 @section('content')
 <main class="main">
         	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
@@ -33,6 +64,10 @@
 									</thead>
 
 									<tbody>
+                                    @php
+                                        $totalcost = 0;
+                                        $producttot = 0;
+                                    @endphp
                                     @foreach($getRecord as $value)
 										<tr>
 											<td class="product-col">
@@ -52,35 +87,27 @@
                                             
 											<form action="{{ route('cart.update', $value->id) }}" method="post">
         										@csrf
-        										@method('PUT')
+        										
         										<td class="quantity-col">
         										    <div class="cart-product-quantity">
-        										        <input type="number" name="quantity" class="form-control" value="{{ old('quantity', $value->product_quantity) }}" min="1" max="10" step="1" data-decimals="0" required>
-        										        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+        										        <input type="number" name="quantity" class="form-control quantity-input" value="{{ old('quantity', $value->product_quantity) }}" min="1" max="10" step="1" data-decimals="0" required>
+        										        
         										    </div><!-- End .cart-product-quantity -->
         										</td>
-    										</form>
-											<td class="total-col">{{$value->product_price * $value->product_quantity  }}</td>
-
-											<td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
+                                                
+											    <td class="total-col">{{$producttot = $value->product_price * $value->product_quantity  }}</td>
+                                                
+											    <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
 										</tr>
-									@endforeach	
+                                        <input type="hidden" name="total" value="{{$totalcost = $totalcost + $producttot}}">
+									@endforeach
+          
 									</tbody>
 								</table><!-- End .table table-wishlist -->
 
 	                			<div class="cart-bottom">
-			            			<div class="cart-discount">
-			            				<form action="#">
-			            					<div class="input-group">
-				        						<input type="text" class="form-control" required placeholder="coupon code">
-				        						<div class="input-group-append">
-													<button class="btn btn-outline-primary-2" type="submit"><i class="icon-long-arrow-right"></i></button>
-												</div><!-- .End .input-group-append -->
-			        						</div><!-- End .input-group -->
-			            				</form>
-			            			</div><!-- End .cart-discount -->
-
-			            			<a href="#" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></a>
+                                        <button type="submit" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></button>
+                                    </form>
 		            			</div><!-- End .cart-bottom -->
 	                		</div><!-- End .col-lg-9 -->
 	                		<aside class="col-lg-3">
