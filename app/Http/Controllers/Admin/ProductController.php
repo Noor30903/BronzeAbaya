@@ -80,7 +80,7 @@ class ProductController extends Controller
     {
         
 
-           /* dd($request->all());*/
+        dd($request->all());
         $product = ProductModel::getSingle($product_id);
         if(!empty($product))
         {

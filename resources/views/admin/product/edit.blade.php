@@ -29,7 +29,7 @@
             <div class="card card-primary">
               
               <!-- بداية النموذج -->
-              <form action="" method="post" encrypt>
+              <form action="" method="post" encrypt="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="card-body">
                   <div class="row">

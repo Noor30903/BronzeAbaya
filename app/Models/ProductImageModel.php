@@ -19,13 +19,13 @@ class ProductImageModel extends Model
     public function getLogo()
     {
         if(!empty($this->image_name) && file_exists('upload/product/' .$this->image_name))
-    {
-        return url('upload/product/' .$this->image_name);
-    }
-    else
-    {
-        return"";
-    }
+        {
+            return url('upload/product/' .$this->image_name);
+        }
+        else
+        {
+            return"";
+        }
 
     }
 
