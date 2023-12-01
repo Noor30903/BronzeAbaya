@@ -90,7 +90,7 @@
 
                                             <div class="product-body">
                                                 <div class="product-cat">
-                                                    <a href="{{url($value->category_slug.'/'.sub_category_slug)}}">{{$value->sub_category_name}}</a>
+                                                    <a href="{{url($value->category_slug.'/'.$value->sub_category_slug)}}">{{$value->sub_category_name}}</a>
                                                 </div><!-- End .product-cat -->
                                                 <h3 class="product-title"><a href="{{url ($value->slug)}}">{{$value->title}}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
