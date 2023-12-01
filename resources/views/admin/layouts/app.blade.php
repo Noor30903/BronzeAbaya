@@ -20,11 +20,11 @@
   <!-- خط جوجل: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- أيقونات فونت أوسوم -->
-  <link rel="stylesheet" href="{{ url('public/{{ url ( ' ' ) }}/assets/plugins/fontawesome-free/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ url('public/assets/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- أيقونات IonIcons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- نمط الثيم -->
-  <link rel="stylesheet" href="{{ url('public/{{ url ( ' ' ) }}/assets/dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ url('public/assets/dist/css/adminlte.min.css') }}">
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
   <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet">
@@ -55,14 +55,14 @@
 <!-- السكريبتات المطلوبة -->
 
 <!-- jQuery -->
-<script src="{{ url('public/{{ url ( ' ' ) }}/assets/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{ url('public/assets/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap -->
-<script src="{{ url('public/{{ url ( ' ' ) }}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ url('public/assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE -->
-<script src="{{ url('public/{{ url ( ' ' ) }}/assets/dist/js/adminlte.js')}}"></script>
+<script src="{{ url('public/assets/dist/js/adminlte.js')}}"></script>
 
 <!-- سكريبتات اختيارية -->
-<script src="{{ url('public/{{ url ( ' ' ) }}/assets/plugins/chart.js/Chart.min.js')}}"></script>
+<script src="{{ url('public/assets/plugins/chart.js/Chart.min.js')}}"></script>
 
 @yield('script')
 </body>

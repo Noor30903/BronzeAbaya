@@ -7,16 +7,16 @@
     <title>BronzeAbaya</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="shortcut icon" href="{{ url ( ' ' ) }}/assets/images/icons/favicon.ico">
+    <link rel="shortcut icon" href="{{ url ( 'assets/images/icons/favicon.ico' ) }}">
     
 
 
     <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="{{ url('{{ url ( ' ' ) }}/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url('{{ url ( ' ' ) }}/assets/css/plugins/owl-carousel/owl.carousel.css') }}">
-    <link rel="stylesheet" href="{{ url('{{ url ( ' ' ) }}/assets/css/plugins/magnific-popup/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/plugins/owl-carousel/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/plugins/magnific-popup/magnific-popup.css') }}">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="{{ url('{{ url ( ' ' ) }}/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/style.css') }}">
 </head>
 
 <body>
@@ -127,7 +127,7 @@
                 <div class="row no-gutters bg-white newsletter-popup-content">
                     <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
                         <div class="banner-content text-center">
-                            <img src="{{url('{{ url ( ' ' ) }}/assets/images/popup/newsletter/logo.png')}}" class="logo" alt="logo" width="60" height="15">
+                            <img src="{{url('assets/images/popup/newsletter/logo.png')}}" class="logo" alt="logo" width="60" height="15">
                             <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
                             <p>Subscribe to the Molla eCommerce newsletter to receive timely updates from your favorite products.</p>
                             <form action="#">
@@ -145,22 +145,22 @@
                         </div>
                     </div>
                     <div class="col-xl-2-5col col-lg-5 ">
-                        <img src="{{url('{{ url ( ' ' ) }}/assets/images/popup/newsletter/img-1.jpg')}}" class="newsletter-img" alt="newsletter">
+                        <img src="{{url('assets/images/popup/newsletter/img-1.jpg')}}" class="newsletter-img" alt="newsletter">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Plugins JS File -->
-    <script src="{{ url('{{ url ( ' ' ) }}/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ url('{{ url ( ' ' ) }}/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ url('{{ url ( ' ' ) }}/assets/js/jquery.hoverIntent.min.js') }}"></script>
-    <script src="{{ url('{{ url ( ' ' ) }}/assets/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ url('{{ url ( ' ' ) }}/assets/js/superfish.min.js') }}"></script>
-    <script src="{{ url('{{ url ( ' ' ) }}/assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ url('{{ url ( ' ' ) }}/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url('assets/js/jquery.hoverIntent.min.js') }}"></script>
+    <script src="{{ url('assets/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url('assets/js/superfish.min.js') }}"></script>
+    <script src="{{ url('assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <!-- Main JS File -->
-    <script src="{{ url('{{ url ( ' ' ) }}/assets/js/main.js')}}"></script>
+    <script src="{{ url('assets/js/main.js')}}"></script>
 </body>
 
 

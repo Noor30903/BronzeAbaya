@@ -42,7 +42,7 @@
                         </button>
 
                         <a href="{{ url('') }}" class="logo">
-                            <img src=" {{ url('{{ url ( ' ' ) }}/assets/images/logo.png') }} " alt="" width="105" height="25">
+                            <img src=" {{ url('assets/images/logo.png') }} " alt="" width="105" height="25">
                         </a>
 
                         <nav class="main-nav">
@@ -117,7 +117,7 @@
 
                                         <figure class="product-image-container">
                                             <a href="product.html" class="product-image">
-                                                <img src="{{ url ( ' ' ) }}/assets/images/products/cart/product-1.jpg" alt="product">
+                                                <img src="{{url('assets/images/products/cart/product-1.jpg')}}" alt="product">
                                             </a>
                                         </figure>
                                         <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
@@ -137,7 +137,7 @@
 
                                         <figure class="product-image-container">
                                             <a href="product.html" class="product-image">
-                                                <img src="{{ url ( ' ' ) }}/assets/images/products/cart/product-2.jpg" alt="product">
+                                                <img src="{{url('assets/images/products/cart/product-2.jpg')}}/" alt="product">
                                             </a>
                                         </figure>
                                         <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
