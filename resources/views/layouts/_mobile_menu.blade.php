@@ -15,9 +15,9 @@
                         <a href="{{url('')}}">Home</a>
                     </li>
                     @php
-                         @getCategoryMobile = App\Models\CategoryModel::getRecordMenu();
+                         $getCategoryMobile = App\Models\CategoryModel::getRecordMenu();
                     @endphp
-                    @foreach($getCategoryMobile as @value_m_c)
+                    @foreach($getCategoryMobile as $value_m_c)
                     @if(!empty($value_m_c->getSubCategory->count()))
 
                         <li>

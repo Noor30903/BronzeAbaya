@@ -14,8 +14,8 @@ class ProductController extends Controller
     public function getCategory($slug, $subslug = '')
     {
 
-        $getCatagory= CategoryModel::getSingleSlug($slug);
-        $getSubCatagory= SubCategoryModel::getSingleSlug($subslug);
+        $getCategory= CategoryModel::getSingleSlug($slug);
+        $getSubCategory= SubCategoryModel::getSingleSlug($subslug);
 
         if(!empty($getCategory) && !empty($getSubCategory))
         {
@@ -23,22 +23,22 @@ class ProductController extends Controller
             $data['meta_keywords'] = $getSubCategory-> meta_keywords;
             $data['meta_description'] = $getSubCategory-> meta_description;
 
-            $data['getSubCatagory']= $getSubCatagory;
-            $data['getCatagory']= $getCatagory;
+            $data['getSubCategory']= $getSubCategory;
+            $data['getCategory']= $getCategory;
 
-            $data['getroduct']=ProductModel::getroduct($getCatagory->id , $getSubCategory->id);
+            $data['getProduct']=ProductModel::getProduct($getCategory->id , $getSubCategory->id);
 
             return view('product.list',$data);
         }
         else if(!empty($getCategory))
         {
-            $data['getCatagory']= $getCatagory;
+            $data['getCategory']= $getCategory;
 
-            $data['meta_title'] = $getCatagory-> meta_title;
-            $data['meta_keywords'] = $getCatagory-> meta_keywords;
-            $data['meta_description'] = $getCatagory-> meta_description;
+            $data['meta_title'] = $getCategory-> meta_title;
+            $data['meta_keywords'] = $getCategory-> meta_keywords;
+            $data['meta_description'] = $getCategory-> meta_description;
 
-            $data['getroduct']=ProductModel::getroduct($getCatagory->id);
+            $data['getProduct']=ProductModel::getProduct($getCategory->id);
             return view('product.list',$data);
         }
 

@@ -2,9 +2,6 @@
             <div class="header-top">
                 <div class="container">
                     <div class="header-left">
-                           
-    
-
                         <div class="header-dropdown">
                             <a href="#">USD</a>
                             <div class="header-menu">
@@ -59,12 +56,12 @@
                                                 <div class="menu-col">
                                                     <div class="row">
                                                 @php
-                                                    @getCategoryHeader = App\Models\CategoryModel::getRecordMenu();
+                                                    $getCategoryHeader = App\Models\CategoryModel::getRecordMenu();
                                                 @endphp
-                                                    @foreach($getCategoryHeader as @value_h_c)
+                                                    @foreach($getCategoryHeader as $value_h_c)
                                                         @if(!empty($value_h_c->getSubCategory->count()))
                                                             <div class="col-md-4" style="margin-bottom: 20px;">
-                                                                <a href="{{ url($value_h_c-> slug)}}" class="menu-title">{{$value_category_header-> name}}</a>
+                                                                <a href="{{ url($value_h_c-> slug)}}" class="menu-title">{{$value_h_c-> name}}</a>
                                                                 <ul>
                                                                     @foreach($value_h_c->getSubCategory as $value_h_sub)
                                                                         <li><a href="{{url($value_h_c->slug.'/'.$value_h_sub->slug)}}">{{$value_h_sub->name}}</a></li>

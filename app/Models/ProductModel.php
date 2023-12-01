@@ -24,20 +24,20 @@ class ProductModel extends Model
                     ->paginate(50);
     }
 
-    static public function getProduct($Catagory_id ='' , $SubCategory_id ='')
+    static public function getProduct($category_id ='' , $subCategory_id ='')
     {
-        $return = ProductModel::select('product.*','users.name as created_by_name', 'category.name as category_name', 'category.slug as category_slug', 'sub_Catagory.name as sub_Catagory_name', 'sub_Catagory.slug as sub_Catagory_slug' )
+        $return = ProductModel::select('product.*','users.name as created_by_name', 'category.name as category_name', 'category.slug as category_slug', 'sub_category.name as sub_category_name', 'sub_category.slug as sub_category_slug' )
         ->join('users','users.id','=','product.created_by')
-        ->join('category','category.id','=','product.created.category_id')
-        ->join('subCatagory','subCatagory.id','=','product.subCatagory_id');
+        ->join('category','category.id','=','product.category_id')
+        ->join('sub_category','sub_category.id','=','product.sub_category_id');
 
         if(!empty($category_id))
         {
-            $return = $return ->where('product.Catagory_id','=',$Catagory_id);
+            $return = $return ->where('product.category_id','=',$category_id);
         }
-        if(!empty($subCatagory_id))
+        if(!empty($subCategory_id))
         {
-            $return = $return ->where('product.subCatagory_id','=',$subCatagory_id);
+            $return = $return ->where('product.sub_category_id','=',$subCategory_id);
         }
 
         $return = $return ->where('product.is_delete','=',0)
@@ -48,7 +48,7 @@ class ProductModel extends Model
         return $return;
 
     }
-    static public function getImageSingle($Product_id)
+    static public function getImageSingle($product_id)
     {
         return ProductImageModel::where( 'product_id' , '=',$product_id)->orderBy('order_by', 'asc')->first();
     }

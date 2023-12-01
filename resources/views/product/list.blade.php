@@ -7,7 +7,7 @@
                     @if(!empty($getSubCategory))
                         <h1 class="page-title">{{$getSubCategory->name}}</h1>
                     @else
-        			    <h1 class="page-title">{{$getCatagory->name}}</h1>
+        			    <h1 class="page-title">{{$getCategory->name}}</h1>
                     @endif
         		</div><!-- End .container -->
         	</div><!-- End .page-header -->
@@ -17,10 +17,10 @@
                         <li class="breadcrumb-item"><a href="{{url('')}}">Home</a></li>
                         <li class="breadcrumb-item"><a href="javascript:;">Shop</a></li>
                         @if(!empty($getSubCategory))
-                            <li class="breadcrumb-item" aria-current="page"><a href="{{ url($getCatagory->slug) }}">{{$getCatagory->name}}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{$getCatagory->name}}</li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="{{ url($getCategory->slug) }}">{{$getCategory->name}}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{$getSubCategory->name}}</li>
                         @else
-                            <li class="breadcrumb-item active" aria-current="page">{{$getCatagory->name}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{$getCategory->name}}</li>
                         @endif
                         
                     </ol>
@@ -90,7 +90,7 @@
 
                                             <div class="product-body">
                                                 <div class="product-cat">
-                                                    <a href="{{url($value->catagory_slug.'/'.sub_catagory_slug)}}">{{$value->sub_catagory_name}}</a>
+                                                    <a href="{{url($value->category_slug.'/'.sub_category_slug)}}">{{$value->sub_category_name}}</a>
                                                 </div><!-- End .product-cat -->
                                                 <h3 class="product-title"><a href="{{url ($value->slug)}}">{{$value->title}}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">

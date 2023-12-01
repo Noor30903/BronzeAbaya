@@ -33,7 +33,7 @@ class SubCategoryController extends Controller
         ]);
 
         $subcategory = new SubCategoryModel;
-        $subcategory->category_id = trim($request->ategory_id);
+        $subcategory->category_id = trim($request->category_id);
         $subcategory->name = trim($request->name);
         $subcategory->slug = trim($request->slug);
         $subcategory->status = trim($request->status);
@@ -43,7 +43,7 @@ class SubCategoryController extends Controller
         $subcategory->created_by = Auth::user()->id;
         $subcategory->save();
 
-        return redirect('admin/subcategory/list')->with('success',"Sub Category Successfully Created");
+        return redirect('admin/sub_category/list')->with('success',"Sub Category Successfully Created");
 
     }
 
@@ -71,7 +71,7 @@ class SubCategoryController extends Controller
         $subcategory->meta_keywords = trim($request->meta_keywords);
         $subcategory->save();
 
-        return redirect('admin/subcategory/list')->with('success',"Sub Category Successfully Updated");
+        return redirect('admin/sub_category/list')->with('success',"Sub Category Successfully Updated");
 
     }
 
