@@ -168,6 +168,7 @@
     <script src="{{ url('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <!-- Main JS File -->
     <script src="{{ url('assets/js/main.js')}}"></script>
+
 </body>
 
 

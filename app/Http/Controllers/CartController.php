@@ -13,7 +13,7 @@ class CartController extends Controller
     {
         $data['getRecord']= CartModel::getRecord();
         $data['header_title']= 'Cart';
-        return view('admin.cart.list',$data);
+        return view('cart.list',$data);
     }
 
 

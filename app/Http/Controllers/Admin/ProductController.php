@@ -80,7 +80,7 @@ class ProductController extends Controller
     {
         
 
-        dd($request->all());
+        //dd($request->all());
         $product = ProductModel::getSingle($product_id);
         if(!empty($product))
         {
@@ -140,7 +140,7 @@ class ProductController extends Controller
                     {
                         $ext = $value->getClientOriginalExtension();
                         $randomStr = $product->id.Str::random(20);
-                        $filename = strtolower ($ranomStr).'.'.$ext;
+                        $filename = strtolower ($randomStr).'.'.$ext;
                         $value->move('upload/product/', $filename);
 
                         $imageupload = new ProductImageModel;

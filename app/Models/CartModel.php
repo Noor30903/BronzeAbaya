@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class CartModel extends Model
 {
     use HasFactory;
@@ -18,11 +18,13 @@ class CartModel extends Model
 
     static public function getRecord()
     {
-        return self::select('cart.*','product.title as product_title','product.price as product_price', 'product_image.name as image_name')
-                    ->join('product','product.id','=','cart.product_id')
-                    ->join('product','product.id','=','product_image.product_id')
-                    ->where('product.is_delete','=',0)
+        return self::select('cart.*', 'product.title as product_title', 'product.price as product_price', 'users.id as cart_user')
+                    ->join('users', 'users.id', '=', 'cart.user_id')
+                    ->join('product', 'product.id', '=', 'cart.product_id')
+                    //->join('product_image', 'product_image.product_id', '=', 'product.id')
+                    ->where('cart.user_id','=',Auth::user()->id)
                     ->paginate(50);
     }
+
 
 }
