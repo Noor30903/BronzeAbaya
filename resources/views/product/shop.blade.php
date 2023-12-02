@@ -4,11 +4,7 @@
 <main class="main">
         	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
         		<div class="container">
-                    @if(!empty($getSubCategory))
-                        <h1 class="page-title">{{$getSubCategory->name}}</h1>
-                    @else
-        			    <h1 class="page-title">{{$getCategory->name}}</h1>
-                    @endif
+                    <h1 class="page-title">Shop</h1>
         		</div><!-- End .container -->
         	</div><!-- End .page-header -->
             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
@@ -16,13 +12,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{url('')}}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('shop') }}">Shop</a></li>
-                        @if(!empty($getSubCategory))
-                            <li class="breadcrumb-item" aria-current="page"><a href="{{ url($getCategory->slug) }}">{{$getCategory->name}}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{$getSubCategory->name}}</li>
-                        @else
-                            <li class="breadcrumb-item active" aria-current="page">{{$getCategory->name}}</li>
-                        @endif
-                        
+
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
@@ -55,7 +45,7 @@
 
                             <div class="products mb-3">
                                 <div class="row justify-content-center">
-                                    @foreach($getProduct as $value)
+                                    @foreach($getRecord as $value)
                                     @php
                                          $getProductImage = $value->getImageSingle($value->id);
                                     @endphp
@@ -88,9 +78,7 @@
                                             </figure><!-- End .product-media -->
 
                                             <div class="product-body">
-                                                <div class="product-cat">
-                                                    <a href="{{url($value->category_slug.'/'.$value->sub_category_slug)}}">{{$value->sub_category_name}}</a>
-                                                </div><!-- End .product-cat -->
+
                                                 <h3 class="product-title"><a href="{{url ($value->slug)}}">{{$value->title}}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
 
@@ -157,7 +145,7 @@
 
                             <!--mashae2 الين هنا -->
                             
-                            {!! $getProduct->appends(Illuminate\Support\Facades\Request::except('page'))->links()!!}
+                           
                             
                 		</div><!-- End .col-lg-9 -->
                 		<aside class="col-lg-3 order-lg-first">
@@ -416,5 +404,3 @@
         </main><!-- End .main -->
 
 @endsection
-
-    

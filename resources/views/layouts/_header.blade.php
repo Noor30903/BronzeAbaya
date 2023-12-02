@@ -48,7 +48,7 @@
                                     <a href="{{url('')}}">Home</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;" class="sf-with-ul">Shop</a>
+                                    <a href="{{ route('shop') }}" class="sf-with-ul">Shop</a>
 
                                     <div class="megamenu megamenu-md">
                                         <div class="row no-gutters">
@@ -59,17 +59,18 @@
                                                     $getCategoryHeader = App\Models\CategoryModel::getRecordMenu();
                                                 @endphp
                                                     @foreach($getCategoryHeader as $value_h_c)
-                                                        @if(!empty($value_h_c->getSubCategory->count()))
+                                                        
                                                             <div class="col-md-4" style="margin-bottom: 20px;">
                                                                 <a href="{{ url($value_h_c-> slug)}}" class="menu-title">{{$value_h_c-> name}}</a>
                                                                 <ul>
+                                                                @if(!empty($value_h_c->getSubCategory->count()))
                                                                     @foreach($value_h_c->getSubCategory as $value_h_sub)
                                                                         <li><a href="{{url($value_h_c->slug.'/'.$value_h_sub->slug)}}">{{$value_h_sub->name}}</a></li>
                                                                     @endforeach
-
+                                                                 @endif
                                                                 </ul>
                                                             </div>
-                                                        @endif    
+                                                            
                                                     @endforeach
                                                     </div>
                                                 </div>

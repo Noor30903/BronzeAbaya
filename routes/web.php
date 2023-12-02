@@ -86,6 +86,7 @@ Route::group (['middleware' => 'admin'], function () {
 Route::get('/', [HomeController::class, 'home']);
 Route::get('cart/list', [CartController::class, 'list']);
 
+Route::get('product/shop', [ProductController::class, 'show'])->name('shop');
 Route::get('{category?}/{subcategory?}', [ProductFront::class, 'getCategory']);
 
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');

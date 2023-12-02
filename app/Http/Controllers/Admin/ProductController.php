@@ -27,7 +27,12 @@ class ProductController extends Controller
         $data['header_title']= 'Product';
         return view('admin.product.list',$data);
     }
-
+    public function show()
+    {
+        $data['getRecord']= ProductModel::getRecord();
+        $data['header_title']= 'Shop';
+        return view('product.shop',$data);
+    }
     public function add()
     {
         $data['header_title']= 'Add New Product';
