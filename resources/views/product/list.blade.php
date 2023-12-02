@@ -6,8 +6,10 @@
         		<div class="container">
                     @if(!empty($getSubCategory))
                         <h1 class="page-title">{{$getSubCategory->name}}</h1>
-                    @else
+                    @elseif(!empty($getCategory))
         			    <h1 class="page-title">{{$getCategory->name}}</h1>
+					@else
+                		<h1 class="page-title">Shop</h1>
                     @endif
         		</div><!-- End .container -->
         	</div><!-- End .page-header -->
@@ -19,7 +21,7 @@
                         @if(!empty($getSubCategory))
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ url($getCategory->slug) }}">{{$getCategory->name}}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{$getSubCategory->name}}</li>
-                        @else
+                        @elseif(!empty($getCategory))
                             <li class="breadcrumb-item active" aria-current="page">{{$getCategory->name}}</li>
                         @endif
                         
@@ -157,7 +159,8 @@
 
                             <!--mashae2 الين هنا -->
                             
-                            {!! $getProduct->appends(Illuminate\Support\Facades\Request::except('page'))->links()!!}
+                            {!! $getProduct->appends(['category' => request('category'), 'subcategory' => request('subcategory')])->links() !!}
+
                             
                 		</div><!-- End .col-lg-9 -->
                 		<aside class="col-lg-3 order-lg-first">

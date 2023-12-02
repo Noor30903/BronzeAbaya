@@ -27,12 +27,30 @@ class ProductController extends Controller
         $data['header_title']= 'Product';
         return view('admin.product.list',$data);
     }
-    public function show()
+    
+    public function show(Request $request)
     {
-        $data['getRecord']= ProductModel::getRecord();
-        $data['header_title']= 'Shop';
-        return view('product.shop',$data);
+        $data = [];
+        $data['header_title'] = 'Shop';
+
+        $categorySlug = $request->input('category');
+        $subCategorySlug = $request->input('subcategory');
+
+        if ($categorySlug) {
+            $category = CategoryModel::where('slug', $categorySlug)->firstOrFail();
+            $data['getProduct'] = ProductModel::getProduct($category->id, null);
+            $data['getCategory'] = $category;
+        } elseif ($subCategorySlug) {
+            $subCategory = SubCategoryModel::where('slug', $subCategorySlug)->firstOrFail();
+            $data['getProduct'] = ProductModel::getProduct(null, $subCategory->id);
+            $data['getSubCategory'] = $subCategory;
+        } else {
+            $data['getProduct'] = ProductModel::getRecord(); // Fetches all products
+        }
+
+        return view('product.list', $data);
     }
+
     public function add()
     {
         $data['header_title']= 'Add New Product';
