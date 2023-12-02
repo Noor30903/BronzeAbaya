@@ -13,6 +13,7 @@
   </style>
 @endsection
 @section('content')
+
     <section id="about" class="padding-xlarge">
       <div class="container">
         <div class="row">
