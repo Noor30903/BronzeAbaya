@@ -66,7 +66,7 @@
 									<tbody>
                                     @php
                                         $totalcost = 0;
-                                        $producttot = 0;
+                                        $productTotal = 0;
                                     @endphp
                                     @foreach($getRecord as $value)
 										<tr>
@@ -95,13 +95,14 @@
         										    </div><!-- End .cart-product-quantity -->
         										</td>
                                                 
-											    <td class="total-col">{{$producttot = $value->product_price * $value->product_quantity  }}</td>
+											    <td class="total-col">{{$productTotal = $value->product_price * $value->product_quantity  }}</td>
                                                 
 											    <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
 										</tr>
-                                        <input type="hidden" name="total" value="{{$totalcost = $totalcost + $producttot}}">
+										@php $totalcost += $productTotal; @endphp
+										
 									@endforeach
-          
+									<input type="hidden" name="total" value="{{$totalcost}}">
 									</tbody>
 								</table><!-- End .table table-wishlist -->
 
@@ -118,7 +119,7 @@
 	                					<tbody>
 	                						<tr class="summary-subtotal">
 	                							<td>Subtotal:</td>
-	                							<td>$160.00</td>
+	                							<td>{{$totalcost}}</td>
 	                						</tr><!-- End .summary-subtotal -->
 	                						<tr class="summary-shipping">
 	                							<td>Shipping:</td>
@@ -162,7 +163,7 @@
 
 	                						<tr class="summary-total">
 	                							<td>Total:</td>
-	                							<td>$160.00</td>
+	                							<td>{{$totalcost}}</td>
 	                						</tr><!-- End .summary-total -->
 	                					</tbody>
 	                				</table><!-- End .table table-summary -->
