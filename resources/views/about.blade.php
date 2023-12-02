@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<section id="about" class="padding-xlarge">
+    <section id="about" class="padding-xlarge">
       <div class="container">
         <div class="row">
           <div class="offset-md-2 col-md-8" dir="rtl">

@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController as ProductFront;
-
+use App\Http\Controllers\StaticPagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +29,6 @@ Route::get('admin', [AuthController::class, 'login_admin']);
 Route::post('admin', [AuthController::class, 'auth_login_admin']);
 
 Route::get('admin/logout', [AuthController::class, 'logout_admin']);
-
-
 
 Route::group (['middleware' => 'admin'], function () {
 
@@ -59,17 +57,12 @@ Route::group (['middleware' => 'admin'], function () {
 
     Route::post('admin/get_sub_category', [SubCategoryController::class, 'get_sub_category']);
 
-
-
-    
     Route::get('admin/color/list', [ColorController::class, 'list']);
     Route::get('admin/color/add', [ColorController::class, 'add']);
     Route::post('admin/color/add', [ColorController::class, 'insert']);
     Route::get('admin/color/edit/{id}', [ColorController::class, 'edit']);
     Route::post('admin/color/edit/{id}', [ColorController::class, 'update']);
     Route::get('admin/color/delete/{id}', [ColorController::class, 'delete']);
-
-
 
     Route::get('admin/product/list', [ProductController::class, 'list']);
     Route::get('admin/product/add', [ProductController::class, 'add']);
@@ -79,8 +72,6 @@ Route::group (['middleware' => 'admin'], function () {
     
     Route::get('admin/product/image_delete/{id}', [ProductController::class, 'image_delete']);
     Route::post(' admin/product_image_sortable', [ProductController::class, 'product_image_sortable']);
-   
-
 });
 
 Route::get('/', [HomeController::class, 'home']);
@@ -91,10 +82,4 @@ Route::get('{category?}/{subcategory?}', [ProductFront::class, 'getCategory']);
 
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 
-
-
-
-
-
-    
-    
+Route::get('/about', [StaticPagesController::class, 'aboutUs'])->name('about');
