@@ -1,15 +1,20 @@
 @extends('layouts.app')
 @section('style')
   <link rel="stylesheet" type="text/css" href="{{ url('public/assets/dist/css/bootstrap.min.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{ url('public/assets/dist/css/style.css')}}">
   <link rel="stylesheet" type="text/css" href="{{ url('public/assets/dist/css/vendor.css')}}">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
   <style>
     #faqs p {
-    font-size: 16px;
-}
+    font-size: 20px;
+    }
+    #faqs button {
+    font-size: 20px;
+    
+    }
+
   </style>
 @endsection
 @section('content')
@@ -36,7 +41,7 @@
             <div dir="rtl" class="accordion accordion-flush" id="accordionFlush" data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1500" data-aos-once="true">
               <div class="accordion-item">
                 <h3 class="accordion-header" id="flush-headingOne3">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+                  <button class="accordion-button collapsed bg-light text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
                     مدة الانتهاء من الطلب؟
 
                   </button>
@@ -51,7 +56,7 @@
       
               <div class="accordion-item">
                 <h3 class="accordion-header" id="flush-headingTwo3">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="true" aria-controls="flush-collapseTwo">
+                  <button class="accordion-button collapsed bg-light text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="true" aria-controls="flush-collapseTwo">
                     سياسة برونز عباية للاستبدال و الاسترجاع ؟
 
                   </button>
@@ -65,7 +70,7 @@
       
               <div class="accordion-item">
                 <h3 class="accordion-header" id="flush-headingThree3">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="true" aria-controls="flush-collapseThree">
+                  <button class="accordion-button collapsed bg-light text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="true" aria-controls="flush-collapseThree">
                     هل يمكنني اجراء أي تعديل على العباية ؟ 
                   </button>
                 </h3>
@@ -78,7 +83,7 @@
       
               <div class="accordion-item">
                 <h3 class="accordion-header" id="flush-headingFour3">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="true" aria-controls="flush-collapseFour">
+                  <button class="accordion-button collapsed bg-light text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="true" aria-controls="flush-collapseFour">
                     ما هي طريقة الغسيل الصحيحة للعباية ؟
 
                   </button>
