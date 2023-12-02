@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <section id="about" class="padding-xlarge">
       <div class="container">
         <div class="row">
@@ -74,7 +73,7 @@
                   <div class="accordion-body">
                     <p>يفضل غسيلها يدوياً بشامبو سائل خاص للعبايات
                       احرصي على عدم سكب الشامبو مباشرةً على العباية و عدم فركها بقوة
-                      حيث ان بعض الاقمشة تستزم غسيلاً جافا منها (العبايات المطرزة بالخرز او الخيط )
+                      حيث ان بعض الاقمشة تستزم غسيلاً جافا منها (العبايات المطرزة بالخرز او الخيط )
                       </p>
                   </div>
                 </div>
@@ -84,5 +83,5 @@
           </div>
         </div>
       </div>
-    </section>
+    </section>    
 @endsection

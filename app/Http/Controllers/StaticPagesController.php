@@ -8,6 +8,7 @@ class StaticPagesController extends Controller
 {
     public function aboutUs()
     {
+        //return "About Us Page is working";
         return view('about');
     }
 }
