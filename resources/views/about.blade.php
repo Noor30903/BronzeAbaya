@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-    <section id="about" class="padding-xlarge">
+<section id="about" class="padding-xlarge">
       <div class="container">
         <div class="row">
           <div class="offset-md-2 col-md-8" dir="rtl">
             <span class="title-accent fs-6 text-uppercase" data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1000" data-aos-once="true" >من نحن </span>
-            <h3 class="py-3" data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1500" data-aos-once="true">برونز عباية علامة تجارية سعودية متخصصين لتلبية جميع متطلبات عملائنا كما اننا حريصون على تقديم تصاميم مميزة بجودة عالية مقابل سعر المناسب</h3>
+            <h3 class="py-3" data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1500" data-aos-once="true">برونز عباية علامة تجارية سعودية متخصصين لتلبية جميع متطلبات عملائنا كما اننا حريصون على تقديم تصاميم مميزة بجودة عالية مقابل سعر المناسب</h3>
             <p data-aos="fade" data-aos-easing="ease-in" data-aos-duration="1800" data-aos-once="true"></p>
           </div>
         </div>
