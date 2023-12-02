@@ -30,6 +30,8 @@ Route::post('admin', [AuthController::class, 'auth_login_admin']);
 
 Route::get('admin/logout', [AuthController::class, 'logout_admin']);
 
+
+
 Route::group (['middleware' => 'admin'], function () {
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
@@ -75,6 +77,8 @@ Route::group (['middleware' => 'admin'], function () {
 });
 
 Route::get('/', [HomeController::class, 'home']);
+Route::get('/about', [StaticPagesController::class, 'aboutUs'])->name('about');
+
 Route::get('cart/list', [CartController::class, 'list']);
 
 Route::get('product/list', [ProductController::class, 'show'])->name('shop');;
@@ -82,4 +86,4 @@ Route::get('{category?}/{subcategory?}', [ProductFront::class, 'getCategory']);
 
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 
-Route::get('/about', [StaticPagesController::class, 'aboutUs'])->name('about');
+

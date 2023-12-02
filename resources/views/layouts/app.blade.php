@@ -28,7 +28,8 @@
 </head>
 
 <body>
-    <div class="page-wrapper">
+    
+    <div class="page-wrapper" >
 
 
     @include('layouts._header');
@@ -129,36 +130,66 @@
         </div><!-- End .modal-dialog -->
     </div><!-- End .modal -->
 
-    <div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
-        <div class="row justify-content-center">
-            <div class="col-10">
-                <div class="row no-gutters bg-white newsletter-popup-content">
-                    <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
-                        <div class="banner-content text-center">
-                            <img src="{{url('assets/images/popup/newsletter/logo.png')}}" class="logo" alt="logo" width="60" height="15">
-                            <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
-                            <p>Subscribe to the Molla eCommerce newsletter to receive timely updates from your favorite products.</p>
-                            <form action="#">
-                                <div class="input-group input-group-round">
-                                    <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required>
-                                    <div class="input-group-append">
-                                        <button class="btn" type="submit"><span>go</span></button>
-                                    </div><!-- .End .input-group-append -->
-                                </div><!-- .End .input-group -->
-                            </form>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="register-policy-2" required>
-                                <label class="custom-control-label" for="register-policy-2">Do not show this popup again</label>
-                            </div><!-- End .custom-checkbox -->
+    <div class="modal fade" id="modalorder" tabindex="-1" role="dialog" aria-hidden="true" dir="rtl" style="text-align: right;">
+        <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered" role="document">
+            <div class="modal-content p-4">
+                
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="icon-close"></i></span>
+                    </button>
+                    <div class="form-box">
+                        <div class="modal-header mx-auto border-0" style="text-align: center;">
+                            <h2 class="modal-title fs-3 fw-normal">سياسة الطلب</h2>
                         </div>
-                    </div>
-                    <div class="col-xl-2-5col col-lg-5 ">
-                        <img src="{{url('assets/images/popup/newsletter/img-1.jpg')}}" class="newsletter-img" alt="newsletter">
+
+                        <div>
+                          <ol>
+                            <li>يرجى لمقدم الطلب إعادة جميع تفاصيله مع الموظف للتأكيد.</li>
+                            <li>لا يمكن تغيير الطلبات بعد تأكيدها، لذا يرجى التحقق جيدا من صحة تفاصيل الطلب .</li>
+                            <li>تعتذر عن عدم تمكننا من الرد واستقبال الطلبات يوم الجمعة حيث أنها إجازة للمتجر . </li>
+                            <li>يتم تفصيل عباءات متجر برونز حسب طلبك الخاص بدقة وإتقان لذا نعتذر عن إرجاع أو استبدال المنتج بعد شرائه ( العربون لا يسترد بعد رفع الطلب ) </li>
+                            <li>في حال واجهتك مشكلة من طرفنا فيما يتعلق بالمنتجات التي قمت بشرائها وسوف يتكفل المتجر بالتعديل ومصاريف التوصيل كاملة</li>
+                            <li>المتجر غير مسؤول عن فقدان البضاعه بعد مرور اسبوعين من تواصل المندوب مع العميل.</li>
+                            <li>السعر لا يشمل التوصيل</li>
+                          </ol>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+      </div>
+    </div><!-- End .modal -->
+        
+    <div class="modal fade" id="modalwash" tabindex="-1" role="dialog" aria-hidden="true" dir="rtl" style="text-align: right;">
+        <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered" role="document">
+            <div class="modal-content p-4">
+                
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="icon-close"></i></span>
+                    </button>
+                    <div class="form-box">
+                        <div class="modal-header mx-auto border-0" style="text-align: center;">
+                            <h2 class="modal-title fs-3 fw-normal">سياسة الطلب</h2>
+                        </div>
+
+                        <div>
+                        <ul>
+                            <li>يستحسن غسيلها يدوياً بشامبو سائل خاص بالعبايات. </li>
+                            <li> احرصي على عدم سكب الشامبو مباشرة فوق العباية لأن ذلك يؤثر على بريق لونها. </li>
+                            <li>يفضل غسيلها وشطفها وتعليقها مباشرة على علاقة الملابس لتجف بشكل طبيعي. </li>
+                        </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </div><!-- End .modal -->
+
+   
+
     <!-- Plugins JS File -->
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -169,7 +200,7 @@
     <script src="{{ url('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <!-- Main JS File -->
     <script src="{{ url('assets/js/main.js')}}"></script>
-
+    @yield('script');
 </body>
 
 

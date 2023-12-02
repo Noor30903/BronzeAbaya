@@ -1,61 +1,56 @@
-<footer class="footer footer-dark">
+
+<footer class="footer footer-dark" dir="rtl">
         	<div class="footer-middle">
-	            <div class="container">
+	            <div class="container" dir="rtl" style="text-align: right;">
 	            	<div class="row">
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget widget-about">
 	            				<img src="{{url('assets/images/logo-footer.png')}}" class="footer-logo" alt="Footer Logo" width="105" height="25">
-	            				<p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
+	            				<p>منذ 2018 ولله الحمد، يوجد لدينا توصيل لمدن المملكة و مدن الخليج</p>
 
 	            				<div class="social-icons">
-	            					<a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-	            					<a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-	            					<a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-	            					<a href="#" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
-	            					<a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+	            					
+	            					<a href="https://www.instagram.com/bronze_abaya/?igshid=MzRlODBiNWFlZA%3D%3D" class="fab fa-instagram fa-2x social-icon" style="color: #ac2bac;" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+									<a href="https://api.whatsapp.com/send?phone=966568898596" class="fab fa-whatsapp fa-2x social-icon" style="color: #25d366;" title="Instagram" target="_blank"><i class="icon-whatsapp"></i></a>
+	            					
 	            				</div><!-- End .soial-icons -->
 	            			</div><!-- End .widget about-widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
 
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget">
-	            				<h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+	            				<h4 class="widget-title">روابط مهمة</h4><!-- End .widget-title -->
 
 	            				<ul class="widget-list">
-	            					<li><a href="{{url('about')}}">About Molla</a></li>
-	            					<li><a href="#">How to shop on Molla</a></li>
-	            					<li><a href="#">FAQ</a></li>
-	            					<li><a href="{{url('contact')}}">Contact us</a></li>
-	            					<li><a href="#signin-modal" data-toggle="modal">Log in</a></li>
+	            					<li><a href="{{ route('about') }}">من نحن</a></li>
+	            					<li><a href="{{ route('shop') }}">متجرنا</a></li>
+	            					
 	            				</ul><!-- End .widget-list -->
 	            			</div><!-- End .widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
 
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget">
-	            				<h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+	            				<h4 class="widget-title">السياسات</h4><!-- End .widget-title -->
 
 	            				<ul class="widget-list">
-	            					<li><a href="#">Payment Methods</a></li>
-	            					<li><a href="#">Money-back guarantee!</a></li>
-	            					<li><a href="#">Returns</a></li>
-	            					<li><a href="#">Shipping</a></li>
-	            					<li><a href="#">Terms and conditions</a></li>
-	            					<li><a href="#">Privacy Policy</a></li>
+	            					<li><a href="#modalorder" data-toggle="modal">سياسة الطلب</a></li>
+	            					<li><a href="#modalwash" data-toggle="modal">طريقة غسل العباية</a></li>
+	            					
 	            				</ul><!-- End .widget-list -->
 	            			</div><!-- End .widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
 
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget">
-	            				<h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+	            				<h4 class="widget-title">حسابي</h4><!-- End .widget-title -->
 
 	            				<ul class="widget-list">
-	            					<li><a href="#">Sign In</a></li>
-	            					<li><a href="#">View Cart</a></li>
-	            					<li><a href="#">My Wishlist</a></li>
-	            					<li><a href="#">Track My Order</a></li>
-	            					<li><a href="#">Help</a></li>
+	            					<li><a href="#signin-modal" data-toggle="modal">تسجيل الدخول</a></li>
+									<li><a href="#signin-modal" data-toggle="modal">تسجيل حساب جديد</a></li>
+	            					<li><a href="#">عرض السلة</a></li>
+	            					<li><a href="#">قائمة امنياتي</a></li>
+	            					
 	            				</ul><!-- End .widget-list -->
 	            			</div><!-- End .widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
@@ -65,10 +60,8 @@
 
 	        <div class="footer-bottom">
 	        	<div class="container">
-	        		<p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
-	        		<figure class="footer-payments">
-	        			<img src="{{url('assets/images/payments.png')}}" alt="Payment methods" width="272" height="20">
-	        		</figure><!-- End .footer-payments -->
+				<strong>حقوق النشر &copy; {{ date('Y') }} BronzAbaya.com</strong> جميع الحقوق محفوظة.
+	        		
 	        	</div><!-- End .container -->
 	        </div><!-- End .footer-bottom -->
         </footer><!-- End .footer -->
