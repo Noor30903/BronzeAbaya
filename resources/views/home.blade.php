@@ -55,8 +55,8 @@
                                     <div class="intro-slide">
                                         <figure class="slide-image">
                                             <picture>
-                                                <source media="(max-width: 480px)" srcset="{{ url ( 'img/IMG3.jpg' ) }}">
-                                                <img src="{{ url ( 'img/IMG3.jpg' ) }}" alt="Image Desc">
+                                                <source media="(max-width: 480px)" srcset="{{ url ( 'img/IMG6.jpg' ) }}">
+                                                <img src="{{ url ( 'img/IMG6.jpg' ) }}" alt="Image Desc">
                                             </picture>
                                         </figure><!-- End .slide-image -->
 
@@ -81,7 +81,7 @@
                                     <div class="col-md-6 col-lg-12">
                                         <div class="banner banner-display">
                                             <a href="#">
-                                                <img src="{{ url ( 'img/IMG4.jpg' ) }}" alt="Banner">
+                                                <img src="{{ url ( 'img/IMG3.jpg' ) }}" alt="Banner">
                                             </a>
 
                                             <div class="banner-content">

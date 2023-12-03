@@ -13,7 +13,7 @@ class ProductColorModel extends Model
 
 
     static public function DeleteRecord($product_id) 
-     {
+    {
         self::where('product_id', '=',$product_id)->delete();
     }
 }

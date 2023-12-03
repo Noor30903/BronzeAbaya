@@ -113,7 +113,7 @@ class ProductController extends Controller
             $product->save();
 
             ProductColorModel::DeleteRecord($product->id);
-
+            //dd($request->color_id);
             if(!empty($request->color_id))
             {
                 foreach($request->color_id as $color_id)
@@ -124,6 +124,7 @@ class ProductController extends Controller
                     $color->save();
                 }
             }
+
             ProductSizeModel::DeleteRecord($product->id);
 
 
@@ -136,7 +137,6 @@ class ProductController extends Controller
 
                         $saveSize = new ProductSizeModel;
                         $saveSize->name = $size['name'];
-                        $saveSize->price = !empty($size['price']) ? $size['name'] : 0;
                         $saveSize->product_id = $product_id;
                         $saveSize->save();
 
