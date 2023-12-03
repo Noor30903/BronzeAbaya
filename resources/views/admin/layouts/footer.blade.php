@@ -5,7 +5,7 @@
 <!-- /.control-sidebar -->
 
 <!-- الفوتر الرئيسي -->
-<footer class="main-footer">
+<footer class="main-footer" dir="rtl" style="text-align: right;">
     <strong>حقوق النشر &copy; {{ date('Y') }} BronzAbaya.com</strong> جميع الحقوق محفوظة.
     
 </footer>

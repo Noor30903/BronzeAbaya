@@ -48,9 +48,7 @@
 
         @include('admin.layouts._message')
           <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">قائمة الفئات الفرعية</h3>
-            </div>
+            
             <!-- /.card-header -->
             <div class="card-body p-0">
               <table class="table table-striped" id="datatablesSimple">
