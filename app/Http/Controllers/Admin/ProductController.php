@@ -98,7 +98,6 @@ class ProductController extends Controller
     public function update($product_id, Request $request) 
     {
         
-
         //dd($request->all());
         $product = ProductModel::getSingle($product_id);
         if(!empty($product))

@@ -87,19 +87,19 @@ class SubCategoryController extends Controller
 
     public function get_sub_category(Request $request)
     {
-        dd($request->all());
-        //$category_id= $request->id;
-        //$get_sub_category = SubCategoryModel::getRecordCategory($category_id);
-        //$html = '' ;
-        //$html .= '<option value="" > Select </option>' ;
 
-        //foreach ($get_sub_category as $value)
-        //{
-        //    $html .= '<option value="'.$value->id.'" > '.$value->name.' </option>' ;
-        //}
+        $category_id= $request->id;
+        $get_sub_category = SubCategoryModel::getRecordCategory($category_id);
+        $html = '' ;
+        $html .= '<option value="" > Select </option>';
 
-        //$json['html'] = $html;
-        //echo json_encode($json);
+        foreach ($get_sub_category as $value)
+        {
+            $html .= '<option value="'.$value->id.'" > '.$value->name.' </option>' ;
+        }
+
+        $json['html'] = $html;
+        echo json_encode($json);
             
     }
  

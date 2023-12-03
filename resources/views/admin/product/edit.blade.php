@@ -58,6 +58,9 @@
                         <label>الفئة الفرعية <span style="color:red;">*</span></label>
                         <select class="form-control" required id="getSubCategory" name="sub_category_id">
                           <option value="">اختر</option>
+                          @foreach($getSubCategory as $subcategory)
+                            <option {{ ($product->sub_category_id == $subcategory->id) ? 'selected' : ''}} value="{{ $subcategory->id  }}">{{ $subcategory->name }}</option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
