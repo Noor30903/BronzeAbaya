@@ -17,8 +17,8 @@
                                     <div class="intro-slide">
                                         <figure class="slide-image">
                                             <picture>
-                                                <source media="(max-width: 480px)" srcset="{{ url ( 'assets/images/slider/slide-1-480w.jpg' ) }}">
-                                                <img src="{{ url ( 'assets/images/slider/slide-1.jpg' ) }}" alt="Image Desc">
+                                                <source media="(max-width: 480px)" srcset="{{ url ( 'img/IMG1.jpg' ) }}">
+                                                <img src="{{ url ( 'img/IMG1.jpg' ) }}" alt="Image Desc">
                                             </picture>
                                         </figure><!-- End .slide-image -->
 
@@ -36,8 +36,8 @@
                                     <div class="intro-slide">
                                         <figure class="slide-image">
                                             <picture>
-                                                <source media="(max-width: 480px)" srcset="{{ url ( 'assets/images/slider/slide-2-480w.jpg' ) }}">
-                                                <img src="{{ url ( 'assets/images/slider/slide-2.jpg' ) }}" alt="Image Desc">
+                                                <source media="(max-width: 480px)" srcset="{{ url ( 'img/IMG2.jpg' ) }}">
+                                                <img src="{{ url ( 'img/IMG2.jpg' ) }}" alt="Image Desc">
                                             </picture>
                                         </figure><!-- End .slide-image -->
 
@@ -55,8 +55,8 @@
                                     <div class="intro-slide">
                                         <figure class="slide-image">
                                             <picture>
-                                                <source media="(max-width: 480px)" srcset="{{ url ( 'assets/images/slider/slide-3-480w.jpg' ) }}">
-                                                <img src="{{ url ( 'assets/images/slider/slide-3.jpg' ) }}" alt="Image Desc">
+                                                <source media="(max-width: 480px)" srcset="{{ url ( 'img/IMG3.jpg' ) }}">
+                                                <img src="{{ url ( 'img/IMG3.jpg' ) }}" alt="Image Desc">
                                             </picture>
                                         </figure><!-- End .slide-image -->
 
@@ -81,7 +81,7 @@
                                     <div class="col-md-6 col-lg-12">
                                         <div class="banner banner-display">
                                             <a href="#">
-                                                <img src="{{ url ( 'assets/images/banners/home/intro/banner-1.jpg' ) }}" alt="Banner">
+                                                <img src="{{ url ( 'img/IMG4.jpg' ) }}" alt="Banner">
                                             </a>
 
                                             <div class="banner-content">
@@ -95,7 +95,7 @@
                                     <div class="col-md-6 col-lg-12">
                                         <div class="banner banner-display mb-0">
                                             <a href="#">
-                                                <img src="{{ url ( 'assets/images/banners/home/intro/banner-2.jpg' ) }}" alt="Banner">
+                                                <img src="{{ url ( 'img/IMG5.jpg' ) }}" alt="Banner">
                                             </a>
 
                                             <div class="banner-content">
@@ -169,8 +169,8 @@
                             <div class="product product-11 text-center">
                                 <figure class="product-media">
                                     <a href="product.html">
-                                        <img src="{{ url ( 'assets/images/demos/demo-2/products/product-1-1.jpg' ) }}" alt="Product image" class="product-image">
-                                        <img src="{{ url ( 'assets/images/demos/demo-2/products/product-1-2.jpg' ) }}" alt="Product image" class="product-image-hover">
+                                        <img src="{{ url ( 'img/IMG6.jpg' ) }}" alt="Product image" class="product-image">
+                                        <img src="{{ url ( 'img/IMG6.jpg' ) }}" alt="Product image" class="product-image-hover">
                                     </a>
 
                                     <div class="product-action-vertical">
