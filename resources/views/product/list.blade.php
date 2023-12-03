@@ -34,12 +34,6 @@
                 	<div class="row">
                 		<div class="col-lg-12">
                 			<div class="toolbox">
-                				<div class="toolbox-left">
-                					<div class="toolbox-info">
-                						اظهار <span>9 من 56</span> عبايات
-                					</div><!-- End .toolbox-info -->
-                				</div><!-- End .toolbox-left -->
-
                 				<div class="toolbox-right"   >
                 					<div class="toolbox-sort">
                 						<label for="sortby">الترتيب حسب:</label>
@@ -61,7 +55,7 @@
                                          $getProductImage = $value->getImageSingle($value->id);
                                     @endphp
 
-                                    <div class="col-12 col-md-4 col-lg-4">
+                                    <div class="col-6 col-md-4 col-lg-3">
                                         <div class="product product-7 text-center">
                                             <figure class="product-media">
                                                 <a href="{{url ($value->slug)}}">
@@ -76,7 +70,7 @@
                                                 </div>
 
                                                 <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart"><span>اضف إلى السلة</span></a>
+                                                    <a href="{{url('cart/add/'.$value->id)}}" class="btn-product btn-cart"><span>اضف إلى السلة</span></a>
                                                 </div>
                                             </figure>
 

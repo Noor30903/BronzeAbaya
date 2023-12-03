@@ -21,7 +21,7 @@ class ProductModel extends Model
                     ->join('users','users.id','=','product.created_by')
                     ->where('product.is_delete','=',0)
                     ->orderBy('product.id','desc')
-                    ->paginate(50);
+                    ->paginate(12);
     }
 
     static public function getProduct($category_id ='' , $subCategory_id ='')
@@ -43,7 +43,7 @@ class ProductModel extends Model
         $return = $return ->where('product.is_delete','=',0)
         ->where('product.status','=',0)
         ->orderBy('product.id','desc')
-        ->paginate(3);
+        ->paginate(12);
 
         return $return;
 

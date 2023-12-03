@@ -23,5 +23,10 @@ class CartItemModel extends Model
                     ->where('cart.user_id', Auth::user()->id)
                     ->paginate(50);
     }
+    
+    static public function DeleteRecord($product_id) 
+    {
+        self::where('product_id', '=',$product_id)->delete();
+    }
 
 }

@@ -24,6 +24,11 @@ class WishListItemModel extends Model
                     ->where('wishlist.user_id', Auth::user()->id)
                     ->paginate(50);
     }
+    
+    static public function DeleteRecord($product_id) 
+    {
+        self::where('product_id', '=',$product_id)->delete();
+    }
 
 }
 

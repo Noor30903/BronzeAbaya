@@ -17,25 +17,21 @@ class WishListController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'quantity' => 'required|integer|min:1'
-    ]);
-
-    $WishListItem = WishListItemModel::find($id);
-    if($WishListItem) {
-        $WishListItem->product_quantity = $request->quantity;
-        $WishListID = $WishListItem->lishlist_id;
-        $WishList= WishListModel::find($WishListID);
-        $WishList->totalcost = $request->total;
-        $WishListItem->save();
-        $WishList->save();
-
-        return redirect()->back()->with('success', 'WishList updated successfully.');
-    } else {
-        return redirect()->back()->with('error', 'WishList item not found.');
+    {
+    
+        $WishListItem = WishListItemModel::find($id);
+        if($WishListItem) {
+        
+            $WishListID = $WishListItem->wishlist_id;
+            $WishList= WishListModel::find($WishListID);
+            $WishListItem->save();
+            $WishList->save();
+        
+            return redirect()->back()->with('success', 'WishList updated successfully.');
+        } else {
+            return redirect()->back()->with('error', 'WishList item not found.');
+        }
     }
-}
 
 }
 

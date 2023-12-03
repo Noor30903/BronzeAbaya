@@ -18,8 +18,8 @@ class CartModel extends Model
 
     static public function getRecord()
     {
-        return self::select('cart.*','users.is')
-                ->join('cart', 'cart.user_id','=','users.id')
+        return self::select('cart.*','users.id')
+                ->join('users', 'cart.user_id', '=', 'users.id')
                 ->where('cart.user_id','=',Auth::user()->id)
                 ->paginate(50);
     }

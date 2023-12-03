@@ -69,12 +69,16 @@
                                         $productTotal = 0;
                                     @endphp
                                     @foreach($getRecord as $value)
+										
 										<tr>
 											<td class="product-col">
 												<div class="product">
 													<figure class="product-media">
+														
 														<a href="#">
-															<img src="assets/images/products/table/product-1.jpg" alt="Product image">
+													
+															<img src="{{$value->productImage }}" alt="Product image">
+														
 														</a>
 													</figure>
 
@@ -97,7 +101,7 @@
                                                 
 											    <td class="total-col">{{$productTotal = $value->product_price * $value->product_quantity  }}</td>
                                                 
-											    <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
+											    <td class="remove-col" id="deleteitem"><a href="{{url('cart/delete/'.$value->product_id)}}" class="btn-remove"><i class="icon-close"></i></a></td>
 										</tr>
 										@php $totalcost += $productTotal; @endphp
 										
@@ -178,4 +182,14 @@
                 </div><!-- End .cart -->
             </div><!-- End .page-content -->
         </main><!-- End .main -->
+@endsection
+@section('script')
+<script>
+	//$('body').delegate('.deleteitem', 'click', function() {
+    //  var id = $(this).attr('id');
+    //  $('#deleteitem'+id).remove();
+    //});
+
+	
+	</script>
 @endsection

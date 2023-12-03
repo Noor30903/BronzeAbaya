@@ -80,12 +80,19 @@ Route::get('/', [HomeController::class, 'home']);
 Route::get('/about', [StaticPagesController::class, 'aboutUs'])->name('about');
 
 Route::get('cart/list', [CartController::class, 'list']);
+Route::get('cart/add/{id}', [CartController::class, 'insert']);
+Route::post('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::get('cart/delete/{id}', [CartController::class, 'delete']);
+
+Route::post('wishlist/list', [WishListController::class, 'list']);
+Route::post('wishlist/update/{id}', [WishListController::class, 'update'])->name('wishlist.update');
+Route::get('wishlist/delete/{id}', [WishListController::class, 'delete']);
 
 Route::get('product/list', [ProductController::class, 'show'])->name('shop');;
 Route::get('{category?}/{subcategory?}', [ProductFront::class, 'getCategory']);
 
-Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 
-Route::post('/wishlist/list', [WishListController::class, 'list']);
+
+
 
 

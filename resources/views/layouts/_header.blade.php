@@ -10,7 +10,7 @@
                                     <li><a href="{{url('wishlist')}}"><i class="icon-heart-o"></i>قائمة امنياتي </a></li>
                                     <li></li>
                                     <li><a href="{{url('contact')}}">تواصل معنا</a></li>
-                                    <li><a href="{{ route('about') }}">من نحن</a></li>
+                                    <li><a href="{{ url('about') }}">من نحن</a></li>
                                     
                                     <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>تسجيل الدخول</a></li>
                                 </ul>
@@ -86,7 +86,7 @@
                     <div class="header-left">
                         
                         <div class="dropdown cart-dropdown">
-                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <a href="{{url('cart/list')}}" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <i class="icon-shopping-cart"></i>
                                 <span class="cart-count">2</span>
                             </a>
