@@ -37,10 +37,10 @@
                                 <li class="megamenu-container active">
                                     <a href="{{url('')}}">الصفحة الرئيسية</a>
                                 </li>
-                                <li>
+                                <li >
                                     <a href="{{ route('shop') }}" class="sf-with-ul">المتجر</a>
 
-                                    <div class="megamenu megamenu-md">
+                                    <div class="megamenu megamenu-sm">
                                         <div class="row no-gutters">
                                             <div class="col-md-12">
                                                 <div class="menu-col">
@@ -50,7 +50,7 @@
                                                 @endphp
                                                     @foreach($getCategoryHeader as $value_h_c)
                                                         
-                                                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                                            <div class="col-md-6" style="margin-bottom: 20px;">
                                                                 <a href="{{ url($value_h_c-> slug)}}" class="menu-title">{{$value_h_c-> name}}</a>
                                                                 <ul>
                                                                 @if(!empty($value_h_c->getSubCategory->count()))
@@ -68,28 +68,30 @@
                                         </div>
                                     </div>
                                 </li>
+                                <li>
+                                    <div class="header-search">
+                                        <a href="#" class="search-toggle" role="button" title="Search"><i class="icon-search"></i></a>
+                                        <form action="{{ url('search')}}" method="get">
+                                            <div class="header-search-wrapper">
+                                                <label for="q" class="sr-only">البحث</label>
+                                                <input type="search" class="form-control" name="q" id="q" placeholder="Search in..." required>
+                                            </div><!-- End .header-search-wrapper -->
+                                        </form>
+                                    </div><!-- End .header-search -->
+                                </li>
                             </ul>
                         </nav>
                     </div>
 
                     <div class="header-left">
-                        <div class="header-search">
-                            <a href="#" class="search-toggle" role="button" title="Search"><i class="icon-search"></i></a>
-                            <form action="{{ url('search')}}" method="get">
-                                <div class="header-search-wrapper">
-                                    <label for="q" class="sr-only">البحث</label>
-                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search in..." required>
-                                </div><!-- End .header-search-wrapper -->
-                            </form>
-                        </div><!-- End .header-search -->
-
+                        
                         <div class="dropdown cart-dropdown">
                             <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <i class="icon-shopping-cart"></i>
                                 <span class="cart-count">2</span>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu dropdown-menu-left">
                                 <div class="dropdown-cart-products">
                                     <div class="product">
                                         <div class="product-cart-details">
@@ -147,4 +149,4 @@
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
             </div><!-- End .header-middle -->
-        </header><!-- End .header -->
+        </header><!-- End .header -->
