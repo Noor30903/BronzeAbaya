@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use App\Models\SubCategoryModel;
-
+use Str;
 use Auth;
 
 class SubCategoryController extends Controller
@@ -28,14 +28,14 @@ class SubCategoryController extends Controller
 
     public function insert(Request $request)
     {
-        request()->validate([
-            'slug' => 'required|unique:sub_category'
-        ]);
+        //request()->validate([
+          //  'slug' => 'required|unique:sub_category'
+        //]);
 
         $subcategory = new SubCategoryModel;
         $subcategory->category_id = trim($request->category_id);
         $subcategory->name = trim($request->name);
-        $subcategory->slug = trim($request->slug);
+        $subcategory->slug = Str::slug($request->name,"-");
         $subcategory->status = trim($request->status);
         $subcategory->meta_title = trim($request->meta_title);
         $subcategory->meta_description = trim($request->meta_description);
@@ -87,18 +87,19 @@ class SubCategoryController extends Controller
 
     public function get_sub_category(Request $request)
     {
-        $category_id= $request->id;
-        $get_sub_category = SubCategoryModel::getRecordCategory($category_id);
-        $html = '' ;
-        $html .= '<option value="" > Select </option>' ;
+        dd($request->all());
+        //$category_id= $request->id;
+        //$get_sub_category = SubCategoryModel::getRecordCategory($category_id);
+        //$html = '' ;
+        //$html .= '<option value="" > Select </option>' ;
 
-        foreach ($get_sub_category as $value)
-        {
-            $html .= '<option value="'.$value->id.'" > '.$value->name.' </option>' ;
-        }
+        //foreach ($get_sub_category as $value)
+        //{
+        //    $html .= '<option value="'.$value->id.'" > '.$value->name.' </option>' ;
+        //}
 
-        $json['html'] = $html;
-        echo json_encode($json);
+        //$json['html'] = $html;
+        //echo json_encode($json);
             
     }
  

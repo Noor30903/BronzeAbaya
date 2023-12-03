@@ -43,13 +43,6 @@
 
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>SKU <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" required value="{{old('sku', $product->sku)}}" name="sku" placeholder="SKU">
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
                         <label>الفئة <span style="color:red;">*</span></label>
                         <select class="form-control" required id="ChangeCategory" name="category_id">
                           <option value="">اختر</option>
@@ -65,9 +58,6 @@
                         <label>الفئة الفرعية <span style="color:red;">*</span></label>
                         <select class="form-control" required id="getSubCategory" name="sub_category_id">
                           <option value="">اختر</option>
-                          @foreach($getSubCategory as $subcategory)
-                            <option {{ ($product->sub_category_id == $subcategory->id) ? 'selected' : ''}} value="{{ $subcategory->id  }}">{{ $category->name }}</option>
-                          @endforeach
                         </select>
                       </div>
                     </div>
@@ -105,12 +95,6 @@
                       </div>
                     </div>
 
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>السعر القديم ($) <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" required value="{{ !empty($product->old_price) ? $product->old_price : '' }}" name="old_price" placeholder="السعر القديم">
-                      </div>
-                    </div>
                   </div>
 
                   <div class="row">
@@ -214,23 +198,6 @@
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>معلومات إضافية<span style="color:red;">*</span></label>
-                        <textarea name="additional_information" class="form-control editor" placeholder="معلومات إضافية">{{ $product->additional_information }}</textarea>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>الشحن والإرجاع <span style="color:red;">*</span></label>
-                            <textarea name="shipping_returns" class="form-control editor" placeholder="الشحن والإرجاع">{{ $product->shipping_returns }}</textarea>
-                        </div>
-                    </div>
-                  </div>
 
                 <hr>
 
@@ -264,12 +231,35 @@
 
 
 <script src="{{ url('public/tinymce/tinymce-jquery.min.js')}}"></script>
-<script src="{{ url('public/sortable/jquery-ui.js')}}"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script type="text/javascript">
+    $('body').delegate('.DeleteSize', 'click', function() {
+      var id = $(this).attr('id');
+      $('#DeleteSize'+id).remove();
+    });
 
-  $(document).ready(function()) {
-      $( "#sortable" ).sortable({
+    $('body').delegate('#ChangeCategory', 'change', function(e) {
+      var id = $(this).val();
+      $.ajax({
+        type : "POST",
+        url : "{{ url('admin/get_sub_category') }}",
+        data :{
+          "id" : id,
+          "_token":"{{ csrf_token() }}"
+        },
+        dataType : "json",
+        success: function(data) {
+          $('#getSubCategory').html(data.html);
+        },
+        error: function (data) {
+        }
+      });
+    });
+
+
+  $(document).ready(function() {
+      $('#sortable' ).sortable({
         update : function(event, ui) {
             var photo_id = new Array();
             $('.sortable_image').each(function() {
@@ -277,24 +267,24 @@
               photo_id.push(id);
             });
 
-        $.ajax({
-               type : "POST",
-               url : "{{ url('admin/product_image_sortable') }}",
-              data :{
-          "photo_id" : photo_id,
-          "_token":"{{ csrf_token() }}"
-        },
-        dataType : "json",
-        success: function(data) {
+            $.ajax({
+                type : "POST",
+                url : "{{ url('admin/product_image_sortable') }}",
+                data :{
+                "photo_id" : photo_id,
+                "_token":"{{ csrf_token() }}"
+                },
+                dataType : "json",
+                success: function(data) {
          
-        },
-        error: function (data) {
-        }
-      });
+                },
+                error: function (data) {
+                }
+            });
         }
 
       });
-  }
+  });
   
   $('.editor').tinymce({
         height: 500,
@@ -324,28 +314,6 @@
         i++;
         $('#AppendSize').append(html);
     });
-
-    $('body').delegate('.DeleteSize', 'click', function() {
-      var id = $(this).attr('id');
-      $('#DeleteSize'+id).remove();
-    });
-
-    $('body').delegate('#ChangeCategory', 'change', function(e) {
-      var id = $(this).val();
-      $.ajax({
-        type : "POST",
-        url : "{{ url('admin/get_sub_category') }}",
-        data :{
-          "id" : id,
-          "_token":"{{ csrf_token() }}"
-        },
-        dataType : "json",
-        success: function(data) {
-          $('#getSubCategory').html(data.html);
-        },
-        error: function (data) {
-        }
-      });
-    });
+    
 </script>
 @endsection

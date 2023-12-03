@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use Auth;
-
+use Str;
 class CategoryController extends Controller
 {
     public function list()
@@ -24,13 +24,13 @@ class CategoryController extends Controller
 
     public function insert(Request $request)
     {
-        request()->validate([
-            'slug' => 'required|unique:category'
-        ]);
+        //request()->validate([
+        //    'slug' => 'required|unique:category'
+        //]);
 
         $category = new CategoryModel;
         $category->name = trim($request->name);
-        $category->slug = trim($request->slug);
+        $category->slug = Str::slug($request->name,"-");
         $category->status = trim($request->status);
         $category->meta_title = trim($request->meta_title);
         $category->meta_description = trim($request->meta_description);
@@ -75,4 +75,5 @@ class CategoryController extends Controller
 
         return redirect()->back()->with('success',"Category Successfully Deleted");
     }
+    
 }

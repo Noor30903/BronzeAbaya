@@ -12,10 +12,6 @@ use App\Models\ProductColorModel;
 use App\Models\ProductSizeModel;
 use App\Models\ProductImageModel;
 
-
-
-
-
 use Str;
 use Auth;
 
@@ -109,15 +105,11 @@ class ProductController extends Controller
         {
 
             $product->title = trim($request->title);
-            $product->sku = trim($request->sku);
             $product->category_id = trim($request->category_id);
             $product->sub_category_id = trim($request->sub_category_id);
             $product->price = trim($request->price);
-            $product->old_price = trim($request->old_price);
             $product->short_description = trim($request->short_description);
             $product->description = trim($request->description);
-            $product->additional_information = trim($request->additional_information);
-            $product->shipping_returns = trim($request->shipping_returns);
             $product->status = trim($request->status);
             $product->save();
 
@@ -153,8 +145,6 @@ class ProductController extends Controller
                     
                 }
             }
-
-
             if(!empty($request->file('image')))
             {
                 foreach($request->file('image') as $value)
@@ -173,8 +163,6 @@ class ProductController extends Controller
                         $imageupload->save();
 
                     }
-                       
-
                 }
             }
             

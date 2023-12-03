@@ -45,12 +45,6 @@
                 </div>
 
                 <div class="form-group">
-                  <label>المعرف <span style="color:red">*</span></label>
-                  <input type="text" class="form-control" required value="{{old('slug')}}" name="slug" placeholder="مثال: رابط-الصفحة">
-                  <div style="color:red;">{{ $errors->first('slug')}}</div>
-                </div>
-
-                <div class="form-group">
                   <label>الحالة <span style="color:red">*</span></label>
                   <select class="form-control" required name="status">
                       <option {{(old('status') ==0)? 'selected':''}} value="0">نشط</option>

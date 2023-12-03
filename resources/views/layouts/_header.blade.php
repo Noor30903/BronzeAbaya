@@ -1,27 +1,18 @@
-<header class="header">
+<header class="header" dir="rtl" style="text-align: right;">
             <div class="header-top">
                 <div class="container">
-                    <div class="header-left">
-                        <div class="header-dropdown">
-                            <a href="#">USD</a>
-                            <div class="header-menu">
-                                <ul>
-                                    <li><a href="#">English</a></li>
-                                
-                                </ul>
-                            </div><!-- End .header-menu -->
-                        </div><!-- End .header-dropdown -->
-                    </div><!-- End .header-left -->
+                    
 
                     <div class="header-right">
                         <ul class="top-menu">
                             <li>
-                                
                                 <ul>
-                                    <li><a href="{{url('wishlist')}}"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li>
-                                    <li><a href="{{ route('about') }}">About Us</a></li>
-                                    <li><a href="{{url('contact')}}">Contact Us</a></li>
-                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
+                                    <li><a href="{{url('wishlist')}}"><i class="icon-heart-o"></i>قائمة امنياتي </a></li>
+                                    <li></li>
+                                    <li><a href="{{url('contact')}}">تواصل معنا</a></li>
+                                    <li><a href="{{ route('about') }}">من نحن</a></li>
+                                    
+                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>تسجيل الدخول</a></li>
                                 </ul>
                             </li>
                         </ul><!-- End .top-menu -->
@@ -31,7 +22,7 @@
 
             <div class="header-middle sticky-header">
                 <div class="container">
-                    <div class="header-left">
+                    <div class="header-right">
                         <button class="mobile-menu-toggler">
                             <span class="sr-only">Toggle mobile menu</span>
                             <i class="icon-bars"></i>
@@ -44,10 +35,10 @@
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
                                 <li class="megamenu-container active">
-                                    <a href="{{url('')}}">Home</a>
+                                    <a href="{{url('')}}">الصفحة الرئيسية</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('shop') }}" class="sf-with-ul">Shop</a>
+                                    <a href="{{ route('shop') }}" class="sf-with-ul">المتجر</a>
 
                                     <div class="megamenu megamenu-md">
                                         <div class="row no-gutters">
@@ -81,12 +72,12 @@
                         </nav>
                     </div>
 
-                    <div class="header-right">
+                    <div class="header-left">
                         <div class="header-search">
                             <a href="#" class="search-toggle" role="button" title="Search"><i class="icon-search"></i></a>
                             <form action="{{ url('search')}}" method="get">
                                 <div class="header-search-wrapper">
-                                    <label for="q" class="sr-only">Search</label>
+                                    <label for="q" class="sr-only">البحث</label>
                                     <input type="search" class="form-control" name="q" id="q" placeholder="Search in..." required>
                                 </div><!-- End .header-search-wrapper -->
                             </form>
