@@ -86,4 +86,6 @@ Route::get('{category?}/{subcategory?}', [ProductFront::class, 'getCategory']);
 
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 
+Route::post('/wishlist/list', [WishListController::class, 'list']);
+
 
