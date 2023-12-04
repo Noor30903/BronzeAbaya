@@ -69,4 +69,15 @@ class ProductController extends Controller
 
         return view('product.list', $data);
     }
+
+
+    public function show_item($id)
+    {
+        $data = [];
+        $data['header_title'] = 'Item';
+        $data['getProduct'] = ProductModel::getSingle($id);
+            
+
+        return view('item.list', $data);
+    }
 }
