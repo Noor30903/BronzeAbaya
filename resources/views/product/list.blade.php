@@ -59,7 +59,7 @@
                                     <div class="col-6 col-md-4 col-lg-3">
                                         <div class="product product-7 text-center">
                                             <figure class="product-media">
-                                                <a href="{{url ($value->slug)}}">
+                                                <a href="{{url('product/add/'.$value->id)}}">
                                                     @if (!empty($getProductImage) && !empty($getProductImage->getLogo()))
                                                     <img style= "heisht:280px;width:100%;object-fit;cover;"src="{{$getProductImage->getLogo()}}" alt="{{$value->title}}" class="product-image">
                                                     @endif

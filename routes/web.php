@@ -90,8 +90,11 @@ Route::get('wishlist/list', [WishListController::class, 'list']);
 Route::get('wishlist/add/{id}', [WishListController::class, 'insert']);
 Route::get('wishlist/delete/{id}', [WishListController::class, 'delete']);
 
-Route::get('product/list', [ProductController::class, 'show'])->name('shop');;
+Route::get('product/list', [ProductFront::class, 'show'])->name('shop');
 Route::get('{category?}/{subcategory?}', [ProductFront::class, 'getCategory']);
+
+Route::get('item/list', [ProductFront::class, 'show_item'])->name('item');
+
 
 
 
