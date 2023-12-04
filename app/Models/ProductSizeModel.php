@@ -11,9 +11,16 @@ class ProductSizeModel extends Model
 
     protected $table = 'product_size';
 
-    static public function DeleteRecord($product_id)
+    static public function getsizeRecord()
     {
-        self::where('product_id','=',$product_id)->delete(); 
+        return self::select('product_size.*')
+                ->orderBy('product_size.id','desc')
+                ->get();
+    }  
+
+    static public function DeleteRecord($id)
+    {
+        self::where('id','=',$id)->delete(); 
     }
 
 

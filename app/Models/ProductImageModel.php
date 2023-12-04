@@ -16,6 +16,14 @@ class ProductImageModel extends Model
         return ProductImageModel::find($id);
     }
 
+    static public function getimageRecord($productid)
+    {
+        return self::select('product_image.*')
+                ->where('product_image.product_id','=',$productid)
+                ->orderBy('product_image.id','desc')
+                ->get();
+    }  
+
     public function getLogo()
     {
         if(!empty($this->image_name) && file_exists('upload/product/' .$this->image_name))

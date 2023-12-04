@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use App\Models\SubCategoryModel;
 use App\Models\ProductModel;
-
-
+use App\Models\ProductSizeModel;
+use App\Models\ProductImageModel;
 
 class ProductController extends Controller
 {
@@ -76,7 +76,8 @@ class ProductController extends Controller
         $data = [];
         $data['header_title'] = 'Item';
         $data['getProduct'] = ProductModel::getSingle($id);
-            
+        $data['getsizeRecord'] = ProductSizeModel::getsizeRecord();
+        $data['getimageRecord'] = ProductImageModel::getimageRecord($id);
 
         return view('item.list', $data);
     }

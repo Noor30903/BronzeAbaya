@@ -100,53 +100,6 @@
 
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>الحجم<span style="color:red;">*</span></label>
-                        <div>
-                          <table class="table table-striped">
-                            <thead>
-                            <tr>
-                              <th>الاسم</th>
-                              <th>الإجراء</th>
-                            </tr>
-
-                            </thead>
-
-                            <tbody id="AppendSize">
-                              @php
-                                  $i_s = 1;
-                              @endphp
-                              @foreach($product->getSize as $size)
-
-                                <tr id="DeleteSize{{$i_s}}">
-                                  <td> <input type="text" value="{{ $size->name }}" name="size[{{$i_s}}][name]" placeholder="الاسم" class="form-control"></td>
-                                  <td>
-                                  <button type="button" id="{{$i_s}}" class="btn btn-danger DeleteSize">حذف</button>
-                                  
-                                  </td>
-                                </tr>
-                             
-                              @php
-                                  $i_s++;
-                              @endphp
-                             @endforeach
-                             <tr>
-                                  <td> <input type="text"  name="size[100][name]" placeholder="الاسم" class="form-control"></td>
-
-                                  <td>
-                                  <button type="button" class="btn btn-primary AddSize">إضافة</button>
-                                  
-                                  </td>
-                                </tr>
-                            </tbody>
-                            
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
                   <hr>
 
@@ -231,10 +184,7 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script type="text/javascript">
-    $('body').delegate('.DeleteSize', 'click', function() {
-      var id = $(this).attr('id');
-      $('#DeleteSize'+id).remove();
-    });
+
 
     $('body').delegate('#ChangeCategory', 'change', function(e) {
       var id = $(this).val();
@@ -283,22 +233,7 @@
       });
   });
   
-  
 
-    var i=100;
-    $('body').delegate('.AddSize', 'click', function() {
-      
-      var html = '<tr id="DeleteSize'+i+'">\n\
-                      <td>\n\
-                        <input type="text" name="size['+i+'][name]" placeholder="Name" class="form-control">\n\
-                      </td>\n\
-                      <td>\n\
-                        <button type="button" id="'+i+'" class="btn btn-danger DeleteSize">Delete</button>\n\
-                      </td>\n\
-                    </tr>';
-        i++;
-        $('#AppendSize').append(html);
-    });
     
 </script>
 @endsection

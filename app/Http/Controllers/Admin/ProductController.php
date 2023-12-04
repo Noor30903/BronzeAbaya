@@ -9,7 +9,7 @@ use App\Models\CategoryModel;
 use App\Models\ColorModel;
 use App\Models\SubCategoryModel;
 use App\Models\ProductColorModel;
-use App\Models\ProductSizeModel;
+
 use App\Models\ProductImageModel;
 
 use Str;
@@ -103,25 +103,6 @@ class ProductController extends Controller
                 }
             }
 
-            ProductSizeModel::DeleteRecord($product->id);
-
-
-            if(!empty($request->size))
-            {
-                foreach($request->size as $size)
-                {
-                    if(!empty($size['name']))
-                    {
-
-                        $saveSize = new ProductSizeModel;
-                        $saveSize->name = $size['name'];
-                        $saveSize->product_id = $product_id;
-                        $saveSize->save();
-
-                    }
-                    
-                }
-            }
             if(!empty($request->file('image')))
             {
                 foreach($request->file('image') as $value)

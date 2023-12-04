@@ -14,6 +14,9 @@
             </nav><!-- End .breadcrumb-nav -->
 
             <div class="page-content">
+            @php
+                $getProductImage = $getProduct->getImageSingle($getProduct->id);
+            @endphp
                 <div class="container">
                     <div class="product-details-top">
                         <div class="row">
@@ -21,37 +24,32 @@
                                 <div class="product-gallery product-gallery-vertical">
                                     <div class="row">
                                         <figure class="product-main-image">
-                                            <img id="product-zoom" src="assets/images/products/single/1.jpg" data-zoom-image="assets/images/products/single/1-big.jpg" alt="product image">
-
-                                            <a href="#" id="btn-product-gallery" class="btn-product-gallery">
-                                                <i class="icon-arrows"></i>
-                                            </a>
+                                                
+                                            <img id="product-zoom" src="{{$getProductImage->getLogo()}}" data-zoom-image="" alt="product image">
+                                                
                                         </figure><!-- End .product-main-image -->
 
                                         <div id="product-zoom-gallery" class="product-image-gallery">
-                                            <a class="product-gallery-item active" href="#" data-image="assets/images/products/single/1.jpg" data-zoom-image="assets/images/products/single/1-big.jpg">
-                                                <img src="assets/images/products/single/1-small.jpg" alt="product side">
-                                            </a>
+                                        @foreach($getimageRecord as $image)
+         
+                                        <a class="product-gallery-item" href="#" onclick="changeMainImage('{{$image->getLogo()}}'); return false;">
+                                            <img src="{{$image->getLogo()}}" alt="Image Desc">
+                                        </a>
 
-                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/2.jpg" data-zoom-image="assets/images/products/single/2-big.jpg">
-                                                <img src="assets/images/products/single/2-small.jpg" alt="product cross">
-                                            </a>
-
-                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/3.jpg" data-zoom-image="assets/images/products/single/3-big.jpg">
-                                                <img src="assets/images/products/single/3-small.jpg" alt="product with model">
-                                            </a>
-
-                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/4.jpg" data-zoom-image="assets/images/products/single/4-big.jpg">
-                                                <img src="assets/images/products/single/4-small.jpg" alt="product back">
-                                            </a>
+                                        @endforeach
                                         </div><!-- End .product-image-gallery -->
                                     </div><!-- End .row -->
                                 </div><!-- End .product-gallery -->
-                            </div><!-- End .col-md-6 -->
+ 
+                                  
+                            </div><!-- End .col-md-6 -->            
+                        
+                                
+                            
 
                             <div class="col-md-6">
                                 <div class="product-details">
-                                    <h1 class="product-title">Dark yellow lace cut out swing dress</h1><!-- End .product-title -->
+                                    <h1 class="product-title">{{$getProduct->title}}</h1><!-- End .product-title -->
 
                                     <div class="ratings-container">
                                         <div class="ratings">
@@ -61,38 +59,26 @@
                                     </div><!-- End .rating-container -->
 
                                     <div class="product-price">
-                                        $84.00
+                                        {{$getProduct->price}}
                                     </div><!-- End .product-price -->
 
                                     <div class="product-content">
-                                        <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing. Sed lectus. </p>
+                                        <p> {{$getProduct->short_description}}</p>
                                     </div><!-- End .product-content -->
 
                                     <div class="details-filter-row details-row-size">
-                                        <label>Color:</label>
-
-                                        <div class="product-nav product-nav-thumbs">
-                                            <a href="#" class="active">
-                                                <img src="assets/images/products/single/1-thumb.jpg" alt="product desc">
-                                            </a>
-                                            <a href="#">
-                                                <img src="assets/images/products/single/2-thumb.jpg" alt="product desc">
-                                            </a>
-                                        </div><!-- End .product-nav -->
-                                    </div><!-- End .details-filter-row -->
-
-                                    <div class="details-filter-row details-row-size">
                                         <label for="size">Size:</label>
+                                       
                                         <div class="select-custom">
                                             <select name="size" id="size" class="form-control">
+
                                                 <option value="#" selected="selected">Select a size</option>
-                                                <option value="s">Small</option>
-                                                <option value="m">Medium</option>
-                                                <option value="l">Large</option>
-                                                <option value="xl">Extra Large</option>
+                                                @foreach($getsizeRecord as $size)
+                                                    <option value="{{$size->id}}" selected="selected">{{$size->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div><!-- End .select-custom -->
-
+                                        
                                         <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a>
                                     </div><!-- End .details-filter-row -->
 
@@ -104,20 +90,11 @@
                                     </div><!-- End .details-filter-row -->
 
                                     <div class="product-details-action">
-                                        <a href="{{url('cart/add/'.$value->id)}}" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        <a href="{{url('cart/add/'.$getProduct->id)}}" class="btn-product btn-cart"><span>add to cart</span></a>
 
                                     </div><!-- End .product-details-action -->
 
-                                    <div class="product-details-footer">
-                                        <div class="product-cat">
-                                            <span>Category:</span>
-                                            <a href="#">Women</a>,
-                                            <a href="#">Dresses</a>,
-                                            <a href="#">Yellow</a>
-                                        </div><!-- End .product-cat -->
-
-    
-                                    </div><!-- End .product-details-footer -->
+                                    
                                 </div><!-- End .product-details -->
                             </div><!-- End .col-md-6 -->
                         </div><!-- End .row -->
@@ -447,4 +424,14 @@
             </div><!-- End .page-content -->
         </main><!-- End .main -->
 
+@endsection
+
+@section('script')
+<script type="text/javascript">
+    function changeMainImage(imageSrc) {
+        var mainImage = document.getElementById('product-zoom');
+        mainImage.src = imageSrc;
+    }
+     
+</script>
 @endsection
