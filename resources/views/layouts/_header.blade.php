@@ -7,7 +7,7 @@
                         <ul class="top-menu">
                             <li>
                                 <ul>
-                                    <li><a href="{{url('wishlist')}}"><i class="icon-heart-o"></i>قائمة امنياتي </a></li>
+                                    <li><a href="{{url('wishlist/list')}}"><i class="icon-heart-o"></i>قائمة امنياتي </a></li>
                                     <li></li>
                                     <li><a href="{{url('contact')}}">تواصل معنا</a></li>
                                     <li><a href="{{ url('about') }}">من نحن</a></li>

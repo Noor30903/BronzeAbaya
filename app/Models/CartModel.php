@@ -23,4 +23,6 @@ class CartModel extends Model
                 ->where('cart.user_id','=',Auth::user()->id)
                 ->paginate(50);
     }
+
+    
 }

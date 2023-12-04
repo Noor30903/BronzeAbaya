@@ -101,7 +101,7 @@
                                                 
 											    <td class="total-col">{{$productTotal = $value->product_price * $value->product_quantity  }}</td>
                                                 
-											    <td class="remove-col" id="deleteitem"><a href="{{url('cart/delete/'.$value->product_id)}}" class="btn-remove"><i class="icon-close"></i></a></td>
+											    <td class="remove-col" id="deleteitem"><a href="{{url('cart/delete/'.$value->id)}}" class="btn-remove"><i class="icon-close"></i></a></td>
 										</tr>
 										@php $totalcost += $productTotal; @endphp
 										

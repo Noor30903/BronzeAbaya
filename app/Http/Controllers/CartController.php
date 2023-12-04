@@ -28,8 +28,14 @@ class CartController extends Controller
         
     }
 
+
     public function insert($productid)
     {
+        if(empty(Auth::check()))
+		{
+            return redirect('admin');
+            
+		}
         $user_id = Auth::user()->id;
         $cart = CartModel::where('user_id', $user_id)->first();
     
@@ -49,7 +55,8 @@ class CartController extends Controller
         $cart->save();
         $cartitem->save();
     
-        return redirect('cart/list')->with('success', "Product added to cart successfully");
+        return redirect('product/list')->with('success', "Product added to cart successfully");
+
 
     }
 
@@ -76,9 +83,15 @@ class CartController extends Controller
 
     public function delete($id)
     {
-
+        $cartItem = CartItemModel::find($id);
+        $cartID = $cartItem->cart_id;
+        $cart= CartModel::find($cartID);
+        $productid = $cartItem->product_id;
+        $product = ProductModel::getSingle($productid);
+        $cart->totalcost -= $product->price;
+        $cart->save();
         CartItemModel::DeleteRecord($id);
-
+        
         return redirect()->back()->with('success',"Item Successfully Deleted");
     }
 

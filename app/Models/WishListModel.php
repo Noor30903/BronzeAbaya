@@ -21,7 +21,7 @@ class WishListModel extends Model
     static public function getRecord()
     {
         return self::select('wishlist.*','users.is')
-                ->join('wishlist', 'wishlist.user_id','=','users.id')
+                ->join('users', 'wishlist.user_id', '=', 'users.id')
                 ->where('wishlist.user_id','=',Auth::user()->id)
                 ->paginate(50);
     }

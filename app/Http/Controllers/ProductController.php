@@ -47,4 +47,26 @@ class ProductController extends Controller
             abort(404);
         }
     }
+    public function show(Request $request)
+    {
+        $data = [];
+        $data['header_title'] = 'Shop';
+
+        $categorySlug = $request->input('category');
+        $subCategorySlug = $request->input('subcategory');
+
+        if ($categorySlug) {
+            $category = CategoryModel::where('slug', $categorySlug)->firstOrFail();
+            $data['getProduct'] = ProductModel::getProduct($category->id, null);
+            $data['getCategory'] = $category;
+        } elseif ($subCategorySlug) {
+            $subCategory = SubCategoryModel::where('slug', $subCategorySlug)->firstOrFail();
+            $data['getProduct'] = ProductModel::getProduct(null, $subCategory->id);
+            $data['getSubCategory'] = $subCategory;
+        } else {
+            $data['getProduct'] = ProductModel::getRecord(); // Fetches all products
+        }
+
+        return view('product.list', $data);
+    }
 }

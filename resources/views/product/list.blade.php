@@ -33,6 +33,7 @@
                 <div class="container">
                 	<div class="row">
                 		<div class="col-lg-12">
+                        @include('admin.layouts._message')
                 			<div class="toolbox">
                 				<div class="toolbox-right"   >
                 					<div class="toolbox-sort">
@@ -65,7 +66,7 @@
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>اضف إلى قائمة الامنيات</span></a>
+                                                    <a href="{{url('wishlist/add/'.$value->id)}}" class="btn-product-icon btn-wishlist btn-expandable"><span>اضف إلى قائمة الامنيات</span></a>
 
                                                 </div>
 
