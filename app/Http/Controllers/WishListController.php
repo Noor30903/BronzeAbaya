@@ -30,30 +30,28 @@ class WishListController extends Controller
 
     public function insert($productid)
     {
-        if(!empty(Auth::check()))
-		{
+        //if(!empty(Auth::check()))
+		//{
             
 		
-            $user_id = Auth::user()->id;
-            $wishList = WishListModel::where('user_id', $user_id)->first();
-    
-            if (!$wishList) {
-                $wishList = new WishListModel;
-                $wishList->user_id = $user_id;
-                $wishList->save();
-            }
-    
-            $WishListItem = new WishListItemModel;
-            $WishListItem->wishlist_id = $wishList->id;
-            $WishListItem->product_id = $productid;
-    
+        $user_id = Auth::user()->id;
+        $wishList = WishListModel::where('user_id', $user_id)->first();
+
+        if (!$wishList) {
+            $wishList = new WishListModel;
+            $wishList->user_id = $user_id;
             $wishList->save();
-            $WishListItem->save();
-    
-            return redirect('product/list')->with('success', "Product added to Wishlist successfully");
-        }else{
-            return redirect('admin');
         }
+
+        $WishListItem = new WishListItemModel;
+        $WishListItem->wishlist_id = $wishList->id;
+        $WishListItem->product_id = $productid;
+
+        $wishList->save();
+        $WishListItem->save();
+
+        return redirect('product/list')->with('success', "Product added to Wishlist successfully");
+        
 
     }
 

@@ -23,4 +23,9 @@ class OrderModel extends Model
                 ->where('order.user_id','=',Auth::user()->id)
                 ->paginate(50);
     }
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItemModel::class, 'order_id');
+    }
+
 }

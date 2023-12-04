@@ -31,11 +31,11 @@ class CartController extends Controller
 
     public function insert($productid)
     {
-        if(empty(Auth::check()))
-		{
-            return redirect('admin');
-            
-		}
+        //if(empty(Auth::check()))
+	    //{
+        //    return redirect('admin');
+        //    
+	    //}
         $user_id = Auth::user()->id;
         $cart = CartModel::where('user_id', $user_id)->first();
     

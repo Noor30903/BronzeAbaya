@@ -3,62 +3,67 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\OrderItemModel;
+use App\Models\OrderModel;
+use App\Models\AddressModel;
+use App\Models\CartModel;
+use App\Models\CartItemModel;
+use Auth;
 class OrderController extends Controller
 {
     public function list()
     {
-        $WishListItem = WishListItemModel::getRecord();
-        foreach ($WishListItem as $item) {
-            $productImage = ProductModel::getImageSingle($item->product_id);
-            $item->productImage = $productImage ? $productImage->getLogo() : 'path/to/default/image.jpg'; // Replace with your default image path
-        }
+        $userId = Auth::user()->id; // Assuming you're getting the current user's ID
+        $cart = CartModel::where('user_id', $userId)->first(); // Get the user's cart
+        
 
+        $cartItems = CartItemModel::getRecord(); 
         $data = [
-            'getRecord' => $WishListItem,
-            'header_title' => 'Wish List'
+            'cart' => $cart,
+            'cartItems' => $cartItems,
+            'header_title' => 'Checkout',
         ];
-    
-        return view('wishlist.list', $data);
+
+        return view('checkout.list', $data);
+    }
+
+    public function insert(Request $request)
+    {
+        $order = new OrderModel;
+        $order->user_id = Auth::user()->id;
+
+        $cart = CartModel::where('user_id', $order->user_id)->first();
+        $cartItems = CartItemModel::getRecord(); 
+        $order->totalcost = $cart->totalcost;
+        $order->status = 0;
+        $order->notes = $request->notes;
+        $order->save();
+        foreach($cartItems as $item){
+            $orderitem = new OrderItemModel;
+            $orderitem->order_id = $order->id;
+            $orderitem->product_id = $item->product_id;
+            $orderitem->product_quantity = $item->product_quantity;
+            $orderitem->save();
+
+            $item->DeleteRecord($item->id);
+        }
 
         
+
+        
+        $address = new AddressModel;
+        $address->user_id = Auth::user()->id;
+        $address->city= $request->city;
+        $address->country= $request->country;
+        $address->street= $request->street;
+
+        $cart->DeleteRecord($cart->id);
+        $address->save();
+        
+
+        return redirect('product/list')->with('success', "Order added successfully");
     }
 
-    public function insert($productid)
-    {
-        if(!empty(Auth::check()))
-		{
-            
-		
-            $user_id = Auth::user()->id;
-            $wishList = WishListModel::where('user_id', $user_id)->first();
-    
-            if (!$wishList) {
-                $wishList = new WishListModel;
-                $wishList->user_id = $user_id;
-                $wishList->save();
-            }
-    
-            $WishListItem = new WishListItemModel;
-            $WishListItem->wishlist_id = $wishList->id;
-            $WishListItem->product_id = $productid;
-    
-            $wishList->save();
-            $WishListItem->save();
-    
-            return redirect('product/list')->with('success', "Product added to Wishlist successfully");
-        }else{
-            return redirect('admin');
-        }
 
-    }
-
-    public function delete($id)
-    {
-
-        WishListItemModel::DeleteRecord($id);
-
-        return redirect()->back()->with('success',"Item Successfully Deleted");
-    }
 
 }

@@ -17,34 +17,35 @@
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
 
-            <div class="page-content">
+            <div class="page-content" dir="rtl" style="text-align: right;">
             	<div class="checkout">
 	                <div class="container">
-            			<form action="#">
+            			<form action="{{ url('checkout/add') }}" method="post">
+							@csrf
 		                	<div class="row">
 		                		<div class="col-lg-9">
-		                			<h2 class="checkout-title">تفاصيل الفاتورة </h2><!-- End .checkout-title -->
+		                			<h2 class="checkout-title">تفاصيل الطلب </h2><!-- End .checkout-title -->
 		                				
 
 	            						<label>البلد* </label>
-	            						<input type="text" class="form-control" required>
+	            						<input type="text" name="country" class="form-control" required>
 
-	            						<label>عنوان الشارع *</label>
-	            						<input type="text" class="form-control" placeholder="House number and Street name" required>
-	            						<input type="text" class="form-control" placeholder="Appartments, suite, unit etc ..." required>
+	            						
+		                					
+		                				<label>المدينة *</label>
+		                				<input type="text" name="city" class="form-control" required>
+		                					
 
-	            						<div class="row">
-		                					<div class="col-sm-6">
-		                						<label>المدينة *</label>
-		                						<input type="text" class="form-control" required>
-		                					</div><!-- End .col-sm-6 -->
+		                				
 
-		                				</div><!-- End .row -->
-
+										<label>عنوان الشارع *</label>
+	            						<input type="text" name="street" class="form-control" placeholder="اسم الشارع" required>
+	            						
 	                					<label>ملاحظات الطلب (اختياري)</label>
-	        							<textarea class="form-control" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
+	        							<textarea class="form-control" cols="30" rows="4" name="notes" placeholder="ملاحظاتك للطلب، معلومات اضافية للطلب"></textarea>
 		                		</div><!-- End .col-lg-9 -->
 		                		<aside class="col-lg-3">
+
 		                			<div class="summary">
 		                				<h3 class="summary-title">طلبك</h3><!-- End .summary-title -->
 
@@ -57,14 +58,15 @@
 		                					</thead>
 
 		                					<tbody>
-		                						<tr>
-		                							<td><a href="#">Beige knitted elastic runner shoes</a></td>
-		                							<td>$84.00</td>
-		                						</tr>
-		                						
+												@foreach($cartItems as $value)
+		                							<tr>
+		                								<td><a href="#">{{$value->product_title}}</a></td>
+		                								<td>{{$value->product_price}}</td>
+		                							</tr>
+		                						@endforeach
 		                						<tr class="summary-subtotal">
 		                							<td>المجموع الفرعي:</td>
-		                							<td></td>
+		                							<td>{{$cart->totalcost}} SAR</td>
 		                						</tr><!-- End .summary-subtotal -->
 		                						<tr>
 		                							<td>الشحن:</td>
@@ -72,7 +74,7 @@
 		                						</tr>
 		                						<tr class="summary-total">
 		                							<td>المجموع:</td>
-		                							<td></td>
+		                							<td>{{ 35 + $cart->totalcost}} SAR</td>
 		                						</tr><!-- End .summary-total -->
 		                					</tbody>
 		                				</table><!-- End .table table-summary -->
@@ -106,8 +108,8 @@
 										        </div><!-- End .collapse -->
 										    </div><!-- End .card -->
 		                				<button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
-		                					<span class="btn-text">Place Order</span>
-		                					<span class="btn-hover-text">Proceed to Checkout</span>
+		                					<span class="btn-text">رفع الطلب</span>
+		                					<span class="btn-hover-text">الانتقال الى الدفع</span>
 		                				</button>
 		                			</div><!-- End .summary -->
 		                		</aside><!-- End .col-lg-3 -->

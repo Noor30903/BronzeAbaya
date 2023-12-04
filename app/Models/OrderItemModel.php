@@ -24,9 +24,11 @@ class OrderItemModel extends Model
                     ->where('order.user_id', Auth::user()->id)
                     ->paginate(50);
     }
-    
-    static public function DeleteRecord($id) 
+    public function order()
     {
-        self::where('id', '=',$id)->delete();
+        return $this->belongsTo(OrderModel::class, 'order_id');
     }
+
+    
+
 }

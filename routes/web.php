@@ -13,6 +13,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController as ProductFront;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\WishListController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,11 @@ Route::get('cart/list', [CartController::class, 'list']);
 Route::get('cart/add/{id}', [CartController::class, 'insert']);
 Route::post('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::get('cart/delete/{id}', [CartController::class, 'delete']);
+
+Route::get('checkout/list', [OrderController::class, 'list']);
+Route::post('checkout/add', [OrderController::class, 'insert']);
+
+
 
 
 Route::get('wishlist/list', [WishListController::class, 'list']);
