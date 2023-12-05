@@ -9,6 +9,10 @@ use App\Models\ProductModel;
 use Auth;
 class WishListController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
    
     public function list()
     {
@@ -30,10 +34,7 @@ class WishListController extends Controller
 
     public function insert($productid)
     {
-        //if(!empty(Auth::check()))
-		//{
-            
-		
+        
         $user_id = Auth::user()->id;
         $wishList = WishListModel::where('user_id', $user_id)->first();
 

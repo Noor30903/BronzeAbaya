@@ -69,6 +69,12 @@
                                 </li>
 
                                 <li>
+                                    
+                                    <a href="{{route('account')}}" class="megamenu-container">حسابي</a>
+
+                                </li>
+
+                                <li>
                                     <div class="header-search">
                                         <a href="#" class="search-toggle" role="button" title="Search"><i class="icon-search"></i></a>
                                         <form action="{{ url('search')}}" method="get">

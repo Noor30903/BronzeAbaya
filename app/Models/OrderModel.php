@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class OrderModel extends Model
 {
     use HasFactory;
@@ -21,7 +21,7 @@ class OrderModel extends Model
         return self::select('order.*','users.id')
                 ->join('users', 'order.user_id', '=', 'users.id')
                 ->where('order.user_id','=',Auth::user()->id)
-                ->paginate(50);
+                ->get();
     }
     public function orderItems()
     {

@@ -197,6 +197,15 @@
    
     
     <!-- Plugins JS File -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.location.search.includes('login=true')) {
+                $('#signin-modal').modal('show');
+            }
+        });
+        
+        // Assuming '#signin-modal' is the ID of your login modal
+    </script>
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('assets/js/jquery.hoverIntent.min.js') }}"></script>

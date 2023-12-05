@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class AddressModel extends Model
 {
     use HasFactory;
@@ -21,7 +21,7 @@ class AddressModel extends Model
         return self::select('address.*','users.id')
                 ->join('users', 'address.user_id', '=', 'users.id')
                 ->where('address.user_id','=',Auth::user()->id)
-                ->paginate(50);
+                ->get();
     }
 
 }

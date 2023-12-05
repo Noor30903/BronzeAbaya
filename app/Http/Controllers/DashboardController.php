@@ -11,12 +11,23 @@ use Auth;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function list()
     {
-        $data['getUser']= User::getUser();
-        $data['getOrderRecord'] = OrderModel::getRecord();
-        $data['getUserAddress'] = AddressModel::getRecord();
-        $data['header_title']= 'account';
+        $user = Auth::user();
+        $orders = OrderModel::getRecord();
+        $addresses = AddressModel::getRecord();
+        $data = [
+            'user' => $user,
+            'orders' => $orders,
+            'addresses' => $addresses,
+            'header_title' => 'Account'
+        ];
+        
         return view('account.list',$data);
     }
+    
 }

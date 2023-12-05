@@ -10,6 +10,10 @@ use Auth;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function list()
     {
         $cartItems = CartItemModel::getRecord();
@@ -28,14 +32,9 @@ class CartController extends Controller
         
     }
 
-
     public function insert($productid)
     {
-        //if(empty(Auth::check()))
-	    //{
-        //    return redirect('admin');
-        //    
-	    //}
+        
         $user_id = Auth::user()->id;
         $cart = CartModel::where('user_id', $user_id)->first();
     
@@ -56,7 +55,6 @@ class CartController extends Controller
         $cartitem->save();
     
         return redirect('product/list')->with('success', "Product added to cart successfully");
-
 
     }
 
@@ -94,5 +92,7 @@ class CartController extends Controller
         
         return redirect()->back()->with('success',"Item Successfully Deleted");
     }
+
+    
 
 }

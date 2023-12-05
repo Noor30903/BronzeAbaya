@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController as ProductFront;
+use App\Http\Controllers\DashboardController as UserDashboardController;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\WishListController;
 use App\Http\Controllers\OrderController;
@@ -32,12 +33,31 @@ Route::post('admin', [AuthController::class, 'auth_login_admin']);
 
 Route::get('admin/logout', [AuthController::class, 'logout_admin']);
 
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+
 Route::post('/login', [AuthController::class,'login_user']);
 
 Route::post('/register', [AuthController::class,'register_user']);
 
 Route::get('/logout', [AuthController::class,'logout']);
 
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('account/list', [UserDashboardController::class, 'list'])->name('account');
+
+    Route::get('cart/list', [CartController::class, 'list']);
+    Route::get('cart/add/{id}', [CartController::class, 'insert']);
+    Route::post('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::get('cart/delete/{id}', [CartController::class, 'delete']);
+    
+    Route::get('checkout/list', [OrderController::class, 'list']);
+    Route::post('checkout/add', [OrderController::class, 'insert']);
+    
+    Route::get('wishlist/list', [WishListController::class, 'list']);
+    Route::get('wishlist/add/{id}', [WishListController::class, 'insert']);
+    Route::get('wishlist/delete/{id}', [WishListController::class, 'delete']);
+    
+});
 
 Route::group (['middleware' => 'admin'], function () {
 
@@ -83,22 +103,11 @@ Route::group (['middleware' => 'admin'], function () {
     Route::post(' admin/product_image_sortable', [ProductController::class, 'product_image_sortable']);
 });
 
+
+
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/about', [StaticPagesController::class, 'aboutUs'])->name('about');
 Route::get('/search', [ProductFront::class, 'show_search']);
-
-
-Route::get('cart/list', [CartController::class, 'list']);
-Route::get('cart/add/{id}', [CartController::class, 'insert']);
-Route::post('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
-Route::get('cart/delete/{id}', [CartController::class, 'delete']);
-
-Route::get('checkout/list', [OrderController::class, 'list']);
-Route::post('checkout/add', [OrderController::class, 'insert']);
-
-Route::get('wishlist/list', [WishListController::class, 'list']);
-Route::get('wishlist/add/{id}', [WishListController::class, 'insert']);
-Route::get('wishlist/delete/{id}', [WishListController::class, 'delete']);
 
 Route::get('product/list', [ProductFront::class, 'show'])->name('shop');
 Route::get('{category?}/{subcategory?}', [ProductFront::class, 'getCategory']);

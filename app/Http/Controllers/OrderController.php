@@ -11,6 +11,10 @@ use App\Models\CartItemModel;
 use Auth;
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function list()
     {
         $userId = Auth::user()->id; // Assuming you're getting the current user's ID
@@ -48,9 +52,6 @@ class OrderController extends Controller
             $item->DeleteRecord($item->id);
         }
 
-        
-
-        
         $address = new AddressModel;
         $address->user_id = Auth::user()->id;
         $address->city= $request->city;
@@ -63,7 +64,5 @@ class OrderController extends Controller
 
         return redirect('product/list')->with('success', "Order added successfully");
     }
-
-
-
+    
 }

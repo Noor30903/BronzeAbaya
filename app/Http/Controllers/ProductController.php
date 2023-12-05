@@ -47,6 +47,7 @@ class ProductController extends Controller
             abort(404);
         }
     }
+
     public function show(Request $request)
     {
         $data = [];
@@ -103,4 +104,5 @@ class ProductController extends Controller
         
         return view('item.list', $data);
     }
+    
 }
