@@ -18,7 +18,7 @@ class OrderModel extends Model
 
     static public function getRecord()
     {
-        return self::select('order.*','users.is')
+        return self::select('order.*','users.id')
                 ->join('users', 'order.user_id', '=', 'users.id')
                 ->where('order.user_id','=',Auth::user()->id)
                 ->paginate(50);

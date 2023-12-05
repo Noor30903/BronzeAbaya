@@ -56,6 +56,15 @@ class User extends Authenticatable
                 ->orderBy('id', 'desc')
                 ->get();
     }
+
+    static public function getUser()
+    {
+        return User::select ('users.*')
+                ->where('is_admin', '=', 0)
+                ->where('is_delete', '=', 0)
+                ->orderBy('id', 'desc')
+                ->get();
+    }
         
     }
 
