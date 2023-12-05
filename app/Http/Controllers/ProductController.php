@@ -83,12 +83,24 @@ class ProductController extends Controller
 
     public function show_item($id)
     {
-        $data = [];
-        $data['header_title'] = 'Item';
-        $data['getProduct'] = ProductModel::getSingle($id);
-        $data['getsizeRecord'] = ProductSizeModel::getsizeRecord();
-        $data['getimageRecord'] = ProductImageModel::getimageRecord($id);
+        $item = ProductModel::getSingle($id);
+        $products = ProductModel::getProduct($item->category_id, null);
+        $productsWithImages = [];
 
+        foreach ($products as $product) {
+            $images = ProductImageModel::getimageRecord($product->id);
+            $product->images = $images->take(2); // Assuming getimageRecord returns a collection
+            $productsWithImages[] = $product;
+        }
+
+        $data = [
+            'getProduct' => ProductModel::getSingle($id),
+            'getsizeRecord' => ProductSizeModel::getsizeRecord(),
+            'getimageRecord' => ProductImageModel::getimageRecord($id),
+            'header_title'  =>'Item',
+            'getSimilarProducts' => $productsWithImages,
+        ];
+        
         return view('item.list', $data);
     }
 }

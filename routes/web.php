@@ -96,9 +96,6 @@ Route::get('cart/delete/{id}', [CartController::class, 'delete']);
 Route::get('checkout/list', [OrderController::class, 'list']);
 Route::post('checkout/add', [OrderController::class, 'insert']);
 
-
-
-
 Route::get('wishlist/list', [WishListController::class, 'list']);
 Route::get('wishlist/add/{id}', [WishListController::class, 'insert']);
 Route::get('wishlist/delete/{id}', [WishListController::class, 'delete']);
