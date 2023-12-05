@@ -152,15 +152,17 @@
                                     }
                                 }
                             }'>
+                            @foreach($getProduct as $value)
                             <div class="product product-11 text-center">
-                                @foreach($getProduct as $value)
-                                @php
-                                    $getProductImage = $value->getImageSingle($value->id);
-                                @endphp
                                 <figure class="product-media">
                                     <a href="{{url('item/list/'.$value->id)}}">
-                                        <img src="{{$getProductImage->getLogo()}}" alt="Product image" class="product-image">
-                                        <img src="{{$getProductImage->getLogo()}}" alt="Product image" class="product-image-hover">
+                                        @if(isset($value->images[0]))
+                                            <img src="{{ $value->images[0]->getLogo() }}" alt="Product image" class="product-image">
+                                        @endif
+
+                                        @if(isset($value->images[1]))
+                                             <img src="{{ $value->images[1]->getLogo() }}" alt="Product image" class="product-image-hover">
+                                        @endif
                                     </a>
 
                                     <div class="product-action-vertical">
