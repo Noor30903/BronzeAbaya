@@ -60,8 +60,7 @@
 
 	        <div class="footer-bottom">
 	        	<div class="container">
-				<strong>حقوق النشر &copy; {{ date('Y') }} BronzAbaya.com</strong> جميع الحقوق محفوظة.
-	        		
+				<strong>حقوق النشر &copy; {{ date('Y') }} BronzAbaya.com</strong> جميع الحقوق محفوظة.	
 	        	</div><!-- End .container -->
 	        </div><!-- End .footer-bottom -->
-        </footer><!-- End .footer -->
+</footer><!-- End .footer -->

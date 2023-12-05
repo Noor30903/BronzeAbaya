@@ -11,7 +11,6 @@
                                     <li></li>
                                     <li><a href="{{url('contact')}}">تواصل معنا</a></li>
                                     <li><a href="{{ url('about') }}">من نحن</a></li>
-                                    
                                     <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>تسجيل الدخول</a></li>
                                 </ul>
                             </li>
@@ -68,13 +67,14 @@
                                         </div>
                                     </div>
                                 </li>
+
                                 <li>
                                     <div class="header-search">
                                         <a href="#" class="search-toggle" role="button" title="Search"><i class="icon-search"></i></a>
                                         <form action="{{ url('search')}}" method="get">
                                             <div class="header-search-wrapper">
                                                 <label for="q" class="sr-only">البحث</label>
-                                                <input type="search" class="form-control" name="q" id="q" placeholder="Search in..." required>
+                                                <input type="search" class="form-control" name="search_data" id="q" placeholder="Search in..." required>
                                             </div><!-- End .header-search-wrapper -->
                                         </form>
                                     </div><!-- End .header-search -->

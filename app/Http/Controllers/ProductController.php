@@ -70,6 +70,16 @@ class ProductController extends Controller
         return view('product.list', $data);
     }
 
+    public function show_search(Request $request)
+    {
+ 
+        $data = [];
+        $data['header_title'] = 'Result';
+        $data['getProduct'] = ProductModel::getSearch($request->search_data);
+        
+        return view('product.list', $data);
+    }
+
 
     public function show_item($id)
     {

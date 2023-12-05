@@ -80,6 +80,8 @@ Route::group (['middleware' => 'admin'], function () {
 
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/about', [StaticPagesController::class, 'aboutUs'])->name('about');
+Route::get('/search', [ProductFront::class, 'show_search']);
+
 
 Route::get('cart/list', [CartController::class, 'list']);
 Route::get('cart/add/{id}', [CartController::class, 'insert']);

@@ -15,6 +15,14 @@ class ProductModel extends Model
         return self::find($id);
     }
 
+    static public function getSearch($search_data_value)
+    {
+        return self::select('product.*')
+                    ->where('description', 'like', '%' . $search_data_value . '%')
+                    ->orWhere('title', 'like', '%' . $search_data_value . '%')
+                    ->paginate(12);
+    }
+
     static public function getRecord()
     {
         return self::select('product.*','users.name as created_by_name')

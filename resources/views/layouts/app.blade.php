@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ url('assets/css/plugins/magnific-popup/magnific-popup.css') }}">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ url('assets/css/style.css') }}">
-    @yield('style');
+    @yield('style')
 </head>
 
 <body>
@@ -32,20 +32,19 @@
     <div class="page-wrapper" >
 
 
-    @include('layouts._header');
+        @include('layouts._header')
 
-    @yield('content');
-
-    @include('layouts._footer');
-
+        @yield('content')
+        @include('layouts._footer')
     </div><!-- End .page-wrapper -->
+    
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu-overlay"></div>
 
 
-    @include('layouts._mobile_menu');
+    @include('layouts._mobile_menu')
     
 
     <!-- Sign in / Register Modal -->
@@ -189,7 +188,7 @@
     </div><!-- End .modal -->
 
    
-
+    
     <!-- Plugins JS File -->
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -200,9 +199,8 @@
     <script src="{{ url('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <!-- Main JS File -->
     <script src="{{ url('assets/js/main.js')}}"></script>
-    @yield('script');
+    @yield('script')
+    
 </body>
-
-
 <!-- molla/index-2.html  22 Nov 2019 09:55:42 GMT -->
 </html>
