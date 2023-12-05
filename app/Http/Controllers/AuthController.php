@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Hash;
 use Auth;
-
+use App\Models\User;
 class AuthController extends Controller
 {
-    public function login_admin()
+    	public function login_admin()
 		{
 			if(!empty(Auth::check()) && Auth::user()->is_admin == 1)
 			{
@@ -18,6 +18,7 @@ class AuthController extends Controller
 			return view('admin.auth.login');
 			
 		}
+
 		public function auth_login_admin(Request $request)
 		{
 			$remember = !empty($request->remember)? true : false;
@@ -36,5 +37,41 @@ class AuthController extends Controller
 			Auth::logout();
 			return redirect('admin');
 		}
+
+		public function login_user(Request $request)
+		{
+    		$remember = $request->has('remember');
+    		if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
+    		    // Redirect to user dashboard or home page
+    		    return redirect()->intended('/');
+    		}
+
+    		return redirect()->back()->with('error', 'Incorrect email or password.');
+		}
+
+		public function register_user(Request $request)
+		{
+		    // Validate the request...
+		
+		    $user = User::create([
+		        'name' => $request->name,
+		        'email' => $request->email,
+		        'password' => Hash::make($request->password),
+		        // Add other necessary fields
+		    ]);
+		
+		    Auth::login($user);
+		
+		    // Redirect to user dashboard or home page
+		    return redirect('/');
+		}
+
+		public function logout()
+		{
+		    Auth::logout();
+		    return redirect('/'); // Redirect to the homepage or login page
+		}
+
+
 		
 }

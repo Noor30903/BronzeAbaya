@@ -32,6 +32,11 @@ Route::post('admin', [AuthController::class, 'auth_login_admin']);
 
 Route::get('admin/logout', [AuthController::class, 'logout_admin']);
 
+Route::post('/login', [AuthController::class,'login_user']);
+
+Route::post('/register', [AuthController::class,'register_user']);
+
+Route::get('/logout', [AuthController::class,'logout']);
 
 
 Route::group (['middleware' => 'admin'], function () {
@@ -102,10 +107,3 @@ Route::get('product/list', [ProductFront::class, 'show'])->name('shop');
 Route::get('{category?}/{subcategory?}', [ProductFront::class, 'getCategory']);
 
 Route::get('item/list/{id}', [ProductFront::class, 'show_item']);
-
-
-
-
-
-
-
