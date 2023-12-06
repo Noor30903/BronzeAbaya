@@ -23,6 +23,12 @@ class OrderModel extends Model
                 ->where('order.user_id','=',Auth::user()->id)
                 ->get();
     }
+    static public function getAllRecord()
+    {
+        return self::select('order.*','users.id')
+                ->join('users', 'order.user_id', '=', 'users.id')
+                ->get();
+    }
     public function orderItems()
     {
         return $this->hasMany(OrderItemModel::class, 'order_id');
