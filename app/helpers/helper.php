@@ -6,17 +6,18 @@ use App\Models\OrderItemModel;
 use App\Models\AddressModel;
 use App\Models\OrderModel;
 use App\Models\User;
+
 function orderEmail($orderId){
 
     $order = OrderModel::getSingle($orderId);
     $orderitems = OrderItemModel::getorderitem($orderId);
-    $user = User::find($orderitems->user_id);
-    $orderAdd = AddressModel::getOrderAddress($orderId);
+    $user = User::find($order->user_id);
+    $Add = AddressModel::getAddress($user->id);
 
     $mailData = [
 
         'subject' => 'thank you for your order ',
-        'orderaddress'=> $orderAdd,
+        'address'=> $Add,
         'order'=> $order,
         'orderitems'=> $orderitems,
         'user'=>$user,

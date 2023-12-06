@@ -17,7 +17,7 @@
             <address>
                 <strong>{{ $mailData[ 'user' ]->name}}</strong><br>
 
-                {{ $mailData['orderaddress']->city }}, {{ $mailData['orderaddress']->country }} {{ $mailData['orderaddress']->street}}<br>
+                {{ $mailData['address']->city }}, {{ $mailData['address']->country }} {{ $mailData['address']->street}}<br>
                 Email: {{ $mailData[ 'order' ]->email }}
             </address>
 
