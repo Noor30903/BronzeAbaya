@@ -8,9 +8,13 @@ use App\Models\SubCategoryModel;
 use App\Models\ProductModel;
 use App\Models\ProductSizeModel;
 use App\Models\ProductImageModel;
+use App\Models\ReviewModel;
 
 class ProductController extends Controller
 {
+
+
+
     public function getCategory($slug, $subslug = '')
     {
 
@@ -95,6 +99,7 @@ class ProductController extends Controller
         }
 
         $data = [
+            'review' =>ReviewModel::getRecord(),
             'getProduct' => ProductModel::getSingle($id),
             'getsizeRecord' => ProductSizeModel::getsizeRecord(),
             'getimageRecord' => ProductImageModel::getimageRecord($id),
