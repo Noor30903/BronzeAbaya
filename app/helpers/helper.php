@@ -1,6 +1,8 @@
 <?php
-use App\Mail\orderEmail;
-use Illuminate\Http\Mail;
+use App\Mail\OrderEmail;
+use Illuminate\Support\Facades\Mail;
+
+use App\Models\OrderModel;
 
 function orderEmail($orderId){
 
@@ -13,10 +15,11 @@ function orderEmail($orderId){
     ];
 
 
-    Mail::to($order->email)->send(new orderEmail());
+    Mail::to($order->email)->send(new OrderEmail());
     //dd($order);
     
 }
+
 
 
 ?>

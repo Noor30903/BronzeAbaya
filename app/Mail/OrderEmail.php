@@ -29,7 +29,7 @@ class OrderEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: $this->mailData = ['subject']
+            subject: $this->mailData['subject']
         );
     }
 
@@ -42,6 +42,7 @@ class OrderEmail extends Mailable
             view: 'email.order',
         );
     }
+
 
     /**
      * Get the attachments for the message.

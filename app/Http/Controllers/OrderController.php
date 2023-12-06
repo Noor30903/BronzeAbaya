@@ -61,7 +61,8 @@ class OrderController extends Controller
         $cart->DeleteRecord($cart->id);
         $address->save();
         
-
+        orderEmail($order->id);
+        
         return redirect('product/list')->with('success', "Order added successfully");
     }
     
