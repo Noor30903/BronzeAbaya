@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderEmail;
 use App\Models\OrderItemModel;
 use App\Models\AddressModel;
+use App\Models\OrderModel;
 use App\Models\User;
 function orderEmail($orderId){
 
     $order = OrderModel::getSingle($orderId);
     $orderitems = OrderItemModel::getorderitem($orderId);
-    $user = User::getSignal($orderitems->user_id);
+    $user = User::find($orderitems->user_id);
     $orderAdd = AddressModel::getOrderAddress($orderId);
 
     $mailData = [
