@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class ReviewModel extends Model
 {
     use HasFactory;
@@ -17,9 +17,8 @@ class ReviewModel extends Model
 
     static public function getRecord()
     {
-        return self::select('reviews.*','users.id')
+        return self::select('reviews.*','users.name')
                 ->join('users', 'reviews.user_id', '=', 'users.id')
-                ->where('reviews.user_id','=',Auth::user()->id)
                 ->get();
     }
 }

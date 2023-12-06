@@ -9,7 +9,7 @@ use App\Models\ProductModel;
 use App\Models\ProductSizeModel;
 use App\Models\ProductImageModel;
 use App\Models\ReviewModel;
-
+use Auth;
 class ProductController extends Controller
 {
 
@@ -108,6 +108,17 @@ class ProductController extends Controller
         ];
         
         return view('item.list', $data);
+    }
+    public function insert(Request $request, $id){
+        $review = new ReviewModel;
+        $review->user_id = Auth::user()->id; 
+        $review->product_id = $id;
+        $review->rate = $request->rating;
+        $review->comment = $request->comment;
+        $review->save();
+        
+        return redirect()->back()->with('success', "Review added successfully");
+
     }
     
 }

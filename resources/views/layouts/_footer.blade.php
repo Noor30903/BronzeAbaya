@@ -9,11 +9,10 @@
 	            				<p>منذ 2018 ولله الحمد، يوجد لدينا توصيل لمدن المملكة و مدن الخليج</p>
 
 	            				<div class="social-icons">
-	            					
-	            					<a href="https://www.instagram.com/bronze_abaya/?igshid=MzRlODBiNWFlZA%3D%3D" class="fab fa-instagram fa-2x social-icon" style="color: #ac2bac;" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-									<a href="https://api.whatsapp.com/send?phone=966568898596" class="fab fa-whatsapp fa-2x social-icon" style="color: #25d366;" title="Instagram" target="_blank"><i class="icon-whatsapp"></i></a>
-	            					
-	            				</div><!-- End .soial-icons -->
+    								<a href="https://www.instagram.com/bronze_abaya/?igshid=MzRlODBiNWFlZA%3D%3D" class="fab fa-instagram fa-2x social-icons" style="color: #ac2bac;" title="Instagram" target="_blank"></a>
+    								<a href="https://api.whatsapp.com/send?phone=966568898596" class="fab fa-whatsapp fa-2x social-icons" style="color: #25d366;" title="WhatsApp" target="_blank"></a>
+								</div><!-- End .social-icons -->
+
 	            			</div><!-- End .widget about-widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
 
