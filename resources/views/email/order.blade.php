@@ -10,15 +10,14 @@
 
 </head>
 <body style="font-family: Arial,Helvetica, sans,serif; font-size:16px;">
-            <h1>thanks for ur order</h1>
-            <h2> ur order id is:#{{$mailData['order']->id}}</h2>
+            <h1>thanks for Your order</h1>
+            <h2> Your order id is:#{{$mailData['order']->id}}</h2>
 
             <h2>Shipping Address</h2>
             <address>
-                <strong>{{ $mailData[ 'order' ]->first_name.' .$mailData[ 'order']->last_name}}</strong><br>
-                {{ $mailData[ 'order' ]->address }}<br>
-                {{ $mailData['order']->city }}, {{ $mailData['order']->zip }} {{ $mailData['order']->countryName}}<br>
-                Phone: {{ $mailData[ 'order' ]->mobile }}<br>
+                <strong>{{ $mailData[ 'user' ]->name}}</strong><br>
+
+                {{ $mailData['orderaddress']->city }}, {{ $mailData['orderaddress']->country }} {{ $mailData['orderaddress']->street}}<br>
                 Email: {{ $mailData[ 'order' ]->email }}
             </address>
 
@@ -30,22 +29,20 @@
                          <th>Product</th>
                          <th>Price</th>
                          <th>Qty</th>
-                         <th ">Total</th>
+                         <th>Total</th>
 
                     
                     </tr>
                 </thead>                              
                 <tbody>
-                    @foreach ($mailDatal['order']->orderItems as $item)
+                    @foreach ($mailDatal['orderitems'] as $item)
                     <tr>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->title }}</td>
                         <td>{{ number_format($item->price,2) }}</td>
-                        <td>{{ $item->qty }}</td> 
+                        <td>{{ $item->product_quantity }}</td> 
                         <td>{{ number_format($item->total,2) }}</td>
                     </tr>
                      @endforeach 
-
-
                      <tr>
                         <th colspan="3" align="right">total:</th>
                         <td>${{number_format($mailData['order']->totalcost,2)}}

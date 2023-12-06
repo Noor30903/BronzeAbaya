@@ -24,4 +24,12 @@ class AddressModel extends Model
                 ->get();
     }
 
+    static public function getOrderAddress($orderid)
+    {
+        return self::select('address.*')
+                ->where('address.order_id','=',$orderid)
+                ->get();
+    }
+
+
 }

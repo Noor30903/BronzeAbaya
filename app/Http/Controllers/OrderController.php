@@ -8,7 +8,10 @@ use App\Models\OrderModel;
 use App\Models\AddressModel;
 use App\Models\CartModel;
 use App\Models\CartItemModel;
+use App\helpers\helper;
+use App\Mail\OrderEmail;
 use Auth;
+
 class OrderController extends Controller
 {
     public function __construct()

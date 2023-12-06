@@ -16,8 +16,6 @@
 
     <link rel="shortcut icon" href="{{ url ( 'assets/images/icons/favicon.ico' ) }}">
     
-
-
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="{{ url('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -25,8 +23,7 @@
     <link rel="stylesheet" href="{{ url('assets/css/plugins/magnific-popup/magnific-popup.css') }}">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ url('assets/css/style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap" rel="stylesheet">
     @yield('style')
 </head>
