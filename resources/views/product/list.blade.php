@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
-<main class="main" dir="rtl" style="text-align: right;" >
+<main class="main" dir="rtl" style="text-align: right; ">
         	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
         		<div class="container">
                     @if(!empty($getSubCategory))
@@ -61,7 +60,7 @@
                                             <figure class="product-media">
                                                 <a href="{{url('item/list/'.$value->id)}}">
                                                     @if (!empty($getProductImage) && !empty($getProductImage->getLogo()))
-                                                    <img style= "heisht:280px;width:100%;object-fit;cover;"src="{{$getProductImage->getLogo()}}" alt="{{$value->title}}" class="product-image">
+                                                    <img style= "height: 280px; width: 100%; object-fit: cover;"src="{{$getProductImage->getLogo()}}" alt="{{$value->title}}" class="product-image">
                                                     @endif
                                                 </a>
 

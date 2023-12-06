@@ -24,16 +24,16 @@
     <link rel="stylesheet" href="{{ url('assets/css/plugins/magnific-popup/magnific-popup.css') }}">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ url('assets/css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap" rel="stylesheet">
     @yield('style')
 </head>
 
 <body>
     
-    <div class="page-wrapper" >
-
-
+    <div class="page-wrapper" style="font-family:Noto Sans Arabic;">
         @include('layouts._header')
-
         @yield('content')
         @include('layouts._footer')
     </div><!-- End .page-wrapper -->

@@ -1,5 +1,36 @@
 
 @extends('layouts.app')
+@section('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+    
+.star-rating {
+    direction: rtl; /* Right-to-left to fill stars from right to left */
+    font-size: 0; /* Hide default text size */
+}
+
+.star-rating input[type="radio"] {
+    display: none; /* Hide the radio buttons */
+}
+
+.star-rating label {
+    font-size: 2rem; /* Size of stars */
+    color: #ddd; /* Color of unselected stars */
+    cursor: pointer;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+    color: gold; /* Color of selected stars */
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: gold; /* Color when hovering over a star */
+}
+
+</style>
+@endsection
 @section('content')
 <main class="main" dir="rtl" style="text-align: right;" >
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
@@ -155,10 +186,6 @@
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!</p>
                                                 </div><!-- End .review-content -->
 
-                                                <div class="review-action">
-                                                    <a href="#"><i class="icon-thumbs-up"></i>Helpful (2)</a>
-                                                    <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
-                                                </div><!-- End .review-action -->
                                             </div><!-- End .col-auto -->
                                         </div><!-- End .row -->
                                     </div><!-- End .review -->
@@ -172,7 +199,7 @@
                                                         <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
                                                 </div><!-- End .rating-container -->
-                                                <span class="review-date">5 days ago</span>
+                                                <span class="review-date"></span>
                                             </div><!-- End .col -->
                                             <div class="col">
                                                 <h4>Very good</h4>
@@ -181,13 +208,34 @@
                                                     <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
                                                 </div><!-- End .review-content -->
 
-                                                <div class="review-action">
-                                                    <a href="#"><i class="icon-thumbs-up"></i>Helpful (0)</a>
-                                                    <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
-                                                </div><!-- End .review-action -->
                                             </div><!-- End .col-auto -->
                                         </div><!-- End .row -->
                                     </div><!-- End .review -->
+                                    <form action="" method="post">
+                                        @csrf
+                                        <h3>اختر تقييم المنتج:</h3>
+                                        
+                                        <div class="star-rating">
+                                            
+                                            <input id="star-5" type="radio" name="rating" value="5"/>
+                                            <label for="star-5" title="5 stars"><i class="fas fa-star"></i></label>
+                                            <input id="star-4" type="radio" name="rating" value="4"/>
+                                            <label for="star-4" title="4 stars"><i class="fas fa-star"></i></label>
+                                            <input id="star-3" type="radio" name="rating" value="3"/>
+                                            <label for="star-3" title="3 stars"><i class="fas fa-star"></i></label>
+                                            <input id="star-2" type="radio" name="rating" value="2"/>
+                                            <label for="star-2" title="2 stars"><i class="fas fa-star"></i></label>
+                                            <input id="star-1" type="radio" name="rating" value="1"/>
+                                            <label for="star-1" title="1 star"><i class="fas fa-star"></i></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <h3>اكتب تعليق:</h3>
+                                            
+                                            <textarea name="comment" class="form-control" required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                                    </form>
+
                                 </div><!-- End .reviews -->
                             </div><!-- .End .tab-pane -->
                         </div><!-- End .tab-content -->
