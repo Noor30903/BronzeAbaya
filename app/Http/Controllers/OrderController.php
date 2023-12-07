@@ -63,10 +63,25 @@ class OrderController extends Controller
 
         $cart->DeleteRecord($cart->id);
         $address->save();
+
+        $orderitems = OrderItemModel::getorderitem($order->id);
+        $user = User::find($order->user_id);
+        $mailData = [
         
-        orderEmail($order->id);
+            'subject' => 'thank you for your order ',
+            'address'=> $address,
+            'order'=> $order,
+            'orderitems'=> $orderitems,
+            'user'=>$user,
+        ];
         
+        
+        Mail::to($user->email)->send(new OrderEmail($mailData));
+
         return redirect('product/list')->with('success', "Order added successfully");
+
+        
+        
     }
     
 }
