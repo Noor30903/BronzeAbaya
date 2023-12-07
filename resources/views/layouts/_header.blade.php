@@ -28,7 +28,7 @@
                         </button>
 
                         <a href="{{ url('') }}" class="logo">
-                            <img src=" {{ url('assets/images/logo.png') }} " alt="" width="105" height="25">
+                            <img src=" {{ url('img/logo.png') }} " alt="" width="105" height="25">
                         </a>
 
                         <nav class="main-nav">

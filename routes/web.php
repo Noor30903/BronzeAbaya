@@ -47,7 +47,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('cart/list', [CartController::class, 'list']);
     Route::get('cart/add/{id}', [CartController::class, 'insert']);
-    Route::post('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::post('cart/updateQuantity', [CartController::class,'updateQuantity'])->name('cart.updateQuantity');
+
     Route::get('cart/delete/{id}', [CartController::class, 'delete']);
     
     Route::get('checkout/list', [OrderController::class, 'list']);

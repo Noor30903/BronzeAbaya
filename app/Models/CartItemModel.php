@@ -28,5 +28,10 @@ class CartItemModel extends Model
     {
         self::where('id', '=',$id)->delete();
     }
+    public function cart()
+{
+    return $this->belongsTo(CartModel::class, 'cart_id');
+}
+
 
 }

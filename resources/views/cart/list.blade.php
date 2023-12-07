@@ -88,32 +88,27 @@
 												</div><!-- End .product -->
 											</td>
 											<td class="price-col">{{ $value->product_price }} SAR</td>
-                                            
-											<form action="{{ route('cart.update', $value->id) }}" method="post">
-        										@csrf
-        										
         										<td class="quantity-col">
         										    <div class="cart-product-quantity">
-        										        <input type="number" name="quantity" class="form-control quantity-input" value="{{ old('quantity', $value->product_quantity) }}" min="1" max="10" step="1" data-decimals="0" required>
+													
+														<input type="number" name="quantity" class="form-control quantity-input" data-id="{{ $value->id }}" value="{{ old('quantity', $value->product_quantity) }}" min="1" max="10" step="1" data-decimals="0" required onchange="updateQuantity(this)">
+
         										        
         										    </div><!-- End .cart-product-quantity -->
         										</td>
                                                 
-											    <td class="total-col">{{$productTotal = $value->product_price * $value->product_quantity  }}</td>
+											    <td class="total-col" data-item-total="{{ $value->id }}">{{ $productTotal = $value->product_price * $value->product_quantity  }} SAR</td>
                                                 
 											    <td class="remove-col" id="deleteitem"><a href="{{url('cart/delete/'.$value->id)}}" class="btn-remove"><i class="icon-close"></i></a></td>
 										</tr>
 										@php $totalcost += $productTotal; @endphp
 										
 									@endforeach
-									<input type="hidden" name="total" value="{{$totalcost}}">
+									
 									</tbody>
 								</table><!-- End .table table-wishlist -->
 
-	                			<div class="cart-bottom">
-                                        <button type="submit" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></button>
-                                    </form>
-		            			</div><!-- End .cart-bottom -->
+	                			
 	                		</div><!-- End .col-lg-9 -->
 	                		<aside class="col-lg-3">
 	                			<div class="summary summary-cart">
@@ -123,7 +118,7 @@
 	                					<tbody>
 	                						<tr class="summary-subtotal">
 	                							<td>Subtotal:</td>
-	                							<td>{{$totalcost}}</td>
+	                							<td id="total-cost-display">{{$totalcost}} SAR</td>
 	                						</tr><!-- End .summary-subtotal -->
 	                						<tr class="summary-shipping">
 	                							<td>Shipping:</td>
@@ -167,7 +162,7 @@
 
 	                						<tr class="summary-total">
 	                							<td>Total:</td>
-	                							<td>{{$totalcost}}</td>
+	                							<td id="total-cost">{{$totalcost}} SAR</td>
 	                						</tr><!-- End .summary-total -->
 	                					</tbody>
 	                				</table><!-- End .table table-summary -->
@@ -185,11 +180,38 @@
 @endsection
 @section('script')
 <script>
-	//$('body').delegate('.deleteitem', 'click', function() {
-    //  var id = $(this).attr('id');
-    //  $('#deleteitem'+id).remove();
-    //});
 
-	
+	function updateQuantity(element) {
+	    var itemId = $(element).data('id');
+	    var newQuantity = $(element).val();
+
+	    $.ajax({
+	        url: "{{ route('cart.updateQuantity') }}",
+	        type: 'POST',
+	        data: {
+	            'id': itemId,
+	            'quantity': newQuantity,
+	            '_token': '{{ csrf_token() }}'
+	        },
+	        
+			success: function(response) {
+    			console.log('Quantity updated');
+    			// Update the total cost on the page
+    			if (response.totalCost !== undefined) {
+        			$('#total-cost-display').text(response.totalCost + ' SAR');
+        			$('#total-cost').text(response.totalCost + ' SAR');
+
+        			$.each(response.productTotals, function(itemId, itemTotal) {
+            			$('[data-item-total="' + itemId + '"]').text(itemTotal + ' SAR');
+        			});
+    			}
+				
+			},
+	        error: function(xhr) {
+	            console.error('Error updating quantity');
+	        }
+	    });
+	}
+
 	</script>
 @endsection

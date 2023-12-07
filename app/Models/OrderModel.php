@@ -29,7 +29,7 @@ class OrderModel extends Model
                 ->join('users', 'order.user_id', '=', 'users.id')
                 ->get();
     }
-    public function orderItems()
+    static public function orderItems()
     {
         return $this->hasMany(OrderItemModel::class, 'order_id');
     }

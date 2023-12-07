@@ -35,7 +35,7 @@ class OrderItemModel extends Model
                     ->join('order', 'order.id', '=', 'order_item.order_id')
                     ->join('product', 'product.id', '=', 'order_item.product_id')
                     ->where('order_item.order_id','=', $orderid)
-                    ->paginate(50);
+                    ->get();
     }
 
     

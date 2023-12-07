@@ -10,7 +10,9 @@ class CartModel extends Model
     use HasFactory;
 
     protected $table = 'cart';
-
+    protected $fillable = [
+        'totalcost',
+    ];
     static public function getSingle($id)
     {
         return self::find($id);
@@ -27,6 +29,9 @@ class CartModel extends Model
     {
         self::where('id', '=',$id)->delete();
     }
-
+     public function cartItems()
+    {
+        return $this->hasMany(CartItemModel::class, 'cart_id');
+    }
     
 }

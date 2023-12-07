@@ -18,7 +18,7 @@
                 <strong>{{ $mailData[ 'user' ]->name}}</strong><br>
 
                 {{ $mailData['address']->city }}, {{ $mailData['address']->country }} {{ $mailData['address']->street}}<br>
-                Email: {{ $mailData[ 'order' ]->email }}
+                Email: {{ $mailData[ 'user' ]->email }}
             </address>
 
             <h2> product</h2>
@@ -35,12 +35,12 @@
                     </tr>
                 </thead>                              
                 <tbody>
-                    @foreach ($mailDatal['orderitems'] as $item)
+                    @foreach ($mailData['orderitems'] as $item)
                     <tr>
-                        <td>{{ $item->title }}</td>
-                        <td>{{ number_format($item->price,2) }}</td>
+                        <td>{{ $item->product_title }}</td>
+                        <td>{{ number_format($item->product_price,2) }}</td>
                         <td>{{ $item->product_quantity }}</td> 
-                        <td>{{ number_format($item->total,2) }}</td>
+                        <td>{{ number_format($item->product_price * $item->product_quantity ,2) }}</td>
                     </tr>
                      @endforeach 
                      <tr>

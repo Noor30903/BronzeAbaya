@@ -58,26 +58,45 @@ class CartController extends Controller
 
     }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'quantity' => 'required|integer|min:1'
-        ]);
+    public function updateQuantity(Request $request)
+{
+    $request->validate([
+        'id' => 'required|integer',
+        'quantity' => 'required|integer|min:1'
+    ]);
 
-        $cartItem = CartItemModel::find($id);
-        if($cartItem) {
-            $cartItem->product_quantity = $request->quantity;
-            $cartID = $cartItem->cart_id;
-            $cart= CartModel::find($cartID);
-            $cart->totalcost = $request->total;
-            $cartItem->save();
-            $cart->save();
-
-            return redirect()->back()->with('success', 'Cart updated successfully.');
-        } else {
-            return redirect()->back()->with('error', 'Cart item not found.');
-        }
+    $cartItem = CartItemModel::find($request->id);
+    if (!$cartItem) {
+        return response()->json(['error' => 'Cart item not found'], 404);
     }
+
+    $cartItem->product_quantity = $request->quantity;
+    $cartItem->save();
+
+    $cart = CartModel::find($cartItem->cart_id);
+
+    if ($cart) {
+        $totalCost = 0;
+        $productTotals = [];
+        foreach ($cart->cartItems as $item) {
+            $product = ProductModel::find($item->product_id);
+            $totalCost += $item->product_quantity * $product->price;
+            $productTotals[$item->id] = $item->product_quantity * $product->price;
+        }
+
+        $cart->totalcost = $totalCost;
+        $cart->save();
+
+        return response()->json([
+            'message' => 'Quantity updated successfully', 
+            'totalCost' => $totalCost,
+            'productTotals' => $productTotals
+        ]);
+    } else {
+        return response()->json(['error' => 'Cart not found'], 404);
+    }
+}
+
 
     public function delete($id)
     {
