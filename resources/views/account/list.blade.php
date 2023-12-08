@@ -44,6 +44,7 @@
 
 	                		<div class="col-md-8 col-lg-9">
 	                			<div class="tab-content">
+								@include('admin.layouts._message')
 								    <div class="tab-pane fade show active" id="tab-dashboard" role="tabpanel" aria-labelledby="tab-dashboard-link">
 								    	<p>Hello <span class="font-weight-normal text-dark">{{$user->name}}</span>
 								    	<br>
@@ -51,44 +52,69 @@
 								    </div><!-- .End .tab-pane -->
 
 								    <div class="tab-pane fade" id="tab-orders" role="tabpanel" aria-labelledby="tab-orders-link">
-								    	<p>No order has been made yet.</p>
-								    	<a href="{{url('shop')}}" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a>
+										@if(empty($orders))
+								    		<p>No order has been made yet.</p>
+								    		<a href="{{url('shop')}}" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a>
+										@else
+											<table class="table">
+  												<thead>
+  												  <tr>
+  												    <th scope="col">#</th>
+  												    <th scope="col">Order Status</th>
+  												    <th scope="col">Your notes</th>
+  												    <th scope="col">Total Cost</th>
+  												  </tr>
+  												</thead>
+  												<tbody>
+												  @foreach($orders as $order)
+  												  	<tr>
+  												  	  <th scope="row">{{$order->id}}</th>
+  												  	  <td>{{ 
+    														($order->status == 0) ? 'Order Placed (Waiting Payment)' : 
+    														(($order->status == 1) ? 'Preparing Order' : 
+    														(($order->status == 2) ? 'Order On Its Way' : 
+    														'Delivered'))
+														}}</td>
+  												  	  <td>{{$order->notes}}</td>
+  												  	  <td>{{$order->totalcost}}</td>
+  												  	</tr>
+  												  @endforeach
+  												</tbody>
+											</table>
+											{{ $orders->fragment('tab-orders')->links() }}
+										@endif
+										
+										
 								    </div><!-- .End .tab-pane -->
 
 								    <div class="tab-pane fade" id="tab-address" role="tabpanel" aria-labelledby="tab-address-link">
-								    	<p>The following addresses will be used on the checkout page by default.</p>
-
+								    	
 								    	<div class="row">
-										@foreach ($addresses as $address)
-    										<!-- Display each address -->
-										
-								    		<div class="col-lg-6">
-								    			<div class="card card-dashboard">
-								    				<div class="card-body">
-								    					<h3 class="card-title">Shipping Address</h3><!-- End .card-title -->
+											@if(empty($address))
+								    			<p>No address has been saved yet.</p>
+											@else
+												<p>The following address will be used on the checkout page by default.</p>
+								    			<div class="col-lg-6">
+								    				<div class="card card-dashboard">
+								    					<div class="card-body">
+								    						<h3 class="card-title">Shipping Address</h3><!-- End .card-title -->
+															<p>
+															{{$address->city}}<br>
+															{{$address->country}}<br>
+															{{$address->street}}<br>
 
-														<p>{{$user->name}}<br>
-														{{$address->city}}<br>
-														{{$address->country}}<br>
-														{{$address->street}}<br>
-														<a href="#">Edit <i class="icon-edit"></i></a></p>
-								    				</div><!-- End .card-body -->
-								    			</div><!-- End .card-dashboard -->
-								    		</div><!-- End .col-lg-6 -->
-										@endforeach
+								    					</div><!-- End .card-body -->
+								    				</div><!-- End .card-dashboard -->
+								    			</div><!-- End .col-lg-6 -->
+											@endif
 								    	</div><!-- End .row -->
 								    </div><!-- .End .tab-pane -->
 
 								    <div class="tab-pane fade" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
-								    	<form action="" method="post">
-			                					
-			                				<label>First Name *</label>
+								    	<form action="{{ route('user.edit') }}" method="post">
+											@csrf
+			                				<label>Full Name *</label>
 			                				<input type="text" class="form-control" name="name" value="{{old('name', $user->name)}}" required>
-			                					
-												
-		            						<!--<label>Display Name *</label>-->
-		            						<!--<input type="text" class="form-control" required>-->
-		            						<!--<small class="form-text">This will be how your name will be displayed in the account section and in reviews</small>-->
 
 		                					<label>Email address *</label>
 		        							<input type="email" class="form-control" name="email" value="{{old('email', $user->email)}}" required>
@@ -115,5 +141,20 @@
                 </div><!-- End .dashboard -->
             </div><!-- End .page-content -->
         </main><!-- End .main -->
+
+@endsection
+@section('script')
+<script>
+    window.onload = function() {
+        // Check if URL contains a fragment
+        if(window.location.hash) {
+            // Remove 'show' and 'active' classes from all tabs and nav-links
+            $('.tab-pane, .nav-link').removeClass('show active');
+            
+            // Add 'show' and 'active' classes to the Orders tab and link
+            $('#tab-orders, #tab-orders-link').addClass('show active');
+        }
+    };
+</script>
 
 @endsection

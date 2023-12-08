@@ -41,9 +41,10 @@ Route::post('/register', [AuthController::class,'register_user']);
 
 Route::get('/logout', [AuthController::class,'logout']);
 
-Route::middleware(['auth'])->group(function () {
+Route::group (['middleware' => 'user'],function () {
 
     Route::get('account/list', [UserDashboardController::class, 'list'])->name('account');
+    Route::post('account/list', [UserDashboardController::class, 'edit'])->name('user.edit');
 
     Route::get('cart/list', [CartController::class, 'list']);
     Route::get('cart/add/{id}', [CartController::class, 'insert']);
@@ -105,8 +106,6 @@ Route::group (['middleware' => 'admin'], function () {
     Route::get('admin/product/image_delete/{id}', [ProductController::class, 'image_delete']);
     Route::post(' admin/product_image_sortable', [ProductController::class, 'product_image_sortable']);
 });
-
-
 
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/about', [StaticPagesController::class, 'aboutUs'])->name('about');

@@ -13,8 +13,6 @@ use Auth;
 class ProductController extends Controller
 {
 
-
-
     public function getCategory($slug, $subslug = '')
     {
 
@@ -99,7 +97,7 @@ class ProductController extends Controller
         }
 
         $data = [
-            'review' =>ReviewModel::getRecord(),
+            'review' =>ReviewModel::getRecord($id),
             'getProduct' => ProductModel::getSingle($id),
             'getsizeRecord' => ProductSizeModel::getsizeRecord(),
             'getimageRecord' => ProductImageModel::getimageRecord($id),

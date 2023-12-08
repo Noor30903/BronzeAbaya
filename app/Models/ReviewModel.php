@@ -15,10 +15,11 @@ class ReviewModel extends Model
         return self::find($id);
     }
 
-    static public function getRecord()
+    static public function getRecord($productid)
     {
         return self::select('reviews.*','users.name')
                 ->join('users', 'reviews.user_id', '=', 'users.id')
+                ->where('reviews.product_id','=',$productid)
                 ->get();
     }
 }

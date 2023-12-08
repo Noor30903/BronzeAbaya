@@ -25,7 +25,7 @@ class AdminMiddleware
             else
             {
                 Auth::logout();
-                return redirect('admin');
+                return url('/?login=true');
             }
         }
         else

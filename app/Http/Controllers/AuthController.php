@@ -42,7 +42,11 @@ class AuthController extends Controller
 		{
     		$remember = $request->has('remember');
     		if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
-    		    // Redirect to user dashboard or home page
+				if(Auth::user()->is_admin == 1) {
+					// Redirect to the admin dashboard if the logged-in user is an admin
+					return redirect('admin/dashboard');
+				}
+
     		    return redirect()->intended('/');
     		}
 

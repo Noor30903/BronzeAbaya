@@ -5,7 +5,7 @@
 	            	<div class="row">
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget widget-about">
-	            				<img src="{{url('assets/images/logo-footer.png')}}" class="footer-logo" alt="Footer Logo" width="105" height="25">
+	            				<img src="{{ url('img/logo.png') }}" class="footer-logo" alt="Footer Logo" width="105" height="25">
 	            				<p>منذ 2018 ولله الحمد، يوجد لدينا توصيل لمدن المملكة و مدن الخليج</p>
 
 	            				<div class="social-icons">

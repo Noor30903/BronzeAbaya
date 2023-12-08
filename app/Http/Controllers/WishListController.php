@@ -9,10 +9,7 @@ use App\Models\ProductModel;
 use Auth;
 class WishListController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
    
     public function list()
     {

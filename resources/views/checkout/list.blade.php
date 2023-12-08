@@ -27,22 +27,18 @@
 		                			<h2 class="checkout-title">تفاصيل الطلب </h2><!-- End .checkout-title -->
 		                				
 
-	            						<label>البلد* </label>
-	            						<input type="text" name="country" class="form-control" required>
+									<label>البلد* </label>
+									<input type="text" name="country" value="{{ old('country', $address->country ?? '') }}" class="form-control" placeholder="اسم البلد" required>
+
+									<label>المدينة *</label>
+									<input type="text" name="city" value="{{ old('city', $address->city ?? '') }}" class="form-control" placeholder="اسم المدينة" required>
+
+									<label>عنوان الشارع *</label>
+									<input type="text" name="street" value="{{ old('street', $address->street ?? '') }}" class="form-control" placeholder="اسم الشارع" required>
 
 	            						
-		                					
-		                				<label>المدينة *</label>
-		                				<input type="text" name="city" class="form-control" required>
-		                					
-
-		                				
-
-										<label>عنوان الشارع *</label>
-	            						<input type="text" name="street" class="form-control" placeholder="اسم الشارع" required>
-	            						
-	                					<label>ملاحظات الطلب (اختياري)</label>
-	        							<textarea class="form-control" cols="30" rows="4" name="notes" placeholder="ملاحظاتك للطلب، معلومات اضافية للطلب"></textarea>
+	                				<label>ملاحظات الطلب (اختياري)</label>
+	        						<textarea class="form-control" cols="30" rows="4" name="notes" placeholder="ملاحظاتك للطلب، معلومات اضافية للطلب"></textarea>
 		                		</div><!-- End .col-lg-9 -->
 		                		<aside class="col-lg-3">
 
@@ -61,7 +57,7 @@
 												@foreach($cartItems as $value)
 		                							<tr>
 		                								<td><a href="#">{{$value->product_title}}</a></td>
-		                								<td>{{$value->product_price}}</td>
+		                								<td>{{$value->product_price * $value->product_quantity }}</td>
 		                							</tr>
 		                						@endforeach
 		                						<tr class="summary-subtotal">

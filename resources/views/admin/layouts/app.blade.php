@@ -32,26 +32,25 @@
   * sidebar-mini
 -->
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
-  @include('admin.layouts.header')
-  @yield('content')
-  @include('admin.layouts.footer')
+  <div class="page-wrapper">
+    @include('admin.layouts.header')
+    @yield('content')
+    @include('admin.layouts.footer')
 
-</div>
-<!-- ./wrapper -->
+  </div>
+  <!-- ./wrapper -->
 
-<!-- السكريبتات المطلوبة -->
 
-<!-- jQuery -->
-<script src="{{ url('public/assets/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap -->
-<script src="{{ url('public/assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- AdminLTE -->
-<script src="{{ url('public/assets/dist/js/adminlte.js')}}"></script>
-
-<!-- سكريبتات اختيارية -->
-<script src="{{ url('public/assets/plugins/chart.js/Chart.min.js')}}"></script>
-
-@yield('script')
+  <!-- jQuery -->
+  <script src="{{ url('public/assets/plugins/jquery/jquery.min.js')}}"></script>
+  <!-- Bootstrap -->
+  <script src="{{ url('public/assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <!-- AdminLTE -->
+  <script src="{{ url('public/assets/dist/js/adminlte.js')}}"></script>
+  
+  <!-- سكريبتات اختيارية -->
+  <script src="{{ url('public/assets/plugins/chart.js/Chart.min.js')}}"></script>
+  
+  @yield('script')
 </body>
 </html>

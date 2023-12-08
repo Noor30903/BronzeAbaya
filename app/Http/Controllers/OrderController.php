@@ -14,20 +14,18 @@ use Auth;
 
 class OrderController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
     public function list()
     {
         $userId = Auth::user()->id; // Assuming you're getting the current user's ID
         $cart = CartModel::where('user_id', $userId)->first(); // Get the user's cart
-        
+        $address = AddressModel::where('user_id', Auth::id())->first();
 
         $cartItems = CartItemModel::getRecord(); 
         $data = [
             'cart' => $cart,
             'cartItems' => $cartItems,
+            'address' => $address,
             'header_title' => 'Checkout',
         ];
 
@@ -55,11 +53,19 @@ class OrderController extends Controller
             $item->DeleteRecord($item->id);
         }
 
-        $address = new AddressModel;
-        $address->user_id = Auth::user()->id;
-        $address->city= $request->city;
-        $address->country= $request->country;
-        $address->street= $request->street;
+        $address = AddressModel::where('user_id', Auth::id())->first();
+        if (!$address) {
+            $address = new AddressModel;
+            $address->user_id = Auth::user()->id;
+            $address->city= trim($request->city);
+            $address->country= trim($request->country);
+            $address->street= trim($request->street);
+            $address->save();
+        }
+        
+        $address->city= trim($request->city);
+        $address->country= trim($request->country);
+        $address->street= trim($request->street);
 
         $cart->DeleteRecord($cart->id);
         $address->save();
