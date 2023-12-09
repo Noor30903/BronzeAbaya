@@ -85,7 +85,7 @@
                     </td>
                     <td>{{date('d-m-Y', strtotime($value->created_at))}}</td>
                     <td>
-                      <a href="{{url('admin/orderview'.$value->id)}}" class="btn btn-danger">عرض العناصر</a>   
+                      <a href="{{url('admin/orderview/'.$value->id)}}" class="btn btn-danger">عرض العناصر</a>   
                     </td>
                   </tr>
                   @endforeach
