@@ -23,13 +23,13 @@ class ProductModel extends Model
                     ->paginate(12);
     }
 
-    static public function getRecord()
+    static public function getRecord($perPage = 12)
     {
         return self::select('product.*','users.name as created_by_name')
-                    ->join('users','users.id','=','product.created_by')
-                    ->where('product.is_delete','=',0)
-                    ->orderBy('product.id','desc')
-                    ->paginate(12);
+                ->join('users','users.id','=','product.created_by')
+                ->where('product.is_delete','=',0)
+                ->orderBy('product.id','desc')
+                ->paginate($perPage);
     }
 
     static public function getProduct($category_id ='' , $subCategory_id ='')

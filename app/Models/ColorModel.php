@@ -21,7 +21,7 @@ class ColorModel extends Model
                 ->join('users','users.id','=','color.created_by')
                 ->where('color.is_delete','=',0)
                 ->orderBy('color.id','desc')
-                ->get();
+                ->paginate(5);
     }  
 
 

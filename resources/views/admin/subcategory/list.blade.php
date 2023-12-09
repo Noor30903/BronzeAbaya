@@ -20,9 +20,6 @@
     text-align: right; /* Adjust text alignment for Arabic */
   }
   
-  .dataTables_wrapper .dataTables_paginate .paginate_button {
-    float: right; /* Adjust float to right for pagination */
-  }
 </style>
 @endsection
 
@@ -95,6 +92,9 @@
                   @endforeach
                 </tbody>
               </table>
+              <div style="padding:10px; float:right;">
+                    {!! $getRecord->links() !!}
+              </div>
               
             </div>
             <!-- /.card-body -->
@@ -109,7 +109,6 @@
 </div>
 
 @endsection
-
 @section('script')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
@@ -117,11 +116,13 @@
 
 $(document).ready(function() {
   $('#dtBasicExample').DataTable({
+    "paging": false,
+    "info": false,
     "language": {
       "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json" // Arabic language file
     },
     "dir": "rtl", // RTL direction
-    "pageLength": 5 // Set the default number of records per page to 5
+    
   });
 });
 </script>

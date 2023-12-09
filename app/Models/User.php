@@ -54,7 +54,7 @@ class User extends Authenticatable
                 ->where('is_admin', '=', 1)
                 ->where('is_delete', '=', 0)
                 ->orderBy('id', 'desc')
-                ->get();
+                ->paginate(3);
     }
 
     static public function getUser()

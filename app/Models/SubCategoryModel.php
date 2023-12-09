@@ -30,7 +30,7 @@ class SubCategoryModel extends Model
                 ->join('users','users.id','=','sub_category.created_by')
                 ->where('sub_category.is_delete','=',0)
                 ->orderBy('sub_category.id','asc')
-                ->get();
+                ->paginate(3);
     }  
 
     static public function getRecordCategory($category_id)

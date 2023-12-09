@@ -21,11 +21,6 @@
   table.dataTable thead th, table.dataTable tbody td {
     text-align: right; /* Adjust text alignment for Arabic */
   }
-  
- .dataTables_wrapper .dataTables_paginate .paginate_button {
-    float: right; /* Adjust float to right for pagination */
-  }
-
 
 </style>
 @endsection
@@ -90,7 +85,9 @@
 
                       </tbody>
                     </table>
-                    
+                    <div style="padding:10px; float:right;">
+                    {!! $getRecord->links() !!}
+                    </div>
                   </div>
                   <!-- /.card-body -->
                 </div>

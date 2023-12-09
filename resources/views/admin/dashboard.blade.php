@@ -55,12 +55,12 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Customer name</th>
-                    <th>Order notes</th>
-                    <th>Order Total cost</th>
-                    <th>Order Status</th>
-                    <th>Placed at</th>
-                    <th>Action</th>
+                    <th>اسم العميل</th>
+                    <th>ملاحظات الطلب</th>
+                    <th>التكلفة الإجمالية للطلب</th>
+                    <th>حالة الطلب</th>
+                    <th>تاريخ الطلب</th>
+                    <th>الإجراءات</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -75,28 +75,29 @@
                         @csrf
 
                         <select required name="status">
-                            <option {{ $value->status == 0 ? 'selected' : '' }} value="0">Order Placed (Waiting Payment)</option>
-                            <option {{ $value->status == 1 ? 'selected' : '' }} value="1">Preparing Order</option>
-                            <option {{ $value->status == 2 ? 'selected' : '' }} value="2">Order On Its Way</option>
-                            <option {{ $value->status == 3 ? 'selected' : '' }} value="3">Delivered</option>
+                            <option {{ $value->status == 0 ? 'selected' : '' }} value="0">تم الطلب (في انتظار الدفع)</option>
+                            <option {{ $value->status == 1 ? 'selected' : '' }} value="1">جاري تحضير الطلب</option>
+                            <option {{ $value->status == 2 ? 'selected' : '' }} value="2">الطلب في الطريق</option>
+                            <option {{ $value->status == 3 ? 'selected' : '' }} value="3">تم التوصيل</option>
                         </select>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">تحديث</button>
                       </form>
                     </td>
                     <td>{{date('d-m-Y', strtotime($value->created_at))}}</td>
                     <td>
-                      <a href="" class="btn btn-danger">View items</a>   
+                      <a href="" class="btn btn-danger">عرض العناصر</a>   
                     </td>
                   </tr>
                   @endforeach
-                  
+
                 </tbody>
-                
+
               </table>
               <div style="padding:10px; float:right;">
                     {!! $getRecord->links() !!}
-                  </div>
+              </div>
             </div>
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->

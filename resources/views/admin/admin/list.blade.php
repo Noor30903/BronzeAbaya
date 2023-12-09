@@ -78,6 +78,9 @@
                   @endforeach
                 </tbody>
               </table>
+              <div style="padding:10px; float:right;">
+                    {!! $getRecord->links() !!}
+              </div>
             </div>
             <!-- /.card-body -->
           </div>
