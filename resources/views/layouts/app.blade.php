@@ -65,6 +65,7 @@
                                 </li>
                             </ul>
                             <div class="tab-content" id="tab-content-5">
+                            @include('admin.layouts._message')
                                 <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
                                     <form action="{{ url('/login') }}" method="post">
                                         @csrf

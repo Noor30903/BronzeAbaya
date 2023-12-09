@@ -56,6 +56,7 @@
                             <thead>
                                 <tr>
                                     <th>المنتج</th>
+                                    <th>المقاس</th>
                                     <th>السعر</th>
                                     <th>الكمية</th>
                                     <th>المجموع</th>
@@ -87,6 +88,7 @@
                                                 </h3><!-- نهاية .product-title -->
                                             </div><!-- نهاية .product -->
                                         </td>
+                                        <td class="price-col">{{ $value->product_size }} </td>
                                         <td class="price-col">{{ $value->product_price }} ريال سعودي</td>
                                         <td class="quantity-col">
                                             <div class="cart-product-quantity">
@@ -170,7 +172,7 @@
                             <a href="{{url('checkout/list')}}" class="btn btn-outline-primary-2 btn-order btn-block">المتابعة إلى الدفع</a>
                         </div><!-- نهاية .summary -->
 
-                        <a href="category.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>مواصلة التسوق</span><i class="icon-refresh"></i></a>
+                        <a href="{{ route('shop') }}" class="btn btn-outline-dark-2 btn-block mb-3"><span>مواصلة التسوق</span><i class="icon-refresh"></i></a>
                     </aside><!-- نهاية .col-lg-3 -->
                 </div><!-- نهاية .row -->
             </div><!-- نهاية .container -->

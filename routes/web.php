@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController as ProductFront;
-use App\Http\Controllers\DashboardController as UserDashboardController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\WishListController;
 use App\Http\Controllers\OrderController;
@@ -43,11 +43,11 @@ Route::get('/logout', [AuthController::class,'logout']);
 
 Route::group (['middleware' => 'user'],function () {
 
-    Route::get('account/list', [UserDashboardController::class, 'list'])->name('account');
-    Route::post('account/list', [UserDashboardController::class, 'edit'])->name('user.edit');
+    Route::get('account/list', [DashboardController::class, 'list'])->name('account');
+    Route::post('account/list', [DashboardController::class, 'edit'])->name('user.edit');
 
     Route::get('cart/list', [CartController::class, 'list']);
-    Route::get('cart/add/{id}', [CartController::class, 'insert']);
+    Route::post('cart/add/{id}', [CartController::class, 'insert']);
     Route::post('cart/updateQuantity', [CartController::class,'updateQuantity'])->name('cart.updateQuantity');
 
     Route::get('cart/delete/{id}', [CartController::class, 'delete']);
@@ -66,6 +66,7 @@ Route::group (['middleware' => 'user'],function () {
 Route::group (['middleware' => 'admin'], function () {
 
     Route::get('admin/dashboard', [OrderManagementController::class, 'list']);
+    Route::get('admin/orderview', [OrderManagementController::class, 'list_order']);
     Route::post('admin/dashboard/update/{id}', [OrderManagementController::class, 'update'])->name('admin.dashboard.update');
 
     Route::get('admin/admin/list', [AdminController::class, 'list']);

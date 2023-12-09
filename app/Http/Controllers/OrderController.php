@@ -47,6 +47,7 @@ class OrderController extends Controller
             $orderitem->order_id = $order->id;
             $orderitem->product_id = $item->product_id;
             $orderitem->product_quantity = $item->product_quantity;
+            $orderitem->product_size = $item->product_size;
             $orderitem->save();
 
             $item->DeleteRecord($item->id);

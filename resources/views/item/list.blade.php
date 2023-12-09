@@ -78,13 +78,6 @@
                         <div class="product-details">
                             <h1 class="product-title">{{$getProduct->title}}</h1><!-- نهاية .product-title -->
 
-                            <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 80%;"></div><!-- نهاية .ratings-val -->
-                                </div><!-- نهاية .ratings -->
-                                <a class="ratings-text" href="#product-review-link" id="review-link">( 2 تقييمات )</a>
-                            </div><!-- نهاية .rating-container -->
-
                             <div class="product-price">
                                 {{$getProduct->price}}
                             </div><!-- نهاية .product-price -->
@@ -94,28 +87,31 @@
                             </div><!-- نهاية .product-content -->
 
                             <div class="details-filter-row details-row-size">
-                                <label for="size">الحجم:</label>
+                            <form action="{{url('cart/add/'.$getProduct->id)}}" method="POST">
+                                @csrf
+                            
                                 <div class="select-custom">
-                                    <select name="size" id="size" class="form-control">
-                                        <option value="#" selected="selected">اختر حجم</option>
-                                        @foreach($getsizeRecord as $size)
-                                            <option value="{{$size->id}}" selected="selected">{{$size->name}}</option>
-                                        @endforeach
-                                    </select>
+                                  <select name="size" id="size" class="form-control" required>
+                                    <option value="" selected="selected">اختر حجم</option>
+                                    @foreach($getsizeRecord as $size)
+                                      <option value="{{$size->name}}">{{$size->name}}</option>
+                                    @endforeach
+                                  </select>
                                 </div><!-- نهاية .select-custom -->
                                 
-                                <a href="#" class="size-guide"><i class="icon-th-list"></i>دليل الحجم</a>
-                            </div><!-- نهاية .details-filter-row -->
-
-                            <div class="details-filter-row details-row-size">
                                 <label for="qty">الكمية:</label>
                                 <div class="product-details-quantity">
-                                    <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                    <input type="number" id="qty" name="quantity" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
                                 </div><!-- نهاية .product-details-quantity -->
+                                
+                                <button type="submit" class="btn-product btn-cart"><span>أضف إلى السلة</span></button>
+                            </form>
+
                             </div><!-- نهاية .details-filter-row -->
 
+                            
+
                             <div class="product-details-action">
-                                <a href="{{url('cart/add/'.$getProduct->id)}}" class="btn-product btn-cart"><span>أضف إلى السلة</span></a>
                                 <div class="details-action-wrapper">
                                     <a href="{{url('wishlist/add/'.$getProduct->id)}}" class="btn-product btn-wishlist" title="قائمة الرغبات"><span>أضف إلى قائمة الرغبات</span></a>
                                 </div>

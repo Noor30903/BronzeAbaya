@@ -70,7 +70,7 @@
                                                 </div>
 
                                                 <div class="product-action">
-                                                    <a href="{{url('cart/add/'.$value->id)}}" class="btn-product btn-cart"><span>اضف إلى السلة</span></a>
+                                                    <a href="{{url('item/list/'.$value->id)}}" class="btn-product btn-cart"><span>اضف إلى السلة</span></a>
                                                 </div>
                                             </figure>
 

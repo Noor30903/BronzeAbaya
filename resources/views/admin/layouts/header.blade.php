@@ -9,43 +9,7 @@
     </ul>
 
     <!-- روابط شريط التنقل اليمنى -->
-    <ul class=" navbar-nav ml-auto" dir="rtl" >
-      
-      <!-- قائمة الإشعارات المنسدلة -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
-          <span class="dropdown-item dropdown-header">15 إشعار</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 رسائل جديدة
-            <span class="float-right text-muted text-sm">3 دقائق</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 طلبات صداقة
-            <span class="float-right text-muted text-sm">12 ساعات</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 تقارير جديدة
-            <span class="float-right text-muted text-sm">2 أيام</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">مشاهدة كل الإشعارات</a>
-        </div>
-      </li>
-      
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
+   
 </nav>
   <!-- /.شريط التنقل -->
 

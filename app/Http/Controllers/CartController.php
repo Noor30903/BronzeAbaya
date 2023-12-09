@@ -29,7 +29,7 @@ class CartController extends Controller
         
     }
 
-    public function insert($productid)
+    public function insert($productid, Request $request)
     {
         
         $user_id = Auth::user()->id;
@@ -44,7 +44,8 @@ class CartController extends Controller
         $cartitem = new CartItemModel;
         $cartitem->cart_id = $cart->id;
         $cartitem->product_id = $productid;
-        $cartitem->product_quantity = 1;
+        $cartitem->product_quantity = $request->quantity;
+        $cartitem->product_size= $request->size;
     
         $product = ProductModel::getSingle($productid);
         $cart->totalcost += $product->price;

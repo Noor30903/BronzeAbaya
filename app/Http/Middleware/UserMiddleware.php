@@ -8,17 +8,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Auth;
 class UserMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->is_admin == 0) {
-            return $next($request);
+        if (Auth::check()) {
+            if (Auth::user()->is_admin == 0) {
+                return $next($request);
+            } else {
+                // Redirect admins to the admin dashboard.
+                return redirect('admin/dashboard');
+            }
         }
 
-        return redirect('admin/dashboard')->with('error', 'Access denied.');
+        // If the user is not logged in, redirect to the login page.
+        return redirect('/?login=true');
     }
 }
+

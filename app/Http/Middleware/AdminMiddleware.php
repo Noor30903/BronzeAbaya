@@ -9,29 +9,17 @@ use Auth;
 
 class AdminMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle (Request $request, Closure $next): Response
     {
-        if(!empty (Auth::check()))
-        {
-            if(Auth::user()->is_admin == 1)
-            {
-                return $next($request);
-            }
-            else
-            {
-                Auth::logout();
-                return url('/?login=true');
-            }
+        if (Auth::check() && Auth::user()->is_admin == 1) {
+            return $next($request);
+        } elseif (Auth::check()) {
+            // Redirect non-admin users to the home page.
+            return redirect('/')->with('error', 'Access to the admin section is denied.');
         }
-        else
-        {
-            Auth::logout();
-            return redirect('admin');
-        }
+
+        // If the user is not logged in, redirect to the admin login page.
+        return redirect('admin');
     }
 }
+

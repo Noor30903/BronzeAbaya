@@ -32,7 +32,7 @@ class OrderManagementController extends Controller
         foreach ($odredItems as $item) {
             $produc = ProductModel::getSingle($item->product_id);
             $productImage = ProductModel::getImageSingle($produc->id);
-            $item->productImage = $productImage ? $productImage->getLogo() : 'path/to/default/image.jpg'; // Replace with your default image path
+            $item->productImage = $productImage ? $productImage->getLogo() : ''; 
         }
 
         $data = [

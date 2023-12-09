@@ -40,18 +40,20 @@ class AuthController extends Controller
 
 		public function login_user(Request $request)
 		{
-    		$remember = $request->has('remember');
-    		if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
-				if(Auth::user()->is_admin == 1) {
-					// Redirect to the admin dashboard if the logged-in user is an admin
-					return redirect('admin/dashboard');
-				}
-
-    		    return redirect()->intended('/');
-    		}
-
-    		return redirect()->back()->with('error', 'Incorrect email or password.');
+		    $remember = $request->has('remember');
+		    if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
+		        if (Auth::user()->is_admin) {
+		            return redirect('admin/dashboard');
+		        } else {
+		            // Redirect to a specific user page if necessary, for example:
+		            // return redirect('account/list');
+		            return redirect()->intended('account/list'); // Use the intended method with a fallback
+		        }
+		    }
+		
+		    return redirect('/?login=true')->with('error', 'Incorrect email or password.');
 		}
+
 
 		public function register_user(Request $request)
 		{
