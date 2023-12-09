@@ -26,8 +26,9 @@ class OrderManagementController extends Controller
         return view('admin.dashboard',$data);
     }
 
-    public function list_order()
+    public function list_order($id)
     {
+        $order = OrderModel::getSingle($id);
         $odredItems = OrderItemModel::getRecord();
         foreach ($odredItems as $item) {
             $produc = ProductModel::getSingle($item->product_id);

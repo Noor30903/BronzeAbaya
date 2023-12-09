@@ -66,7 +66,7 @@ Route::group (['middleware' => 'user'],function () {
 Route::group (['middleware' => 'admin'], function () {
 
     Route::get('admin/dashboard', [OrderManagementController::class, 'list']);
-    Route::get('admin/orderview', [OrderManagementController::class, 'list_order']);
+    Route::get('admin/orderview/{id}', [OrderManagementController::class, 'list_order']);
     Route::post('admin/dashboard/update/{id}', [OrderManagementController::class, 'update'])->name('admin.dashboard.update');
 
     Route::get('admin/admin/list', [AdminController::class, 'list']);

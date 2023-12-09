@@ -48,9 +48,7 @@
                                                 <figure class="product-media">
                                                     
                                                     <a href="#">
-                                                
                                                         <img src="{{$value->productImage }}" alt="صورة المنتج">
-                                                    
                                                     </a>
                                                 </figure>
 
