@@ -1,6 +1,12 @@
 @extends('admin.layouts.app')
 
 @section('style')
+<!-- Bootstrap 5 CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<!-- Data Table CSS -->
+<link rel='stylesheet' href='https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css'>
+<!-- Font Awesome CSS -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
 
 <style>
   /* Additional RTL styling if needed */
@@ -16,12 +22,14 @@
     text-align: right; /* Adjust text alignment for Arabic */
   }
   
-  .dataTables_wrapper .dataTables_paginate .paginate_button {
+ .dataTables_wrapper .dataTables_paginate .paginate_button {
     float: right; /* Adjust float to right for pagination */
   }
+
+
 </style>
 @endsection
-
+ 
 @section('content')
 <div class="content-wrapper" dir="rtl" style="text-align: right;">
     <!-- Content Header (Page header) -->
@@ -95,20 +103,24 @@
     </section>
 </div>
 
-@endsection
 
+
+@endsection
 @section('script')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script>
-  $(document).ready(function() {
-    // Initialize DataTables with RTL support
-    $('.table').DataTable({
-      "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json" // Arabic language file
-      },
-      "dir": "rtl" // RTL direction
-    });
+
+$(document).ready(function() {
+  $('.table').DataTable({
+    "paging": false,
+    "info": false,
+    "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json" // Arabic language file
+    },
+    "dir": "rtl", // RTL direction
+    
   });
+});
 </script>
 @endsection
