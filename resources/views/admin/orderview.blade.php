@@ -17,18 +17,14 @@
   </section>
 
   <!-- Main content -->
+  @include('admin.layouts._message')
   <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        
-        <div class="col-md-12">
-
-        @include('admin.layouts._message')
-          <div class="card">
-            
-            <!-- /.card-header -->
-            <div class="card-body p-0">
-                 <table class="table table-cart table-mobile">
+        <div class="page-content">
+          <div class="cart">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <table class="table table-cart table-mobile">
                             <thead>
                                 <tr>
                                     <th>المنتج</th>
@@ -77,15 +73,11 @@
                             </tbody>
                         </table><!-- نهاية .table table-wishlist -->
 
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      
-    </div><!-- /.container-fluid -->
+                      </div>
+                  </div><!-- نهاية .row -->
+            </div><!-- نهاية .container -->
+          </div><!-- نهاية .cart -->
+        </div><!-- نهاية .page-content -->
   </section>
 </div>
 
