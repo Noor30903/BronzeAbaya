@@ -11,6 +11,8 @@ use App\Models\SubCategoryModel;
 use App\Models\ProductColorModel;
 use App\Models\OrderModel;
 use App\Models\ProductImageModel;
+use App\Models\OrderItemModel;
+
 
 //use Str;
 //use Auth;
@@ -22,6 +24,25 @@ class OrderManagementController extends Controller
         $data['getRecord']= OrderModel::getAllRecord();
         $data['header_title']= 'Orders';
         return view('admin.dashboard',$data);
+    }
+
+    public function list_order()
+    {
+        $odredItems = OrderItemModel::getRecord();
+        foreach ($odredItems as $item) {
+            $produc = ProductModel::getSingle($item->product_id);
+            $productImage = ProductModel::getImageSingle($produc->id);
+            $item->productImage = $productImage ? $productImage->getLogo() : 'path/to/default/image.jpg'; // Replace with your default image path
+        }
+
+        $data = [
+            'getRecord' => $odredItems,
+            'header_title' => 'Orders'
+        ];
+    
+        return view('admin.orderview', $data);
+
+        
     }
 
     public function update($id, Request $request) 
