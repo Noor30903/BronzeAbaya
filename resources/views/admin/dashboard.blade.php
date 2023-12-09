@@ -1,85 +1,95 @@
 @extends('admin.layouts.app')
-<!-- Content Wrapper. Contains page content -->
+
+@section('style')
+
+
+@endsection
+
 @section('content')
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">لوحة التحكم v3</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
-              <li class="breadcrumb-item active">لوحة التحكم v3</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          
-          <!-- /.col-md-6 -->
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">مبيعات</h3>
-                  <a href="javascript:void(0);">عرض التقرير</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">$18,230.00</span>
-                    <span>المبيعات مع مرور الوقت</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 33.1%
-                    </span>
-                    <span class="text-muted">منذ الشهر الماضي</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-
-                <div class="position-relative mb-4">
-                  <canvas id="sales-chart" height="200"></canvas>
-                </div>
-
-                <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> هذا العام
-                  </span>
-
-                  <span>
-                    <i class="fas fa-square text-gray"></i> العام الماضي
-                  </span>
-                </div>
-              </div>
-            </div>
-            <!-- /.card -->
-
-            
-          </div>
-          <!-- /.col-md-6 -->
+<div class="content-wrapper" dir="rtl" style="text-align: right;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>قائمة الطلبات</h1>
         </div>
-        <!-- /.row -->
+        
       </div>
-      <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-md-12">
+
+        @include('admin.layouts._message')
+          <div class="card">
+            
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <table class="table table-striped" >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Customer name</th>
+                    <th>Order notes</th>
+                    <th>Order Total cost</th>
+                    <th>Order Status</th>
+                    <th>Placed at</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                @foreach($getRecord as $value)
+                  <tr>
+                    <td>{{$value->id}}</td>
+                    <td>{{$value->user_name}}</td>
+                    <td>{{$value->notes}}</td>
+                    <td>{{$value->totalcost}}</td>
+                    <td>
+                      <form action="{{ route('admin.dashboard.update', $value->id) }}" method="post">
+                        @csrf
+
+                        <select required name="status">
+                            <option {{ $value->status == 0 ? 'selected' : '' }} value="0">Order Placed (Waiting Payment)</option>
+                            <option {{ $value->status == 1 ? 'selected' : '' }} value="1">Preparing Order</option>
+                            <option {{ $value->status == 2 ? 'selected' : '' }} value="2">Order On Its Way</option>
+                            <option {{ $value->status == 3 ? 'selected' : '' }} value="3">Delivered</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                      </form>
+                    </td>
+                    <td>{{date('d-m-Y', strtotime($value->created_at))}}</td>
+                    <td>
+                      <a href="" class="btn btn-danger">View items</a>   
+                    </td>
+                  </tr>
+                  @endforeach
+                  
+                </tbody>
+                
+              </table>
+              <div style="padding:10px; float:right;">
+                    {!! $getRecord->links() !!}
+                  </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      
+    </div><!-- /.container-fluid -->
+  </section>
+</div>
+
 @endsection
 
 @section('script')
-<script src="{{ url('public/assets/dist/js/pages/dashboard3.js')}}"></script>
+
 @endsection

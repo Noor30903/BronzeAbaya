@@ -1,10 +1,13 @@
 @extends('admin.layouts.app')
-
 @section('style')
-
+<!-- Bootstrap 5 CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<!-- Data Table CSS -->
+<link rel='stylesheet' href='https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css'>
+<!-- Font Awesome CSS -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
 <style>
   /* Additional RTL styling if needed */
-  
   .dataTables_wrapper {
     direction: rtl;
   }
@@ -51,7 +54,9 @@
             
             <!-- /.card-header -->
             <div class="card-body p-0">
-              <table class="table table-striped" id="datatablesSimple">
+            
+              <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+              
                 <thead>
                   <tr>
                     <th>#</th>
@@ -90,9 +95,7 @@
                   @endforeach
                 </tbody>
               </table>
-              <div style="padding:10px; float:right;">
-                  {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
-              </div>
+              
             </div>
             <!-- /.card-body -->
           </div>
@@ -111,14 +114,15 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script>
-  $(document).ready(function() {
-    // Initialize DataTables with RTL support
-    $('.table').DataTable({
-      "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json" // Arabic language file
-      },
-      "dir": "rtl" // RTL direction
-    });
+
+$(document).ready(function() {
+  $('#dtBasicExample').DataTable({
+    "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json" // Arabic language file
+    },
+    "dir": "rtl", // RTL direction
+    "pageLength": 5 // Set the default number of records per page to 5
   });
+});
 </script>
 @endsection

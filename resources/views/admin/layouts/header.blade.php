@@ -46,11 +46,11 @@
         </a>
       </li>
     </ul>
-  </nav>
+</nav>
   <!-- /.شريط التنقل -->
 
   <!-- حاوية الشريط الجانبي الرئيسي -->
-    <aside class=" main-sidebar sidebar-dark-primary elevation-4">
+  <aside class=" main-sidebar sidebar-dark-primary">
           <!-- شعار العلامة التجارية -->
           <div class="brand-link" style="text-align: center;">
             <span class="brand-text">BronzAbaya</span>
@@ -71,8 +71,7 @@
             <!-- قائمة الشريط الجانبي -->
             <nav class="mt-2">
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- أضف الأيقونات إلى الروابط باستخدام فئة .nav-icon
-                     مع font-awesome أو أي مكتبة أيقونات خط أخرى -->
+
                 <li class="nav-item menu-open">
                   <a href="{{url('admin/dashboard')}}" class="nav-link @if(Request::segment(2) =='dashboard') active @endif">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -137,4 +136,4 @@
             </nav>
         </div>
     <!-- /.sidebar -->
-</aside>
+  </aside>

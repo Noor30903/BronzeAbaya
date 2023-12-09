@@ -40,7 +40,6 @@ class OrderController extends Controller
         $cart = CartModel::where('user_id', $order->user_id)->first();
         $cartItems = CartItemModel::getRecord(); 
         $order->totalcost = $cart->totalcost;
-        $order->status = 0;
         $order->notes = $request->notes;
         $order->save();
         foreach($cartItems as $item){

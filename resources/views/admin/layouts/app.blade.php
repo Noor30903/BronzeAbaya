@@ -32,6 +32,7 @@
   * sidebar-mini
 -->
 <body class="hold-transition sidebar-mini">
+
   <div class="page-wrapper">
     @include('admin.layouts.header')
     @yield('content')
@@ -50,6 +51,7 @@
   
   <!-- سكريبتات اختيارية -->
   <script src="{{ url('public/assets/plugins/chart.js/Chart.min.js')}}"></script>
+  
   
   @yield('script')
 </body>

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderManagementController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -65,7 +65,8 @@ Route::group (['middleware' => 'user'],function () {
 
 Route::group (['middleware' => 'admin'], function () {
 
-    Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('admin/dashboard', [OrderManagementController::class, 'list']);
+    Route::post('admin/dashboard/update/{id}', [OrderManagementController::class, 'update'])->name('admin.dashboard.update');
 
     Route::get('admin/admin/list', [AdminController::class, 'list']);
     Route::get('admin/admin/add', [AdminController::class, 'add']);

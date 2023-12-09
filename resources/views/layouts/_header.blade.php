@@ -1,7 +1,6 @@
 <header class="header" dir="rtl" style="text-align: right;">
             <div class="header-top">
                 <div class="container">
-                    
 
                     <div class="header-right">
                         <ul class="top-menu">

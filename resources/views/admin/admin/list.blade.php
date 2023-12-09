@@ -50,7 +50,7 @@
             
             <!-- /.card-header -->
             <div class="card-body p-0">
-              <table class="table table-striped" id="datatablesSimple">
+              <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>#</th>
