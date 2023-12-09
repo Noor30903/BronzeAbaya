@@ -29,15 +29,16 @@ class OrderManagementController extends Controller
     public function list_order($id)
     {
         $order = OrderModel::getSingle($id);
-        $odredItems = OrderItemModel::getRecord();
-        foreach ($odredItems as $item) {
-            $produc = ProductModel::getSingle($item->product_id);
-            $productImage = ProductModel::getImageSingle($produc->id);
+
+        $orderItems = OrderItemModel::getorderitem($order->id);
+        foreach ($orderItems as $item) {
+            $product = ProductModel::getSingle($item->product_id);
+            $productImage = ProductModel::getImageSingle($product->id);
             $item->productImage = $productImage ? $productImage->getLogo() : ''; 
         }
 
         $data = [
-            'getRecord' => $odredItems,
+            'getRecord' => $orderItems,
             'header_title' => 'Orders'
         ];
     
