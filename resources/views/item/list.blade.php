@@ -34,6 +34,13 @@
     overflow-y: auto; /* Enables vertical scrolling */
 }
 
+.select select.form-control {
+    padding: .375rem .75rem; /* Adjust padding as needed */
+    height: auto; /* Or set a specific height if needed */
+    font-size: 1rem; /* Adjust font-size as needed */
+    line-height: 1.5; /* Adjust line-height as needed */
+    box-sizing: border-box; /* Make sure padding and border are included in the total width and height */
+}
 
 </style>
 @endsection
@@ -81,42 +88,50 @@
                             <div class="product-price">
                                 {{$getProduct->price}}
                             </div><!-- نهاية .product-price -->
-
+                            <br>
                             <div class="product-content">
-                                <p> {{$getProduct->short_description}}</p>
+                                <h5> {{$getProduct->description}}</h5>
                             </div><!-- نهاية .product-content -->
-
+                            <br>
                             <div class="details-filter-row details-row-size">
-                            <form action="{{url('cart/add/'.$getProduct->id)}}" method="POST">
-                                @csrf
                             
-                                <div class="select-custom">
-                                  <select name="size" id="size" class="form-control" required>
-                                    <option value="" selected="selected">اختر حجم</option>
-                                    @foreach($getsizeRecord as $size)
-                                      <option value="{{$size->name}}">{{$size->name}}</option>
-                                    @endforeach
-                                  </select>
-                                </div><!-- نهاية .select-custom -->
+                            <form action="{{url('cart/add/'.$getProduct->id)}}" method="POST" >
+                                @csrf 
                                 
-                                <label for="qty">الكمية:</label>
-                                <div class="product-details-quantity">
-                                    <input type="number" id="qty" name="quantity" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
-                                </div><!-- نهاية .product-details-quantity -->
-                                
-                                <button type="submit" class="btn-product btn-cart"><span>أضف إلى السلة</span></button>
-                            </form>
-
-                            </div><!-- نهاية .details-filter-row -->
-
-                            
-
-                            <div class="product-details-action">
-                                <div class="details-action-wrapper">
-                                    <a href="{{url('wishlist/add/'.$getProduct->id)}}" class="btn-product btn-wishlist" title="قائمة الرغبات"><span>أضف إلى قائمة الرغبات</span></a>
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <div class="form-group "> 
+                                        <div class="select">
+                                            <select name="size" id="size" class="form-control" required>
+                                              <option value="" selected="selected">اختر حجم</option>
+                                              @foreach($getsizeRecord as $size)
+                                                <option value="{{$size->name}}">{{$size->name}}</option>
+                                              @endforeach
+                                            </select>
+                                        </div> 
+                                    </div>
                                 </div>
-                            </div><!-- نهاية .product-details-action -->
-                        </div><!-- نهاية .product-details -->
+
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <div class="form-group w-100">
+                                             <label for="qty">الكمية:</label>
+                                             <div class="product-details-quantity">
+                                                 <input type="number" id="qty" name="quantity" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                             </div><!-- نهاية .product-details-quantity -->
+                                    </div>
+                                </div>
+                                <div class="product-details-action">
+                                    <div class="details-action-wrapper">
+                                        <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block"><span>أضف إلى السلة</span></button>
+                                        <a href="{{url('wishlist/add/'.$getProduct->id)}}" class="btn-product btn-wishlist" title="قائمة الرغبات"><span>أضف إلى قائمة الامنيات</span></a>
+                                    </div>
+                                </div><!-- نهاية .product-details-action -->
+                                
+                                
+                            </form>
+                            </div><!-- نهاية .product-details -->
+                            
+                            <br>
+
                     </div><!-- نهاية .col-md-6 -->
                 </div><!-- نهاية .row -->
             </div><!-- نهاية .product-details-top -->
