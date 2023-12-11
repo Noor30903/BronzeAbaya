@@ -36,4 +36,9 @@ class OrderModel extends Model
         return $this->hasMany(OrderItemModel::class, 'order_id');
     }
 
+    static public function getImageSingle($orderid)
+    {
+        return PaymentImageModel::where( 'order_id' , '=',$orderid)->orderBy('order_by', 'asc')->first();
+    }
+
 }

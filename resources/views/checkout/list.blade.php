@@ -79,23 +79,16 @@
 										    <div class="card">
 										        <div class="card-header" id="heading-1">
 										            <h2 class="card-title">
-										                <a role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-														تحويل مصرفي مباشر
-										                </a>
+										                
+														<input type="radio" name="payment_method" value="cash_on_delivery" checked> الدفع عند الاستلام
 										            </h2>
 										        </div><!-- End .card-header -->
-										        <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-payment">
-										            <div class="card-body">
-													قم بالدفع مباشرة في حسابنا البنكي. يرجى استخدام رقم الطلب الخاص بك كمرجع للدفع. .										            </div><!-- End .card-body -->
-										        </div><!-- End .collapse -->
 										    </div><!-- End .card -->
 
 										    <div class="card">
 										        <div class="card-header" id="heading-3">
 										            <h2 class="card-title">
-										                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-														الدفع عند الاستلام
-										                </a>
+														<input type="radio" name="payment_method" value="bank_transfer"> تحويل مصرفي مباشر
 										            </h2>
 										        </div><!-- End .card-header -->
 										        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-payment">

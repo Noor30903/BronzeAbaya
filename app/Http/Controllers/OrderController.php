@@ -8,10 +8,11 @@ use App\Models\OrderModel;
 use App\Models\AddressModel;
 use App\Models\CartModel;
 use App\Models\CartItemModel;
+use App\Models\PaymentImageModel;
 use App\Models\User;
 use App\Mail\OrderEmail;
 use Auth;
-
+use Str;
 class OrderController extends Controller
 {
 
@@ -32,6 +33,42 @@ class OrderController extends Controller
         return view('checkout.list', $data);
     }
 
+    public function addpayment(Request $request, $orderid){
+        if(!empty($request->file('image')))
+        {
+            foreach($request->file('image') as $value)
+            {
+                if($value->isValid())
+                {
+                    $ext = $value->getClientOriginalExtension();
+                    $randomStr = $orderid.Str::random(20);
+                    $filename = strtolower ($randomStr).'.'.$ext;
+                    $value->move('upload/payment/', $filename);
+                    $imageupload = new PaymentImageModel;
+                    $imageupload->image_name = $filename;
+                    $imageupload->image_extention = $ext;
+                    $imageupload->order_id = $orderid;
+                    $imageupload->save();
+                }
+            }
+        }
+        $order = OrderModel::where('id', $orderid)->first();
+        $address = AddressModel::where('user_id', Auth::id())->first();
+        $orderitems = OrderItemModel::getorderitem($orderid);
+        $user = User::find($order->user_id);
+
+        $mailData = [
+        
+            'subject' => 'thank you for your order ',
+            'address'=> $address,
+            'order'=> $order,
+            'orderitems'=> $orderitems,
+            'user'=>$user,
+        ];
+        Mail::to($user->email)->send(new OrderEmail($mailData));
+        return redirect('product/list')->with('success', "Order Placed waiting for confirming payment");
+    }
+
     public function insert(Request $request)
     {
         $order = new OrderModel;
@@ -41,7 +78,10 @@ class OrderController extends Controller
         $cartItems = CartItemModel::getRecord(); 
         $order->totalcost = $cart->totalcost;
         $order->notes = $request->notes;
+        $order->payment_method = $request->payment_method;
+        $order->status = $request->payment_method === 'cash_on_delivery' ? 1 : 0;
         $order->save();
+
         foreach($cartItems as $item){
             $orderitem = new OrderItemModel;
             $orderitem->order_id = $order->id;
@@ -81,13 +121,15 @@ class OrderController extends Controller
             'user'=>$user,
         ];
         
+        if($request->payment_method === 'cash_on_delivery'){
+            Mail::to($user->email)->send(new OrderEmail($mailData));
+            return redirect('product/list')->with('success', "Order Placed waiting for payment");
+        }else{
+            return view('checkout.payment', $mailData);
+        }
         
-        Mail::to($user->email)->send(new OrderEmail($mailData));
 
-        return redirect('product/list')->with('success', "Order added successfully");
-
-        
-        
     }
+    
     
 }

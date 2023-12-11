@@ -54,6 +54,7 @@ Route::group (['middleware' => 'user'],function () {
     
     Route::get('checkout/list', [OrderController::class, 'list']);
     Route::post('checkout/add', [OrderController::class, 'insert']);
+    Route::post('checkout/payment/{id}', [OrderController::class, 'addpayment']);
     
     Route::post('item/add/{id}', [ProductFront::class, 'insert']);
 
