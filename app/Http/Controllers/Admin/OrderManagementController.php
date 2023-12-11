@@ -38,6 +38,7 @@ class OrderManagementController extends Controller
             $item->productImage = $productImage ? $productImage->getLogo() : ''; 
         }
 
+
         $data = [
             'getRecord' => $orderItems,
             'header_title' => 'Orders'

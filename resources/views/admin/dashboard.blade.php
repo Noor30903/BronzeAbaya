@@ -61,11 +61,15 @@
                     <th>التكلفة الإجمالية للطلب</th>
                     <th>حالة الطلب</th>
                     <th>تاريخ الطلب</th>
+                    <th>صورة الايصال</th>
                     <th>الإجراءات</th>
                   </tr>
                 </thead>
                 <tbody>
                 @foreach($getRecord as $value)
+                @php
+                  $getProductImage = $value->getImageSingle($value->id);
+                @endphp
                   <tr>
                     <td>{{$value->id}}</td>
                     <td>{{$value->user_name}}</td>
@@ -86,6 +90,11 @@
                       </form>
                     </td>
                     <td>{{date('d-m-Y', strtotime($value->created_at))}}</td>
+                    <td>@if($value->payment_method === 'bank_transfer' && $getProductImage)
+                          <img src="{{$getProductImage->getLogo()}}"  class="product-image">
+                        @else
+                            N/A
+                        @endif</td>
                     <td>
                       <a href="{{url('admin/orderview/'.$value->id)}}" class="btn btn-danger">عرض العناصر</a>   
                     </td>
