@@ -18,7 +18,7 @@ class WishListItemModel extends Model
 
     static public function getRecord()
     {
-        return self::select('wishlist_item.*', 'wishlist.user_id', 'product.title as product_title', 'product.price as product_price')
+        return self::select('wishlist_item.*', 'wishlist.user_id', 'product.title as product_title', 'product.price as product_price', 'product.id as product_id')
                     ->join('wishlist', 'wishlist.id', '=', 'wishlist_item.wishlist_id')
                     ->join('product', 'product.id', '=', 'wishlist_item.product_id')
                     ->where('wishlist.user_id', Auth::user()->id)

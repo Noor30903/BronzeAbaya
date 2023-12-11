@@ -26,8 +26,9 @@ class OrderModel extends Model
 
     static public function getAllRecord()
     {
-        return self::select('order.*','users.name as user_name')
+        return self::select('order.*','users.name as user_name' , 'users.phone as user_phone' ,'order_item.product_size as product_size')
                 ->join('users', 'order.user_id', '=', 'users.id')
+                ->join('order_item', 'order_item.order_id', '=', 'order.id')
                 ->paginate(5);
     }
     static public function orderItems()

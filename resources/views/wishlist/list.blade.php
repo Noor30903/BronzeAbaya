@@ -34,19 +34,25 @@
                             <td class="product-col">
                                 <div class="product">
                                     <figure class="product-media">
-                                        <a href="#">
+                                        <a href="{{url('item/list/'.$value->product_id)}}">
                                             <img src="{{$value->productImage }}" alt="صورة المنتج">
                                         </a>
                                     </figure>
 
                                     <h3 class="product-title">
-                                        <a href="#">{{$value->product_title}}</a>
+                                        <a href="{{url('item/list/'.$value->product_id)}}">{{$value->product_title}}</a>
                                     </h3><!-- نهاية .product-title -->
                                 </div><!-- نهاية .product -->
                             </td>
                             <td class="price-col">{{ $value->product_price }} ريال سعودي</td>
+                            <td class="cart-col"> 
+                                <h3 class="btn-product btn-cart">
+                                    <a href="{{url('item/list/'.$value->product_id)}}"> اضف إلى السلة</a>
+                                </h3><!-- نهاية .product-title -->    
+                            </td>
 
-                            <td class="remove-col"><a href="{{url('wishlist/delete/'.$value->id)}}" class="btn-remove"><i class="icon-close"></i></a></td>
+
+                            <td class="remove-col"><a href="{{url('wishlist/delete/'.$value->product_id)}}" class="btn-remove"><i class="icon-close"></i></a></td>
                         </tr>
                     @endforeach
                 

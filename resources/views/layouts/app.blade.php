@@ -46,94 +46,93 @@
     
 
     <!-- Sign in / Register Modal -->
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="icon-close"></i></span>
-                    </button>
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true"  dir="rtl" style="text-align: right;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="إغلاق">
+                    <span aria-hidden="true"><i class="icon-close"></i></span>
+                </button>
 
-                    <div class="form-box">
-                        <div class="form-tab">
-                            <ul class="nav nav-pills nav-fill" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="tab-content-5">
-                            @include('admin.layouts._message')
-                                <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
-                                    <form action="{{ url('/login') }}" method="post">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="singin-email">Username or email address *</label>
-                                            <input type="text" class="form-control" id="singin-email" name="email" required>
-                                        </div><!-- End .form-group -->
+                <div class="form-box">
+                    <div class="form-tab">
+                        <ul class="nav nav-pills nav-fill" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">تسجيل الدخول</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">تسجيل</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="tab-content-5">
+                        @include('admin.layouts._message')
+                            <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+                                <form action="{{ url('/login') }}" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="singin-email">اسم المستخدم أو عنوان البريد الإلكتروني *</label>
+                                        <input type="text" class="form-control" id="singin-email" name="email" required>
+                                    </div><!-- End .form-group -->
 
-                                        <div class="form-group">
-                                            <label for="singin-password">Password *</label>
-                                            <input type="password" class="form-control" id="singin-password" name="password" required>
-                                        </div><!-- End .form-group -->
+                                    <div class="form-group">
+                                        <label for="singin-password">كلمة المرور *</label>
+                                        <input type="password" class="form-control" id="singin-password" name="password" required>
+                                    </div><!-- End .form-group -->
 
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>LOG IN</span>
-                                                <i class="icon-long-arrow-right"></i>
-                                            </button>
+                                    <div class="form-footer">
+                                        <button type="submit" class="btn btn-outline-primary-2">
+                                            <span>تسجيل الدخول</span>
+                                            <i class="icon-long-arrow-right"></i>
+                                        </button>
 
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="remember">
-                                                <label class="custom-control-label" for="remember">Remember Me</label>
-                                            </div><!-- End .custom-checkbox -->
+                                        
 
-                                            <a href="#" class="forgot-link">Forgot Your Password?</a>
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                    
-                                </div><!-- .End .tab-pane -->
-                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                    <form action="{{ url('/register') }}" method="post">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="name">Your Full name *</label>
-                                            <input type="text" class="form-control" id="name" name="name" required>
-                                        </div><!-- End .form-group -->
+                                    </div><!-- End .form-footer -->
+                                </form>
+                                
+                            </div><!-- .End .tab-pane -->
+                            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                                <form action="{{ url('/register') }}" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="name">اسمك الكامل *</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div><!-- End .form-group -->
 
-                                        <div class="form-group">
-                                            <label for="register-email">Your email address *</label>
-                                            <input type="email" class="form-control" id="register-email" name="email" required>
-                                        </div><!-- End .form-group -->
+                                    <div class="form-group">
+                                        <label for="register-email">عنوان بريدك الإلكتروني *</label>
+                                        <input type="email" class="form-control" id="register-email" name="email" required>
+                                    </div><!-- End .form-group -->
 
-                                        <div class="form-group">
-                                            <label for="register-password">Password *</label>
-                                            <input type="password" class="form-control" id="register-password" name="password" required>
-                                        </div><!-- End .form-group -->
+                                    <div class="form-group">
+                                        <label for="register-email">  رقم الجوال *</label>
+                                        <input type="text" class="form-control" id="phonenumber" name="phone" required>
+                                    </div><!-- End .form-group -->
 
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>SIGN UP</span>
-                                                <i class="icon-long-arrow-right"></i>
-                                            </button>
+                                    <div class="form-group">
+                                        <label for="register-password">كلمة المرور *</label>
+                                        <input type="password" class="form-control" id="register-password" name="password" required>
+                                    </div><!-- End .form-group -->
 
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="register-policy" required>
-                                                <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
-                                            </div><!-- End .custom-checkbox -->
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                    
-                                </div><!-- .End .tab-pane -->
-                            </div><!-- End .tab-content -->
-                        </div><!-- End .form-tab -->
-                    </div><!-- End .form-box -->
-                </div><!-- End .modal-body -->
-            </div><!-- End .modal-content -->
-        </div><!-- End .modal-dialog -->
-    </div><!-- End .modal -->
+                                    <div class="form-footer">
+                                        <button type="submit" class="btn btn-outline-primary-2">
+                                            <span>تسجيل</span>
+                                            <i class="icon-long-arrow-right"></i>
+                                        </button>
+
+                                       
+                                    </div><!-- End .form-footer -->
+                                </form>
+                                
+                            </div><!-- .End .tab-pane -->
+                        </div><!-- End .tab-content -->
+                    </div><!-- End .form-tab -->
+                </div><!-- End .form-box -->
+            </div><!-- End .modal-body -->
+        </div><!-- End .modal-content -->
+    </div><!-- End .modal-dialog -->
+</div><!-- End .modal -->
+
 
     <div class="modal fade" id="modalorder" tabindex="-1" role="dialog" aria-hidden="true" dir="rtl" style="text-align: right;">
         <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered" role="document">
@@ -176,7 +175,7 @@
                     </button>
                     <div class="form-box">
                         <div class="modal-header mx-auto border-0" style="text-align: center;">
-                            <h2 class="modal-title fs-3 fw-normal">سياسة الطلب</h2>
+                            <h2 class="modal-title fs-3 fw-normal">طريقة غسل العباية </h2>
                         </div>
 
                         <div>

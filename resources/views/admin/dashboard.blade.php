@@ -56,6 +56,7 @@
                   <tr>
                     <th>#</th>
                     <th>اسم العميل</th>
+                    <th>رقم الجوال </th>
                     <th>ملاحظات الطلب</th>
                     <th>التكلفة الإجمالية للطلب</th>
                     <th>حالة الطلب</th>
@@ -68,6 +69,7 @@
                   <tr>
                     <td>{{$value->id}}</td>
                     <td>{{$value->user_name}}</td>
+                    <td>{{$value->user_phone}}</td>
                     <td>{{$value->notes}}</td>
                     <td>{{$value->totalcost}}</td>
                     <td>

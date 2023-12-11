@@ -3,7 +3,7 @@
         <main class="main">
         <div class="intro-section bg-lighter pt-5 pb-6">
     <div class="container">
-        <div class="row">
+        <div class="row" >
             <div class="col-lg-8">
                 <div class="intro-slider-container slider-container-ratio slider-container-1 mb-2 mb-lg-0">
                     <div class="intro-slider intro-slider-1 owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl" data-owl-options='{
@@ -15,18 +15,17 @@
                             }
                         }'>
                         <div class="intro-slide">
-                            <figure class="slide-image">
+                            <figure class="slide-image" dir="rtl"  style="text-align: right;" >
                                 <picture>
                                     <source media="(max-width: 480px)" srcset="{{ url ( 'img/IMG1.jpg' ) }}">
                                     <img src="{{ url ( 'img/IMG1.jpg' ) }}" alt="وصف الصورة">
                                 </picture>
                             </figure><!-- نهاية .slide-image -->
 
-                            <div class="intro-content">
-                                <h3 class="intro-subtitle">مجموعة التخفيضات</h3><!-- نهاية .intro-subtitle -->
-                                <h1 class="intro-title">أثاث<br>غرفة المعيشة</h1><!-- نهاية .intro-title -->
+                            <div class="intro-content" >
+                                <h1 class="intro-title">انضمي إلى عائلة برونز </h1><!-- نهاية .intro-title -->
 
-                                <a href="category.html" class="btn btn-outline-white">
+                                <a href="{{ route('shop') }}" class="btn btn-outline-white">
                                     <span>تسوق الآن</span>
                                     <i class="icon-long-arrow-right"></i>
                                 </a>
@@ -42,11 +41,10 @@
                             </figure><!-- نهاية .slide-image -->
 
                             <div class="intro-content">
-                                <h3 class="intro-subtitle">الأخبار والإلهام</h3><!-- نهاية .intro-subtitle -->
                                 <h1 class="intro-title">الوافدون الجدد</h1><!-- نهاية .intro-title -->
 
-                                <a href="category.html" class="btn btn-outline-white">
-                                    <span>تسوق الآن</span>
+                                <a href="{{ url('about') }}"" class="btn btn-outline-white">
+                                    <span>من نحن  </span>
                                     <i class="icon-long-arrow-right"></i>
                                 </a>
                             </div><!-- نهاية .intro-content -->
@@ -61,11 +59,10 @@
                             </figure><!-- نهاية .slide-image -->
 
                             <div class="intro-content">
-                                <h3 class="intro-subtitle">أثاث خارجي</h3><!-- نهاية .intro-subtitle -->
-                                <h1 class="intro-title">أثاث الطعام<br>الخارجي</h1><!-- نهاية .intro-title -->
+                                <h1 class="intro-title">تسجيل حساب جديد او تسجيل دخول  </h1><!-- نهاية .intro-title -->
 
-                                <a href="category.html" class="btn btn-outline-white">
-                                    <span>تسوق الآن</span>
+                                <a href="#signin-modal" data-toggle="modal" class="btn btn-outline-white">
+                                    <span> تسجيل الدخول</span>
                                     <i class="icon-long-arrow-right"></i>
                                 </a>
                             </div><!-- نهاية .intro-content -->
@@ -85,9 +82,8 @@
                                 </a>
 
                                 <div class="banner-content">
-                                    <h4 class="banner-subtitle text-darkwhite"><a href="#">تخفيضات</a></h4><!-- نهاية .banner-subtitle -->
-                                    <h3 class="banner-title text-white"><a href="#">كراسي وشيزلونج<br>خصم يصل إلى 40%</a></h3><!-- نهاية .banner-title -->
-                                    <a href="#" class="btn btn-outline-white banner-link">تسوق الآن<i class="icon-long-arrow-right"></i></a>
+                                    <h3 class="banner-title text-white"><a href="#" >سياسة الطلب </a></h3><!-- نهاية .banner-title -->
+                                    <a href="#modalorder" class="btn btn-outline-white banner-link" data-toggle="modal">سياسة الطلب<i class="icon-long-arrow-right"></i></a>
                                 </div><!-- نهاية .banner-content -->
                             </div><!-- نهاية .banner -->
                         </div><!-- نهاية .col-md-6 col-lg-12 -->
@@ -99,9 +95,8 @@
                                 </a>
 
                                 <div class="banner-content">
-                                    <h4 class="banner-subtitle text-darkwhite"><a href="#">جديد</a></h4><!-- نهاية .banner-subtitle -->
-                                    <h3 class="banner-title text-white"><a href="#">أفضل مجموعة<br>إضاءة</a></h3><!-- نهاية .banner-title -->
-                                    <a href="#" class="btn btn-outline-white banner-link">اكتشف الآن<i class="icon-long-arrow-right"></i></a>
+                                    <h3 class="banner-title text-white"><a href="#">طريقة غسل العباية </a></h3><!-- نهاية .banner-title -->
+                                    <a href="#modalwash" class="btn btn-outline-white banner-link" data-toggle="modal">طريقة غسل العباية<i class="icon-long-arrow-right"></i></a>
                                 </div><!-- نهاية .banner-content -->
                             </div><!-- نهاية .banner -->
                         </div><!-- نهاية .col-md-6 col-lg-12 -->
@@ -194,27 +189,30 @@
     <h2 class="title-lg text-center mb-4">تسوق حسب الفئات</h2><!-- نهاية .title-lg text-center -->
 
     <div class="row">
+    
+
+                                                        
         <div class="col-6 col-lg-4">
             <div class="banner banner-display banner-link-anim">
                 <a href="#">
-                    <img src="{{ url ( 'assets/images/banners/home/banner-1.jpg' ) }}" alt="بانر">
+                    <img src="{{ url ( 'img\monasba.jpg' ) }}" alt="بانر">
                 </a>
 
                 <div class="banner-content banner-content-center">
-                    <h3 class="banner-title text-white"><a href="#">أثاث خارجي</a></h3><!-- نهاية .banner-title -->
-                    <a href="#" class="btn btn-outline-white banner-link">تسوق الآن<i class="icon-long-arrow-right"></i></a>
+                    <h3 class="banner-title text-white"><a href="#"> عبايات مناسبات</a></h3><!-- نهاية .banner-title -->
+                    <a href="{{ url('aabayat-mnasbat')}}" class="btn btn-outline-white banner-link">تسوق الآن<i class="icon-long-arrow-right"></i></a>
                 </div><!-- نهاية .banner-content -->
             </div><!-- نهاية .banner -->
         </div><!-- نهاية .col-sm-6 col-lg-3 -->
         <div class="col-6 col-lg-4 order-lg-last">
             <div class="banner banner-display banner-link-anim">
                 <a href="#">
-                    <img src="{{ url ( 'assets/images/banners/home/banner-4.jpg' ) }}" alt="بانر">
+                    <img src="{{ url ( 'img\rasmy.jpg' ) }}" alt="بانر">
                 </a>
 
                 <div class="banner-content banner-content-center">
-                    <h3 class="banner-title text-white"><a href="#">إضاءة</a></h3><!-- نهاية .banner-title -->
-                    <a href="#" class="btn btn-outline-white banner-link">تسوق الآن<i class="icon-long-arrow-right"></i></a>
+                    <h3 class="banner-title text-white"><a href="#">عبايات رسمية</a></h3><!-- نهاية .banner-title -->
+                    <a href="{{ url('aabayat-rsmy')}}" class="btn btn-outline-white banner-link">تسوق الآن<i class="icon-long-arrow-right"></i></a>
                 </div><!-- نهاية .banner-content -->
             </div><!-- نهاية .banner -->
         </div><!-- نهاية .col-sm-6 col-lg-3 -->
@@ -222,28 +220,30 @@
             <div class="row">
                 <div class="banner banner-display banner-link-anim col-lg-12 col-6">
                     <a href="#">
-                        <img src="{{ url ( 'assets/images/banners/home/banner-2.jpg' ) }}" alt="بانر">
+                        <img src="{{ url ( 'img\ahdath1.jpg' ) }}" alt="بانر">
                     </a>
 
                     <div class="banner-content banner-content-center">
-                        <h3 class="banner-title text-white"><a href="#">أثاث وتصميم</a></h3><!-- نهاية .banner-title -->
-                        <a href="#" class="btn btn-outline-white banner-link">تسوق الآن<i class="icon-long-arrow-right"></i></a>
+                        <h3 class="banner-title text-white"><a href="#"> أحدث اطلالة</a></h3><!-- نهاية .banner-title -->
+                        <a href="{{ url('ahdth-atlal')}}"class="btn btn-outline-white banner-link">تسوق الآن<i class="icon-long-arrow-right"></i></a>
                     </div><!-- نهاية .banner-content -->
                 </div><!-- نهاية .banner -->
 
                 <div class="banner banner-display banner-link-anim col-lg-12 col-6">
                     <a href="#">
-                        <img src="{{ url ( 'assets/images/banners/home/banner-3.jpg' ) }}" alt="بانر">
+                        <img src="{{ url ( 'img\motaraz1.jpg' ) }}" alt="بانر">
                     </a>
 
                     <div class="banner-content banner-content-center">
-                        <h3 class="banner-title text-white"><a href="#">مطبخ وأدوات</a></h3><!-- نهاية .banner-title -->
-                        <a href="#" class="btn btn-outline-white banner-link">تسوق الآن<i class="icon-long-arrow-right"></i></a>
+                        <h3 class="banner-title text-white"><a href="#">عبايات مطرزة </a></h3><!-- نهاية .banner-title -->
+                        <a href="{{ url('aabayat-mtrz')}}" class="btn btn-outline-white banner-link">تسوق الآن<i class="icon-long-arrow-right"></i></a>
                     </div><!-- نهاية .banner-content -->
                 </div><!-- نهاية .banner -->
             </div>
         </div><!-- نهاية .col-sm-6 col-lg-3 -->
+    
     </div><!-- نهاية .row -->
+
         </div><!-- نهاية .container -->
 
     <div class="mb-5"></div><!-- نهاية .mb-6 -->
