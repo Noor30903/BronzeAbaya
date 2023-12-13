@@ -90,6 +90,7 @@
 
 		                				<button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
 		                					<span class="btn-text">رفع الطلب</span>
+                                            <span class="btn-hover-text">الدفع</span>
 		                				</button>
 		                			</div><!-- End .summary -->
 		                		</aside><!-- End .col-lg-3 -->

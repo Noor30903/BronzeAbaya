@@ -43,7 +43,7 @@
             @endforeach 
             <tr>
                 <th colspan="3" align="right">المجموع:</th>
-                <td>${{ number_format($mailData['order']->totalcost, 2) }}
+                <td>${{ number_format($mailData['order']->totalcost +35, 2) }}
             </tr> 
         </tbody>
     </table>

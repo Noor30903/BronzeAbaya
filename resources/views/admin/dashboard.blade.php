@@ -61,6 +61,7 @@
                     <th>التكلفة الإجمالية للطلب</th>
                     <th>حالة الطلب</th>
                     <th>تاريخ الطلب</th>
+                    <th>نوع الدفع</th>
                     <th>صورة الايصال</th>
                     <th>الإجراءات</th>
                   </tr>
@@ -90,6 +91,7 @@
                       </form>
                     </td>
                     <td>{{date('d-m-Y', strtotime($value->created_at))}}</td>
+                    <td>{{$value->payment_method}}</td>
                     <td>@if($value->payment_method === 'bank_transfer' && $getProductImage)
                           <img src="{{$getProductImage->getLogo()}}"  class="product-image">
                         @else

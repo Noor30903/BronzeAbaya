@@ -30,7 +30,7 @@ class CartItemModel extends Model
     }
     public function cart()
 {
-    return $this->belongsTo(CartModel::class, 'cart_id');
+    return $this->belongsTo(CartModel::class, 'id');
 }
 
 

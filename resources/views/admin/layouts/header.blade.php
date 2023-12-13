@@ -14,7 +14,7 @@
   <!-- /.شريط التنقل -->
 
   <!-- حاوية الشريط الجانبي الرئيسي -->
-  <aside class=" main-sidebar sidebar-dark-primary">
+  <aside class=" main-sidebar sidebar-light-primary">
           <!-- شعار العلامة التجارية -->
           <div class="brand-link" style="text-align: center;">
             <span class="brand-text">BronzAbaya</span>
